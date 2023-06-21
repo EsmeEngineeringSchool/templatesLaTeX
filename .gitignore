@@ -1,3 +1,9 @@
 *.dvi
 *.aux
 *.log
+*.nav
+*.out
+*.toc
+*.snm
+
+*-eps-converted-to.pdf
