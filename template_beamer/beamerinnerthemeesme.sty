@@ -1,38 +1,108 @@
 \mode<presentation>
 
+\newif\ifinsectionframeOne
+\newif\ifinsectionframeTwo
+\newif\ifinsectionframe
+\insectionframeOnefalse
+\insectionframeTwofalse
+\newcommand{\sectionframe}[1]
+{%
+    \ifthenelse{\equal{#1}{1}}{\insectionframeOnetrue\insectionframetrue}{}
+    \ifthenelse{\equal{#1}{2}}{\insectionframeTwotrue\insectionframetrue}{}
+  \frame{\sectionpage}
+  \insectionframeOnefalse
+  \insectionframeTwofalse
+}%
 \setbeamertemplate{background}{
-  \begin{tikzpicture}
-  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-  \fill[color=brown] (0,2) rectangle (\the\paperwidth,\the\paperheight);
-  \fill[color=orange] (0,0) rectangle(2.95,1.9);
-  \fill[color=blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.9);
-  \ifnum\thepage>1\relax%
-   \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
-   \fi
+   \begin{tikzpicture}
+   \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+   \ifnum\thepage>1\relax%
+    \ifinsectionframeOne%
+        \node[anchor=south west] at (-0.14,-0.14) 
+        {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background2.png}};
+        \fill[color=vertesme] (0.5\paperwidth,0) rectangle (\the\paperwidth,\the\paperheight); 
+        \fill[color=bleuesme] (0.4\paperwidth,0) -- 
+                              (0.5\paperwidth,0)  --
+                              (0.6\paperwidth,\paperheight)  -- 
+                             (0.5\paperwidth,\paperheight) -- cycle ;
+    \fi
+    \ifinsectionframeTwo%
+        \node[anchor=south west] at (-0.14,-0.14) 
+        {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background.png}};
+        \fill[color=vertesme] (0.5\paperwidth,0) rectangle (\the\paperwidth,\the\paperheight); 
+        \fill[color=bleuesme] (0.4\paperwidth,0) -- 
+                              (0.5\paperwidth,0)  --
+                              (0.6\paperwidth,\paperheight)  -- 
+                              (0.5\paperwidth,\paperheight) -- cycle ;
+    \fi
+    \ifinsectionframe
+    \else%
+        \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    \fi%
+   \else%title page
+   \node[anchor=south west] at (-0.14,-0.14) 
+   {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background.png}};
+   \fill[color=vertesme] (0.5\paperwidth,0) rectangle (\the\paperwidth,\the\paperheight); 
+   \fill[color=bleuesme] (0.4\paperwidth,0) -- 
+                         (0.5\paperwidth,0)  --
+                         (0.6\paperwidth,\paperheight)  -- 
+                         (0.5\paperwidth,\paperheight) -- cycle ;
+   \node[anchor=south west] at (0.865\paperwidth,6.7) 
+   {\includegraphics[width=0.12\paperwidth]{ESME_LOGO_VILLES_QUADRI_2021.eps}};
+  \fi
   \end{tikzpicture}
 }
-
 % Title page
 \defbeamertemplate*{title page}{esme}[1][]
 { 
-   \vskip6cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,sep=8pt,#1]{title page header}
-      \usebeamerfont{title}\inserttitle\par%
+   \vskip3cm%
+   \hfill
+   \begin{beamercolorbox}[wd=0.4\paperwidth,center,#1]{title page header}
+    \usebeamerfont{title page}\inserttitle\par%
     \end{beamercolorbox}%
     \vskip0.75cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{author}
-      \usebeamerfont{author}\insertauthor%
-    \end{beamercolorbox}
-     \vskip0.2cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{date}
-      \usebeamerfont{author}\insertdate%
-    \end{beamercolorbox}
-  \vfill
+    \hfill
+    \begin{beamercolorbox}[wd=0.4\paperwidth,center]{title page header}
+        \usebeamerfont{subtitle page}\insertsubtitle\par%
+    \end{beamercolorbox}%
+    \vfill
 }
-
 % Items
 \setbeamertemplate{items}[square]
-\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{section in toc}{\leavevmode\leftskip=2.75ex%
+  \llap{%
+    \normalsize%
+    \begin{pgfpicture}{-1ex}{-0.7ex}{1ex}{1ex}
+      \pgftext{\beamer@usesphere{section number projected}{tocsphere}}
+      \pgftext{%
+        \usebeamerfont*{section number projected}%
+        \usebeamercolor{section number projected}%
+        %\color{fg!90!bg}%
+        \inserttocsectionnumber}
+    \end{pgfpicture}%
+    \kern1.25ex}%
+  \inserttocsection\par
+}
+
+\pgfdeclareradialshading[bg,parent.bg]{tocsmallsphere}{\pgfpoint{-0.4ex}{0.48ex}}%
+{%
+  color(0cm)=(bg!35!white);
+  color(0.352ex)=(bg!75!white);
+  color(0.704ex)=(bg!70!black!90!parent.bg);
+  color(0.96ex)=(bg!50!black!90!parent.bg);
+  color(1.04ex)=(parent.bg)
+}
+
+\defbeamertemplate*{section page}{esme}[1][]
+{
+   \vfill
+   \hfill
+   \begin{beamercolorbox}[wd=0.4\paperwidth,sep=12pt,center,
+                         colsep=-4bp,rounded=true,shadow=true]{section title}
+   \usebeamerfont{section title}\insertsectionnumber~\insertsection\par
+   \end{beamercolorbox}
+   \vfill
+}
 
 \mode
 <all>

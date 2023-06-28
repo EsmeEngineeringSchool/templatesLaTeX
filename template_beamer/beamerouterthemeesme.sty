@@ -3,20 +3,38 @@
 % Frame title
 \defbeamertemplate*{frametitle}{esme}[1][]
 {
-\vskip1cm%
   \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
   \begin{tikzpicture}
   \useasboundingbox[fill=white](0,0) rectangle(\the\paperwidth,1.2);
-  \fill[orange] (0,0) rectangle(2.95,1.2);
-  \fill[blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.2);
+  \fill[bleuesme] (0,0) rectangle(\the\paperwidth,1.4);
+  \shade[bottom color=vertesme, top color=bleuesme] (0,0) rectangle +(0.75cm,-\the\paperheight);
+  \draw[white,line width=2pt] (0.5,0) rectangle(1.1\paperwidth,1.4);
    \ifx\insertframesubtitle\@empty%
-      {\node[anchor=west, white,font=\large] at (3.2,0.61){\insertframetitle};}
+      {\node[anchor=west, white,font=\large] at (0.5,0.61){\insertframetitle};}
       \else%
-      {\node[anchor= west, white,font=\large] at (3.2,0.81){\insertframetitle};%
-       \node[anchor= west, white,font=\small] at (3.2,0.41){\insertframesubtitle};}%
+      {\node[anchor= west, white,font=\large] at (0.5,0.81){\insertframetitle};%
+       \node[anchor= west, white,font=\small] at (0.5,0.41){\insertframesubtitle};}%
       \fi
   \end{tikzpicture}
   \end{beamercolorbox}
 }
 
+\defbeamertemplate*{footline}{esme}[1][]
+{
+  \ifnum \theframenumber=1
+  \else
+    \ifinsectionframe%
+    \else
+  \hbox{
+  \includegraphics[height=0.6cm]{ESME_LOGO_SEUL_BLANC_2021.eps}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{section in head/foot}%
+    \usebeamerfont{section in head/foot}\insertsection
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=.44\paperwidth,ht=2.25ex,dp=1ex,right]{pagenumber in head/foot}%
+    \usebeamerfont{pagenumber in head/foot}\insertframenumber{} 
+  \end{beamercolorbox}
+  }%
+  \fi
+  \fi
+}
 \mode<all>

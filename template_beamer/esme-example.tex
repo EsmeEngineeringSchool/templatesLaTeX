@@ -1,32 +1,58 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
+\usepackage[french]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\title{There Is No Largest Prime Number}
-\date[ISPN ’80]{27th International Symposium of Prime Numbers}
-\author[Euclid]{Euclid of Alexandria \texttt{euclid@alexandria.edu}}
+\usepackage{fontenc}
+\title{Modèle de diaporama ESME}
+\subtitle{Sous titre}
+\date[]{}
+\author[]{}
 
 \usetheme{esme}
 
 \begin{document}
-
+%%%%%%%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \titlepage
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\sectionframe{1}
+\sectionframe{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame} 
-\frametitle{There Is No Largest Prime Number} 
-\framesubtitle{The proof uses \textit{reductio ad absurdum}.} 
-\begin{theorem}
-There is no largest prime number. \end{theorem} 
-\begin{enumerate} 
-\item<1-| alert@1> Suppose $p$ were the largest prime number. 
-\item<2-> Let $q$ be the product of the first $p$ numbers. 
-\item<3-> Then $q+1$ is not divisible by any of them. 
-\item<1-> But $q + 1$ is greater than $1$, thus divisible by some prime
-number not in the first $p$ numbers.
-\end{enumerate}
+\frametitle{Introduction} 
+\framesubtitle{Sous titre de la frame} 
+
+Nous avons mis au point un thème \LaTeX~à destination des concepteurs de 
+ressources pédagogiques numériques.\newline
+
+Ce modèle prend la forme d'un \og template\fg~contenant des 
+dispositions types.\newline
+
+Ce modèle est conforme à la charte graphique de l'ESME (couleurs, logos).\newline
+
+Les fonctionnalités de beamer sont conservées.
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Table des Matières}
+    \tableofcontents
+    \scriptsize
+    Utilisez les commandes \textbackslash section, \textbackslash subsection ...
+    tout le long du document et obtenez cette page avec la commande 
+    \textbackslash tableofcontents
 \end{frame}
 
+%%\begin{frame}
+%\end{frame}
+
+\section{Exemples}
 \begin{frame}{A longer title}
 \begin{itemize}
 \item one
