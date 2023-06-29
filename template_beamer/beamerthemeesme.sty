@@ -32,26 +32,27 @@
 }{}
 
 \theoremstyle{definition}
-\newtheorem{blocDef}[theorem]{\includegraphics[height=\fontcharht\font`\B]{definition.eps}~Définition}
-\AtBeginEnvironment{blocDef}{%
+\newtheorem{blockDef}[theorem]{\includegraphics[height=\fontcharht\font`\B]{definition.eps}~Définition}
+\AtBeginEnvironment{blockDef}{%
   \setbeamercolor{block title}{fg=white,bg=bleuesme}
   \setbeamercolor{block body}{bg=bleuclairesme,fg=bleuesme}
 }
-\newtheorem{blocProp}[theorem]{\includegraphics[height=\fontcharht\font`\B]{propriete.eps}~Propriétés}
-\AtBeginEnvironment{blocProp}{%
+\newtheorem{blockProp}[theorem]{\includegraphics[height=\fontcharht\font`\B]{propriete.eps}~Propriétés}
+\AtBeginEnvironment{blockProp}{%
   \setbeamercolor{block title}{fg=white,bg=rougeesme}
   \setbeamercolor{block body}{bg=rougeclairesme,fg=rougeesme}
 }
-\newtheorem{blocEx}[theorem]{\includegraphics[height=\fontcharht\font`\B]{exemple_blanc.eps}~Exemple}
-\AtBeginEnvironment{blocEx}{%
+\newtheorem{blockEx}[theorem]{\includegraphics[height=\fontcharht\font`\B]{exemple_blanc.eps}~Exemple}
+\AtBeginEnvironment{blockEx}{%
   \setbeamercolor{block title}{fg=white,bg=vertesme}
   \setbeamercolor{block body}{bg=vertesme!25!white,fg=vertesme}
 }
-\newtheorem{blocRem}[theorem]{\includegraphics[height=\fontcharht\font`\B]{remarque_blanc.eps}~Remarque}
-\AtBeginEnvironment{blocRem}{%
+\newtheorem{blockRem}[theorem]{\includegraphics[height=\fontcharht\font`\B]{remarque_blanc.eps}~Remarque}
+\AtBeginEnvironment{blockRem}{%
   \setbeamercolor{block title}{fg=white,bg=grisesme}
   \setbeamercolor{block body}{bg=grisesme!25!white,fg=grisesme}
 }
 
+\graphicspath{{img/}}
 
 \mode<all>
