@@ -1,7 +1,9 @@
 \documentclass[aspectratio=169]{beamer}
 \usepackage[french]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{fontenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{verbatim}
 \title{Modèle de diaporama ESME}
 \subtitle{Sous titre}
 \date[]{}
@@ -18,29 +20,35 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-\sectionframe{1}
-\sectionframe{2}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame} 
+\begin{frame}[fragile] 
 \frametitle{Introduction} 
 \framesubtitle{Sous titre de la frame} 
 
-Nous avons mis au point un thème \LaTeX~à destination des concepteurs de 
-ressources pédagogiques numériques.\newline
+Nous avons mis au point un thème \texttt{beamer} \og ESME\fg~pour 
+\LaTeX~à destination des concepteurs de ressources pédagogiques 
+numériques.\newline
 
 Ce modèle prend la forme d'un \og template\fg~contenant des 
 dispositions types.\newline
 
-Ce modèle est conforme à la charte graphique de l'ESME (couleurs, logos).\newline
+Ce modèle est conforme à la charte graphique de l'ESME (couleurs, 
+logos).
+
+\emph{N.B : la police d'écriture est celle de\LaTeX}\newline
+
+\begin{verbatim}
+\usepackage[T1]{fontenc}
+\texttt{lmodern}
+\end{verbatim}
 
 Les fonctionnalités de beamer sont conservées.
-
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Table des Matières}
     \tableofcontents
     \scriptsize
@@ -48,15 +56,99 @@ Les fonctionnalités de beamer sont conservées.
     tout le long du document et obtenez cette page avec la commande 
     \textbackslash tableofcontents
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Exemples de \texttt{\textbackslash sectionframe}}
+
+    Vous pouvez utiliser (actuellement) 3 types de pages de titre pour
+    les sections avec la commande \texttt{\textbackslash sectionframe\{n\}} 
+    où $n=1,2,3$.\newline
+
+    Cette page indiquera le numéro et le titre de la section dans laquelle
+    vous vous trouvez.\newline
+
+    Les trois \texttt{frame} suivantes montrent 3 exemples.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3 exemples de sectionframe
+\sectionframe{1}
+\sectionframe{2}
+\sectionframe{3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Exemples}
-\sectionframe{2}
+\sectionframe{3}
 
-\begin{frame}
-    \frametitle{Exemple 1: Environnement itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+    \frametitle{Exemple 1: Environnement \texttt{itemize}}
 \begin{itemize}
     \item premier élément 
+        \begin{itemize}
+            \item Niveau 2
+        \end{itemize}
     \item second élément
 \end{itemize}
+\begin{verbatim}
+    \begin{itemize}
+    \item premier élément 
+    \item second élément
+    \end{itemize}
+\end{verbatim}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+    \frametitle{Exemple 2: Environnement \texttt{column}}
+    \begin{columns}
+        \column{0.75\linewidth}
+        \begin{itemize}
+            \item Avec contenu plus large à gauche
+        \end{itemize}
+        \column{0.25\linewidth}
+        \begin{itemize}
+            \item Et contenu plus étroit à droite 
+        \end{itemize}
+    \end{columns}
+{\scriptsize
+\begin{verbatim}
+    \begin{columns}
+        \column{0.75\linewidth}
+        \begin{itemize}
+            \item Avec contenu plus large à gauche
+        \end{itemize}
+        \column{0.25\linewidth}
+        \begin{itemize}
+            \item Et contenu plus étroit à droite 
+        \end{itemize}
+    \end{columns}
+\end{verbatim}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[question]
+    \frametitle{Exemple \og Question\fg}
+
+Pour utiliser une frame question (c.f icône à droite), taper la commande :
+\noindent\texttt{%
+\textbackslash begin\{frame\}[question]\\
+\ldots\emph{Votre slide}\ldots\\
+\textbackslash end\{frame\}
+}
+\end{frame}
+
+\begin{frame}[reponse]
+    \frametitle{Exemple \og Reponse\fg}
+
+Pour utiliser une frame question (c.f icône à droite), taper la commande :
+\noindent\texttt{%
+\textbackslash begin\{frame\}[reponse]\\
+\ldots\emph{Votre slide}\ldots\\
+\textbackslash end\{frame\}
+}
 \end{frame}
 \end{document}

@@ -2,24 +2,36 @@
 
 \newif\ifinsectionframeOne
 \newif\ifinsectionframeTwo
+\newif\ifinsectionframeThree
 \newif\ifinsectionframe
+\newif\ifinsectiontypeOne %regroupe le type frame1 et frame2
 \insectionframefalse
+\insectiontypeOnefalse
 \insectionframeOnefalse
 \insectionframeTwofalse
+\insectionframeThreefalse
+
+
 \newcommand{\sectionframe}[1]
 {%
-    \ifthenelse{\equal{#1}{1}}{\insectionframeOnetrue\insectionframetrue}{}
-    \ifthenelse{\equal{#1}{2}}{\insectionframeTwotrue\insectionframetrue}{}
+    \ifthenelse{\equal{#1}{1}}{\insectionframeOnetrue\insectionframetrue\insectiontypeOnetrue}{}
+    \ifthenelse{\equal{#1}{2}}{\insectionframeTwotrue\insectionframetrue\insectiontypeOnetrue}{}
+    \ifthenelse{\equal{#1}{3}}{\insectionframeThreetrue\insectionframetrue}{}
   \frame{\sectionpage}
   \insectionframeOnefalse
   \insectionframeTwofalse
+  \insectionframeThreefalse
+  \insectiontypeOnefalse
   \insectionframefalse
 }%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template background 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{background}{
    \begin{tikzpicture}
    \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-   \ifnum\thepage>1\relax%
-    \ifinsectionframeOne%
+   \ifnum\thepage>1\relax% Si n'est pas la page de titre
+    \ifinsectionframeOne% % \sectionframe{1}
         \node[anchor=south west] at (-0.14,-0.14) 
         {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background2.png}};
         \fill[color=vertesme] (0.5\paperwidth,0) rectangle (\the\paperwidth,\the\paperheight); 
@@ -27,8 +39,10 @@
                               (0.5\paperwidth,0)  --
                               (0.6\paperwidth,\paperheight)  -- 
                              (0.5\paperwidth,\paperheight) -- cycle ;
+        \node[anchor=south west] at (0.89\paperwidth,7.1) 
+        {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_SEUL_BLANC_2021.eps}};
     \fi
-    \ifinsectionframeTwo%
+    \ifinsectionframeTwo% \sectionframe{2}
         \node[anchor=south west] at (-0.14,-0.14) 
         {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background.png}};
         \fill[color=vertesme] (0.5\paperwidth,0) rectangle (\the\paperwidth,\the\paperheight); 
@@ -36,6 +50,16 @@
                               (0.5\paperwidth,0)  --
                               (0.6\paperwidth,\paperheight)  -- 
                               (0.5\paperwidth,\paperheight) -- cycle ;
+        \node[anchor=south west] at (0.89\paperwidth,7.1) 
+        {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_SEUL_BLANC_2021.eps}};
+    \fi
+    \ifinsectionframeThree% \sectionframe{3}
+        \node[anchor=south west] at (-0.14,-0.14) 
+        {\includegraphics[width=\paperwidth,height=\paperheight]{background2.png}};
+        \fill[color=bleuesme] (0.15\paperwidth,0.15\paperheight) rectangle 
+                              (0.85\paperwidth,0.85\paperheight);
+        \node[anchor=south west] at (0.89\paperwidth,7.1) 
+        {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_SEUL_BLANC_2021.eps}};
     \fi
     \ifinsectionframe
     \else%
@@ -49,8 +73,8 @@
                          (0.5\paperwidth,0)  --
                          (0.6\paperwidth,\paperheight)  -- 
                          (0.5\paperwidth,\paperheight) -- cycle ;
-   \node[anchor=south west] at (0.865\paperwidth,6.7) 
-   {\includegraphics[width=0.12\paperwidth]{ESME_LOGO_VILLES_QUADRI_2021.eps}};
+   \node[anchor=south west] at (0.89\paperwidth,7.1) 
+   {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_VILLES_QUADRI_2021.eps}};
   \fi
   \end{tikzpicture}
 }
@@ -70,7 +94,7 @@
     \vfill
 }
 % Items
-\setbeamertemplate{items}[square]
+\setbeamertemplate{itemize items}{\ding{111}}
 \setbeamertemplate{section in toc}{\leavevmode\leftskip=2.75ex%
   \llap{%
     \normalsize%
@@ -97,6 +121,7 @@
 
 \defbeamertemplate*{section page}{esme}[1][]
 {
+   \ifinsectiontypeOne%
    \vfill
    \hfill
    \begin{beamercolorbox}[wd=0.4\paperwidth,sep=12pt,center,
@@ -104,6 +129,14 @@
    \usebeamerfont{section title}\insertsectionnumber~\insertsection\par
    \end{beamercolorbox}
    \vfill
+   \else
+   \vfill
+   \begin{beamercolorbox}[wd=\paperwidth,center,
+                         rounded=true,shadow=true]{section title}
+   \usebeamerfont{section title}\insertsectionnumber~\insertsection\par
+   \end{beamercolorbox}
+   \vfill
+   \fi
 }
 
 \mode
