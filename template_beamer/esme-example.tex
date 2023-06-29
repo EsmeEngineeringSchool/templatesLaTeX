@@ -155,25 +155,72 @@ Pour utiliser une frame question (c.f icône à droite), taper la commande :
 }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
     \frametitle{Exemple \og Blocs\fg}
-    \begin{block}{Block générique}
-        Changer le texte ici
+    \begin{block}{Bloc générique}
+        L'environnement \texttt{block} de beamer permet de faire des blocs
+        autour d'un texte
     \end{block}
-    \begin{blocDef}
-        Changer le texte ici
-    \end{blocDef}
-    \begin{blocProp}
-        Changer le texte ici
-    \end{blocProp}
-    \begin{blocEx}
-        Changer le texte ici
-    \end{blocEx}
-    \begin{blocRem}
-        Changer le texte ici
-    \end{blocRem}
+\noindent\texttt{%
+\textbackslash begin\{block\}\{Bloc générique\}\\
+\ldots\emph{Votre texte}\ldots\\
+\textbackslash end\{block\}
+}
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Bloc \og Définition\fg}
+    \begin{blockDef}
+        Changer le texte ici
+    \end{blockDef}
+\noindent\texttt{%
+\textbackslash begin\{blockDef\}\\
+\ldots\emph{Votre texte}\ldots\\
+\textbackslash end\{blockDef\}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Bloc \og Propriétés\fg}
+    \begin{blockProp}
+        Changer le texte ici
+    \end{blockProp}
+\noindent\texttt{%
+\textbackslash begin\{blockProp\}\\
+\ldots\emph{Votre texte}\ldots\\
+\textbackslash end\{blockProp\}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Bloc \og Exemple\fg}
+    \begin{blockEx}
+        Changer le texte ici
+    \end{blockEx}
+\noindent\texttt{%
+\textbackslash begin\{blockEx\}\\
+\ldots\emph{Votre texte}\ldots\\
+\textbackslash end\{blockEx\}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Bloc \og Remarque\fg}
+    \begin{blockRem}
+        Changer le texte ici
+    \end{blockRem}
+\noindent\texttt{%
+\textbackslash begin\{blockRem\}\\
+\ldots\emph{Votre texte}\ldots\\
+\textbackslash end\{blockRem\}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \end{document}
