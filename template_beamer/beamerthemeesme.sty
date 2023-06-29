@@ -14,4 +14,44 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]  
 
+\addtobeamertemplate{block begin}{%
+    \let\oldinsertblocktitle\insertblocktitle%
+    \def\insertblocktitle{\oldinsertblocktitle}%
+}{}
+\addtobeamertemplate{block example begin}{%
+    \let\oldinsertblocktitle\insertblocktitle%
+    \def\insertblocktitle{
+    \includegraphics[height=\fontcharht\font`\B]{definition.eps}~
+    \oldinsertblocktitle}%
+}{}
+\addtobeamertemplate{block alerted begin}{%
+    \let\oldinsertblocktitle\insertblocktitle%
+    \def\insertblocktitle{
+    \includegraphics[height=\fontcharht\font`\B]{propriete.eps}~
+    \oldinsertblocktitle}%
+}{}
+
+\theoremstyle{definition}
+\newtheorem{blocDef}[theorem]{\includegraphics[height=\fontcharht\font`\B]{definition.eps}~Définition}
+\AtBeginEnvironment{blocDef}{%
+  \setbeamercolor{block title}{fg=white,bg=bleuesme}
+  \setbeamercolor{block body}{bg=bleuclairesme,fg=bleuesme}
+}
+\newtheorem{blocProp}[theorem]{\includegraphics[height=\fontcharht\font`\B]{propriete.eps}~Propriétés}
+\AtBeginEnvironment{blocProp}{%
+  \setbeamercolor{block title}{fg=white,bg=rougeesme}
+  \setbeamercolor{block body}{bg=rougeclairesme,fg=rougeesme}
+}
+\newtheorem{blocEx}[theorem]{\includegraphics[height=\fontcharht\font`\B]{exemple_blanc.eps}~Exemple}
+\AtBeginEnvironment{blocEx}{%
+  \setbeamercolor{block title}{fg=white,bg=vertesme}
+  \setbeamercolor{block body}{bg=vertesme!25!white,fg=vertesme}
+}
+\newtheorem{blocRem}[theorem]{\includegraphics[height=\fontcharht\font`\B]{remarque_blanc.eps}~Remarque}
+\AtBeginEnvironment{blocRem}{%
+  \setbeamercolor{block title}{fg=white,bg=grisesme}
+  \setbeamercolor{block body}{bg=grisesme!25!white,fg=grisesme}
+}
+
+
 \mode<all>
