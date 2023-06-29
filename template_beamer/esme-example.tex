@@ -37,7 +37,7 @@ dispositions types.\newline
 Ce modèle est conforme à la charte graphique de l'ESME (couleurs, 
 logos).
 
-\emph{N.B : la police d'écriture est celle de\LaTeX}\newline
+\emph{N.B : la police d'écriture est celle de~\LaTeX}\newline
 
 \begin{verbatim}
 \usepackage[T1]{fontenc}
@@ -78,7 +78,7 @@ Les fonctionnalités de beamer sont conservées.
 \sectionframe{3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Exemples}
+\section{Exemples d'environnement beamer}
 \sectionframe{3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -130,6 +130,8 @@ Les fonctionnalités de beamer sont conservées.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Différentes \texttt{frametitle}}
+\sectionframe{3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[question]
     \frametitle{Exemple \og Question\fg}
@@ -155,31 +157,33 @@ Pour utiliser une frame question (c.f icône à droite), taper la commande :
 }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Les blocs}
+\sectionframe{3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \frametitle{Exemple \og Blocs\fg}
-    \begin{block}{Bloc générique}
-        L'environnement \texttt{block} de beamer permet de faire des blocs
-        autour d'un texte
-    \end{block}
+\frametitle{Les \og blocs\fg}
+\begin{block}{Bloc générique}
+L'environnement \texttt{block} de beamer permet de faire des blocs
+autour d'un texte
+\end{block}
 \noindent\texttt{%
 \textbackslash begin\{block\}\{Bloc générique\}\\
 \ldots\emph{Votre texte}\ldots\\
 \textbackslash end\{block\}
-}
+}%
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \frametitle{Bloc \og Définition\fg}
-    \begin{blockDef}
-        Changer le texte ici
-    \end{blockDef}
+\frametitle{Bloc \og Définition\fg}
+\begin{blockDef}
+Changer le texte ici
+\end{blockDef}
 \noindent\texttt{%
 \textbackslash begin\{blockDef\}\\
 \ldots\emph{Votre texte}\ldots\\
 \textbackslash end\{blockDef\}
-}
+}%
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,33 +196,32 @@ Pour utiliser une frame question (c.f icône à droite), taper la commande :
 \textbackslash begin\{blockProp\}\\
 \ldots\emph{Votre texte}\ldots\\
 \textbackslash end\{blockProp\}
-}
+}%
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \frametitle{Bloc \og Exemple\fg}
-    \begin{blockEx}
-        Changer le texte ici
-    \end{blockEx}
+\frametitle{Bloc \og Exemple\fg}
+\begin{blockEx}
+Changer le texte ici
+\end{blockEx}
 \noindent\texttt{%
 \textbackslash begin\{blockEx\}\\
 \ldots\emph{Votre texte}\ldots\\
 \textbackslash end\{blockEx\}
-}
+}%
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-    \frametitle{Bloc \og Remarque\fg}
-    \begin{blockRem}
-        Changer le texte ici
-    \end{blockRem}
+\frametitle{Bloc \og Remarque\fg}
+\begin{blockRem}
+Changer le texte ici
+\end{blockRem}
 \noindent\texttt{%
 \textbackslash begin\{blockRem\}\\
 \ldots\emph{Votre texte}\ldots\\
-\textbackslash end\{blockRem\}
-}
+\textbackslash end\{blockRem\}}%
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -11,7 +11,6 @@
 \insectionframeTwofalse
 \insectionframeThreefalse
 
-
 \newcommand{\sectionframe}[1]
 {%
     \ifthenelse{\equal{#1}{1}}{\insectionframeOnetrue\insectionframetrue\insectiontypeOnetrue}{}
@@ -38,7 +37,7 @@
         \fill[color=bleuesme] (0.4\paperwidth,0) -- 
                               (0.5\paperwidth,0)  --
                               (0.6\paperwidth,\paperheight)  -- 
-                             (0.5\paperwidth,\paperheight) -- cycle ;
+                              (0.5\paperwidth,\paperheight) -- cycle ;
         \node[anchor=south west] at (0.89\paperwidth,7.1) 
         {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_SEUL_BLANC_2021.eps}};
     \fi
@@ -131,10 +130,11 @@
    \vfill
    \else
    \vfill
-   \begin{beamercolorbox}[wd=\paperwidth,center,
+   \hfill
+   \begin{beamercolorbox}[wd=0.65\paperwidth,center,
                          rounded=true,shadow=true]{section title}
    \usebeamerfont{section title}\insertsectionnumber~\insertsection\par
-   \end{beamercolorbox}
+    \end{beamercolorbox}\hspace{2cm}
    \vfill
    \fi
 }
