@@ -1,7 +1,12 @@
 # esme
-Templates LaTeX de l'ESME
 
-## beamer
-- copier le dossier beamer-esme dans votre installation latex
+Templates LaTeX de l'ESME. 
+
+## beamer :
+- copier le dossier beamer dans votre TEXMFHOME 
 
 exemple : ~/texmf/tex/latex/
+ou si les dossiers beamer/themes existe déjà :
+ - copier uniquement le thème esme dans ~/texmf/tex/latex/beamer/themes 
+
+## examen :
