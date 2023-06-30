@@ -32,33 +32,33 @@
    \ifnum\thepage>1\relax% Si n'est pas la page de titre
     \ifinsectionframeOne% % \sectionframe{1}
         \node[anchor=south west] at (-0.14,-0.14) 
-        {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background2.png}};
+        {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background2}};
         \fill[color=vertesme] (0.5\paperwidth,0) rectangle (\the\paperwidth,\the\paperheight); 
         \fill[color=bleuesme] (0.4\paperwidth,0) -- 
                               (0.5\paperwidth,0)  --
                               (0.6\paperwidth,\paperheight)  -- 
                               (0.5\paperwidth,\paperheight) -- cycle ;
         \node[anchor=south west] at (0.89\paperwidth,7.1) 
-        {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_SEUL_BLANC_2021.eps}};
+        {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_SEUL_BLANC_2021}};
     \fi
     \ifinsectionframeTwo% \sectionframe{2}
         \node[anchor=south west] at (-0.14,-0.14) 
-        {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background.png}};
+        {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background}};
         \fill[color=vertesme] (0.5\paperwidth,0) rectangle (\the\paperwidth,\the\paperheight); 
         \fill[color=bleuesme] (0.4\paperwidth,0) -- 
                               (0.5\paperwidth,0)  --
                               (0.6\paperwidth,\paperheight)  -- 
                               (0.5\paperwidth,\paperheight) -- cycle ;
         \node[anchor=south west] at (0.89\paperwidth,7.1) 
-        {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_SEUL_BLANC_2021.eps}};
+        {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_SEUL_BLANC_2021}};
     \fi
     \ifinsectionframeThree% \sectionframe{3}
         \node[anchor=south west] at (-0.14,-0.14) 
-        {\includegraphics[width=\paperwidth,height=\paperheight]{background2.png}};
+        {\includegraphics[width=\paperwidth,height=\paperheight]{background2}};
         \fill[color=bleuesme] (0.15\paperwidth,0.15\paperheight) rectangle 
                               (0.85\paperwidth,0.85\paperheight);
         \node[anchor=south west] at (0.89\paperwidth,7.1) 
-        {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_SEUL_BLANC_2021.eps}};
+        {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_SEUL_BLANC_2021}};
     \fi
     \ifinsectionframe
     \else%
@@ -66,14 +66,14 @@
     \fi%
    \else%title page
    \node[anchor=south west] at (-0.14,-0.14) 
-   {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background.png}};
+   {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background}};
    \fill[color=vertesme] (0.5\paperwidth,0) rectangle (\the\paperwidth,\the\paperheight); 
    \fill[color=bleuesme] (0.4\paperwidth,0) -- 
                          (0.5\paperwidth,0)  --
                          (0.6\paperwidth,\paperheight)  -- 
                          (0.5\paperwidth,\paperheight) -- cycle ;
-   \node[anchor=south west] at (0.89\paperwidth,7.1) 
-   {\includegraphics[width=0.09\paperwidth]{ESME_LOGO_VILLES_QUADRI_2021.eps}};
+   \node[anchor=south west] at (0.87\paperwidth,7.0) 
+   {\includegraphics[width=0.12\paperwidth]{ESME_LOGO_VILLES_QUADRI_2021}};
   \fi
   \end{tikzpicture}
 }

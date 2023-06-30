@@ -10,3 +10,11 @@
 *-eps-converted-to.pdf
 *.svg
 *.zip
+
+#compilation latex
+doit
+esme-example.bbl
+esme-example.blg
+esme-example.ps
+esme-example.tex.md5
+makefile
