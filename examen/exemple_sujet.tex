@@ -1,0 +1,40 @@
+\documentclass[11pt,a4paper,twoside]{article} %twocolumn
+\usepackage[francais]{babel}
+\usepackage[babel=true,kerning=true]{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{hmargin=2.5cm,vmargin=2.5cm}
+\usepackage{graphicx}
+\graphicspath{{./preambules/}}
+%Configurer la page de titre 
+%Vous pouvez enlevez les texttt
+\newcommand\promo{\texttt{<PROMO>}}                     %ex. IngéSUP, IngéSPE, Ingé1
+\newcommand\module{\texttt{<MODULE>}}                   %ex. Systèmes Techniques, Mathématiques Fondamentales
+\newcommand\annee{2022-2023}                            %ex. 2022-2023
+\newcommand\epreuve{\texttt{<EPREUVE>}}                 %ex. MidTerm, FinalExam, Rattrapage
+\newcommand\titreEval{\texttt{<TITRE DE L'EVALUATION>}} %ex. Dynamique et Déformation
+\newcommand\dureeEval{\texttt{<X>}}                     %en nombre d'heures
+\input{preambules/preambule.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\input{preambules/pagetitre.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercice{\texttt{<TITRE DE L'EXERCICE>}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question{\texttt{<ENONCE DE LA QUESTION>}}
+\question{\texttt{<ENONCE DE LA QUESTION>}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercice{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question{}
+\question{}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercice{\texttt{<TITRE DE L'EXERCICE>}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question{\texttt{<ENONCE DE LA QUESTION>}}
+\question{\texttt{<ENONCE DE LA QUESTION>}}
+\end{document}

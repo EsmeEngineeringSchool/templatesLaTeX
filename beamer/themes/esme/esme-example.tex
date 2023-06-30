@@ -1,0 +1,229 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{verbatim}
+\title{Modèle de diaporama ESME}
+\subtitle{Sous titre}
+\date[]{}
+\author[]{}
+
+\usetheme{esme}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\titlepage
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile] 
+\frametitle{Introduction} 
+\framesubtitle{Sous titre de la frame} 
+
+Nous avons mis au point un thème \texttt{beamer} \og ESME\fg~pour 
+\LaTeX~à destination des concepteurs de ressources pédagogiques 
+numériques.\newline
+
+Ce modèle prend la forme d'un \og template\fg~contenant des 
+dispositions types.\newline
+
+Ce modèle est conforme à la charte graphique de l'ESME (couleurs, 
+logos).
+
+\emph{N.B : la police d'écriture est celle de~\LaTeX}\newline
+
+\begin{verbatim}
+\usepackage[T1]{fontenc}
+\texttt{lmodern}
+\end{verbatim}
+
+Les fonctionnalités de beamer sont conservées.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Table des Matières}
+    \tableofcontents
+    \scriptsize
+    Utilisez les commandes \textbackslash section, \textbackslash subsection ...
+    tout le long du document et obtenez cette page avec la commande 
+    \textbackslash tableofcontents
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} 
+    \frametitle{Exemples de \texttt{\textbackslash sectionframe}}
+
+    Vous pouvez utiliser (actuellement) 3 types de pages de titre pour
+    les sections avec la commande \texttt{\textbackslash sectionframe\{n\}} 
+    où $n=1,2,3$.\newline
+
+    Cette page indiquera le numéro et le titre de la section dans laquelle
+    vous vous trouvez.\newline
+
+    Les trois \texttt{frame} suivantes montrent 3 exemples.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 3 exemples de sectionframe
+\sectionframe{1}
+\sectionframe{2}
+\sectionframe{3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Exemples d'environnement beamer}
+\sectionframe{3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+    \frametitle{Exemple 1: Environnement \texttt{itemize}}
+\begin{itemize}
+    \item premier élément 
+        \begin{itemize}
+            \item Niveau 2
+        \end{itemize}
+    \item second élément
+\end{itemize}
+\begin{verbatim}
+    \begin{itemize}
+    \item premier élément 
+    \item second élément
+    \end{itemize}
+\end{verbatim}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+    \frametitle{Exemple 2: Environnement \texttt{column}}
+    \begin{columns}
+        \column{0.75\linewidth}
+        \begin{itemize}
+            \item Avec contenu plus large à gauche
+        \end{itemize}
+        \column{0.25\linewidth}
+        \begin{itemize}
+            \item Et contenu plus étroit à droite 
+        \end{itemize}
+    \end{columns}
+{\scriptsize
+\begin{verbatim}
+    \begin{columns}
+        \column{0.75\linewidth}
+        \begin{itemize}
+            \item Avec contenu plus large à gauche
+        \end{itemize}
+        \column{0.25\linewidth}
+        \begin{itemize}
+            \item Et contenu plus étroit à droite 
+        \end{itemize}
+    \end{columns}
+\end{verbatim}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Différentes \texttt{frametitle}}
+\sectionframe{3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[question]
+    \frametitle{Exemple \og Question\fg}
+
+Pour utiliser une frame question (c.f icône à droite), taper la commande :
+\noindent\texttt{%
+\textbackslash begin\{frame\}[question]\\
+\ldots\emph{Votre slide}\ldots\\
+\textbackslash end\{frame\}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[reponse]
+    \frametitle{Exemple \og Réponse\fg}
+
+Pour utiliser une frame question (c.f icône à droite), taper la commande :
+\noindent\texttt{%
+\textbackslash begin\{frame\}[reponse]\\
+\ldots\emph{Votre slide}\ldots\\
+\textbackslash end\{frame\}
+}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Les blocs}
+\sectionframe{3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Les \og blocs\fg}
+\begin{block}{Bloc générique}
+L'environnement \texttt{block} de beamer permet de faire des blocs
+autour d'un texte
+\end{block}
+\noindent\texttt{%
+\textbackslash begin\{block\}\{Bloc générique\}\\
+\ldots\emph{Votre texte}\ldots\\
+\textbackslash end\{block\}
+}%
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Bloc \og Définition\fg}
+\begin{blockDef}
+Changer le texte ici
+\end{blockDef}
+\noindent\texttt{%
+\textbackslash begin\{blockDef\}\\
+\ldots\emph{Votre texte}\ldots\\
+\textbackslash end\{blockDef\}
+}%
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Bloc \og Propriétés\fg}
+    \begin{blockProp}
+        Changer le texte ici
+    \end{blockProp}
+\noindent\texttt{%
+\textbackslash begin\{blockProp\}\\
+\ldots\emph{Votre texte}\ldots\\
+\textbackslash end\{blockProp\}
+}%
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Bloc \og Exemple\fg}
+\begin{blockEx}
+Changer le texte ici
+\end{blockEx}
+\noindent\texttt{%
+\textbackslash begin\{blockEx\}\\
+\ldots\emph{Votre texte}\ldots\\
+\textbackslash end\{blockEx\}
+}%
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Bloc \og Remarque\fg}
+\begin{blockRem}
+Changer le texte ici
+\end{blockRem}
+\noindent\texttt{%
+\textbackslash begin\{blockRem\}\\
+\ldots\emph{Votre texte}\ldots\\
+\textbackslash end\{blockRem\}}%
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

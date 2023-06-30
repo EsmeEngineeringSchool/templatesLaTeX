@@ -5,6 +5,7 @@
 *.out
 *.toc
 *.snm
+*.vrb
 
 *-eps-converted-to.pdf
 *.svg

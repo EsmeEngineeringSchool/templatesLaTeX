@@ -1,0 +1,37 @@
+\documentclass[11pt,a4paper,twoside]{article} %twocolumn
+\usepackage[francais]{babel}
+\usepackage[babel=true,kerning=true]{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{hmargin=2.5cm,vmargin=2.5cm}
+\usepackage{graphicx}
+\graphicspath{{./preambules/}}
+\newcommand\promo{\texttt{<PROMO>}}
+\newcommand\module{\texttt{<MODULE>}}
+\newcommand\annee{2022-2023}     
+\newcommand\epreuve{\texttt{<EPREUVE>}}
+\newcommand\titreEval{\texttt{<TITRE ASSOCIE A L'EVALUATION>}}
+\newcommand\dureeEval{\texttt{<X>}}
+\input{preambules/preambule.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\input{preambules/pagetitre_reponses.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercice{\texttt{<TITRE DE L'EXERCICE>}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question{\texttt{<ENONCE DE LA QUESTION>}}
+\feuilleDR{6cm}
+\question{\texttt{<ENONCE DE LA QUESTION>}}
+\feuilleDR{6cm}
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercice{\texttt{<TITRE DE L'EXERCICE>}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question{\texttt{<ENONCE DE LA QUESTION>}}
+\feuilleDR{6cm}
+\question{\texttt{<ENONCE DE LA QUESTION>}}
+\feuilleDR{6cm}
+\end{document}

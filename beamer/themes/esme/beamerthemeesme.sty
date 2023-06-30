@@ -1,0 +1,58 @@
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}
+\RequirePackage{ifthen}
+\RequirePackage{pifont}
+
+% Settings
+\useinnertheme{esme}
+\useoutertheme{esme}
+\usecolortheme{esme}
+\usefonttheme{esme}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]  
+
+\addtobeamertemplate{block begin}{%
+    \let\oldinsertblocktitle\insertblocktitle%
+    \def\insertblocktitle{\oldinsertblocktitle}%
+}{}
+\addtobeamertemplate{block example begin}{%
+    \let\oldinsertblocktitle\insertblocktitle%
+    \def\insertblocktitle{
+    \includegraphics[height=1ex]{definition.eps}~
+    \oldinsertblocktitle}%
+}{}
+\addtobeamertemplate{block alerted begin}{%
+    \let\oldinsertblocktitle\insertblocktitle%
+    \def\insertblocktitle{
+    \includegraphics[height=\fontcharht\font`\B]{propriete.eps}~
+    \oldinsertblocktitle}%
+}{}
+
+\theoremstyle{definition}
+\newtheorem{blockDef}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{definition.eps}~Définition}
+\AtBeginEnvironment{blockDef}{%
+  \setbeamercolor{block title}{fg=white,bg=bleuesme}
+  \setbeamercolor{block body}{bg=bleuclairesme,fg=bleuesme}
+}
+\newtheorem{blockProp}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{propriete.eps}~Propriétés}
+\AtBeginEnvironment{blockProp}{%
+  \setbeamercolor{block title}{fg=white,bg=rougeesme}
+  \setbeamercolor{block body}{bg=rougeclairesme,fg=rougeesme}
+}
+\newtheorem{blockEx}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{exemple_blanc.eps}~Exemple}
+\AtBeginEnvironment{blockEx}{%
+  \setbeamercolor{block title}{fg=white,bg=vertesme}
+  \setbeamercolor{block body}{bg=vertesme!25!white,fg=vertesme}
+}
+\newtheorem{blockRem}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{remarque_blanc.eps}~Remarque}
+\AtBeginEnvironment{blockRem}{%
+  \setbeamercolor{block title}{fg=white,bg=grisesme}
+  \setbeamercolor{block body}{bg=grisesme!25!white,fg=grisesme}
+}
+
+%\graphicspath{{img/}}
+
+\mode<all>
