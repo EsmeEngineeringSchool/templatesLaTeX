@@ -14,7 +14,7 @@ ou
    ou le dossier `esme` dans `beamer/themes` si ces derniers existent déjà  
 ### Aperçu
 
-![alt text](https://github.com/FilipeVasconcelos/esme/blob/master/img/esme-example-0.png?raw=true)
+![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esme-example-0.png?raw=true)
 
 ## examen :
 
