@@ -40,3 +40,9 @@ dans le fichier `.tex` :
 5. `titreEval` : Nom de l'évaluation (ex. Dynamique et Déformation, Série Entière)
 6. `dureeEval` : Nombre d'heures de l'évaluation (ex. 2)
 7. `reponse` : variable spécifiant si le document est un document réponse (ex. `\reponse{true}` ou `\reponse{false}` 
+
+
+Si `\reponse{true}` vous pouvez utiliser la commande `\feuilleDR{10cm}`
+qui insère une grille réponse de 10cm de hauteur.
+
+
