@@ -7,27 +7,30 @@
 \usepackage{geometry}
 \geometry{hmargin=2.5cm,vmargin=2.5cm}
 \usepackage{graphicx}
-\graphicspath{{./preambules/}}
-%Configurer la page de titre 
-%Vous pouvez enlevez les texttt
-\newcommand\promo{\texttt{<PROMO>}}                     %ex. IngéSUP, IngéSPE, Ingé1
+\graphicspath{{./img/}}
+\usepackage{examen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Modifier les variables suivantes 
+\newcommand\promo{\texttt{<PROMO>}}                %ex. IngéSUP, IngéSPE, Ingé1
 \newcommand\module{\texttt{<MODULE>}}                   %ex. Systèmes Techniques, Mathématiques Fondamentales
-\newcommand\annee{2022-2023}                            %ex. 2022-2023
+\newcommand\annee{\texttt{2022-2023}}                   %ex. 2022-2023
 \newcommand\epreuve{\texttt{<EPREUVE>}}                 %ex. MidTerm, FinalExam, Rattrapage
 \newcommand\titreEval{\texttt{<TITRE DE L'EVALUATION>}} %ex. Dynamique et Déformation
 \newcommand\dureeEval{\texttt{<X>}}                     %en nombre d'heures
-\input{preambules/preambule.tex}
+\reponse{false}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\input{preambules/pagetitre.tex}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{fancy}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \exercice{\texttt{<TITRE DE L'EXERCICE>}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \question{\texttt{<ENONCE DE LA QUESTION>}}
 \question{\texttt{<ENONCE DE LA QUESTION>}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\exercice{}
+\exercice{test}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \question{}
 \question{}
