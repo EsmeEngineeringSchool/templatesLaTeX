@@ -12,6 +12,9 @@ ou
 
 2. copier le dossier `beamer` dans votre TEXMFHOME (ex.  ~/texmf/tex/latex/ )
    ou le dossier `esme` dans `beamer/themes` si ces derniers existent déjà  
+### Aperçu
+
+![alt text](https://github.com/FilipeVasconcelos/esme/blob/master/img/esme-example-0.png?raw=true)
 
 ## examen :
 
