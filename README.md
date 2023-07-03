@@ -14,7 +14,10 @@ ou
    ou le dossier `esme` dans `beamer/themes` si ces derniers existent déjà  
 ### Aperçu
 
+#### Page de titre
 ![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esme-example-0.png?raw=true)
+#### Frame title 
+![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esme-example-1.png?raw=true)
 
 ## examen :
 
@@ -56,3 +59,10 @@ qui insère une grille réponse de 10cm de hauteur.
 `exemple_sujet.tex`  `exemple_sujet_reponses.tex`
 
 avec ou sans grille réponses.
+
+### Aperçu
+
+#### Page de titre
+![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-0.png?raw=true)
+#### Exemple de grille de réponse 
+![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-1.png?raw=true)
