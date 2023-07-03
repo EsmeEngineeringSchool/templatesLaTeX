@@ -105,8 +105,12 @@
 }
 \iflanguage{francais}{%
 \newcommand\exercicetitle{Exercice}
+\newcommand\dureetitle{Durée}
+\newcommand\heuretitle{heures}
 }{%
 \newcommand\exercicetitle{Exercise}
+\newcommand\dureetitle{Time}
+\newcommand\heuretitle{hours}
 }%
 \newcommandx{\exercice}[2][2=\Large,usedefault]{%
     \setcounter{numques}{0}
@@ -127,7 +131,7 @@
   \let \footnote \thanks
     {\LARGE \annee~-~\promo~-~\module\\
     \emph{\epreuve~-~\titreEval}\\
-    Durée : \dureeEval~heures\par}%
+    \dureetitle : \dureeEval~\heuretitle\par}%
     \vskip 1.5em%
     {\large
       \lineskip .5em%
@@ -146,8 +150,3 @@
   \newpage
 }
 \makeatother
-%\title{\textsc{\annee~-~\promo~-~\module}\\
-%\emph{\epreuve~-~\titreEval}\\ 
-%%Durée : \dureeEval~heures}
-%\author{ESME Bordeaux-Lille-Lyon-Paris}        
-%\date{}
