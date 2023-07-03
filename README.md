@@ -45,4 +45,11 @@ dans le fichier `.tex` :
 Si `\reponse{true}` vous pouvez utiliser la commande `\feuilleDR{10cm}`
 qui insère une grille réponse de 10cm de hauteur.
 
+### Exemples :
+ Le dépôt propose des exemples :
+1. Examen classes anglophones :
+ `example_test.tex`  `example_test_responses.tex`
+2. Examen classes francophones :
+`exemple_sujet.tex`  `exemple_sujet_reponses.tex`
 
+avec ou sans grille réponses.
