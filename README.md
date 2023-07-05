@@ -4,6 +4,8 @@ Templates LaTeX de l'ESME.
 
 ## beamer :
 
+Il existe deux thèmes : `esmeDL`(nouveau) et `esme` (ancien)
+
 Deux possibilités :
 1. copier les fichiers `*.sty` et le dossier `img/` 
    en local avec votre fichier `.tex`
@@ -12,12 +14,23 @@ ou
 
 2. copier le dossier `beamer` dans votre TEXMFHOME (ex.  ~/texmf/tex/latex/ )
    ou le dossier `esme` dans `beamer/themes` si ces derniers existent déjà  
-### Aperçu
+### Aperçu (thème esmeDL)
+
+#### Page de titre
+![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esmeDL-example-0.png?raw=true)
+#### Frame title 
+![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esmeDL-example-1.png?raw=true)
+#### Section page 
+![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esmeDL-example-4.png?raw=true)
+
+### Aperçu (thème esme)
 
 #### Page de titre
 ![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esme-example-0.png?raw=true)
 #### Frame title 
 ![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esme-example-1.png?raw=true)
+#### Section page 
+![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esme-example-4.png?raw=true)
 
 ## examen :
 
