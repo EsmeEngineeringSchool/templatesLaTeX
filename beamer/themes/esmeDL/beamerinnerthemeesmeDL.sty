@@ -1,0 +1,201 @@
+\mode<presentation>
+
+\newif\ifinsectionframeOne
+\newif\ifinsectionframeTwo
+\newif\ifinsectionframe
+\newif\ifinsectiontypeOne %permet de regrouper des frames par types
+\insectionframefalse
+\insectiontypeOnefalse
+\insectionframeOnefalse
+\insectionframeTwofalse
+
+\newcommand{\sectionframe}[1]
+{%
+  \ifthenelse{\equal{#1}{1}}{\insectionframeOnetrue\insectionframetrue\insectiontypeOnetrue}{}
+  \ifthenelse{\equal{#1}{2}}{\insectionframeTwotrue\insectionframetrue}{}
+  \frame{\sectionpage}
+  \insectionframeOnefalse
+  \insectionframeTwofalse
+  \insectiontypeOnefalse
+  \insectionframefalse
+}%
+
+\usetikzlibrary{calc}
+\newcommand\Xtmp{0.4}
+\newcommand\Ytmp{0.4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template background 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{background}{
+   \begin{tikzpicture}
+   \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+   \ifnum\thepage>1\relax% Si n'est pas la page de titre
+    \ifinsectionframeOne% % \sectionframe{1}
+     \def\n{15} % number of rows
+     \draw[grayesme,line width=2pt,opacity=0.1] (0,\paperheight) --+ (\paperwidth,-\paperheight);
+     \foreach \i in {1,...,\n} 
+     {
+         \draw[grayesme,line width=2pt,opacity=0.1] (\i,\paperheight) --+ (\paperwidth,-\paperheight);
+         \draw[grayesme,line width=2pt,opacity=0.1] (-\i,\paperheight) --+ (\paperwidth,-\paperheight);
+     }
+   % matrice de points
+   \coordinate (A) at (-0.1,0.18\paperheight);
+   \renewcommand\Xtmp{0.4}
+   \def\n{8} % number of rows
+   \def\m{4} % number of columns
+   \foreach \i in {1,...,\n}
+   \foreach \j in {1,...,\m}
+   {
+     \coordinate (c) at ($(A)+(0.28*\i,-0.34*\j)$);
+     \fill[bleuesme] (c) circle(0.074cm);
+   }
+        
+    \fi
+    \ifinsectionframeTwo% \sectionframe{2}
+      \def\n{15} % number of rows
+       \draw[grayesme,line width=2pt,opacity=0.1] (0,\paperheight) --+ (\paperwidth,-\paperheight);
+       \foreach \i in {1,...,\n} 
+       {
+           \draw[grayesme,line width=2pt,opacity=0.1] (\i,\paperheight) --+ (\paperwidth,-\paperheight);
+           \draw[grayesme,line width=2pt,opacity=0.1] (-\i,\paperheight) --+ (\paperwidth,-\paperheight);
+       }
+       \draw[bleuesme,fill=bleuesme] (0.92\paperwidth,0.88\paperheight) circle[radius=2.4cm];
+       \draw[bleufonceesme,fill=bleufonceesme] (0.92\paperwidth,0.88\paperheight) circle[radius=0.9cm];
+       \draw[vertesme,line width=2pt] (0.15\paperwidth,0.2\paperheight) rectangle (0.85\paperwidth,0.8\paperheight);
+       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+       %petit triangle vert
+       \coordinate (A) at (0.07\paperwidth,0.92\paperheight);
+       \renewcommand\Xtmp{0.23}
+       \renewcommand\Ytmp{0.23}
+       \draw[vertesme,fill=vertesme] (A) --++ (\Xtmp,-1.8*\Ytmp) --++ (-2*\Xtmp,0) -- cycle;
+       %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \fi
+    \ifinsectionframe
+    \else%
+        \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    \fi%
+   \else%title page
+   \node[anchor=south west] (A) at (-0.14,-0.14) 
+   {\includegraphics[width=0.5\paperwidth,height=\paperheight]{background}};
+   \draw[white,fill=white] (0.4\paperwidth,0) -- 
+                           (0.5\paperwidth,\paperheight) --
+                           (0.6\paperwidth,\paperheight) --
+                           (0.5\paperwidth,0) -- cycle;
+   \draw[grayesme,fill=grayesme,opacity=0.5] (0.4\paperwidth,0) -- 
+                                             (0.5\paperwidth,\paperheight) --
+                                             (0.54\paperwidth,\paperheight) --
+                                             (0.44\paperwidth,0) -- cycle;
+    \draw[vertesme,fill=vertesme]  (0.97\paperwidth,0.97\paperheight) circle[radius=2.5cm];                             
+    \draw[white,fill=white,]       (0.97\paperwidth,0.97\paperheight) circle[radius=1.cm];                             
+
+    \renewcommand\Xtmp{0.4}
+    \coordinate (A) at (0.805\paperwidth,0.95\paperheight);
+    \draw[bleuesme,fill=bleuesme] (A)         --++ (\Xtmp,0)   --++ (0,-\Xtmp) --++ (\Xtmp,0)  --++ 
+                                  (0 ,-\Xtmp) --++ (-\Xtmp,0)  --++ (0,-\Xtmp) --++ (-\Xtmp,0) --++ 
+                                  (0,\Xtmp)   --++ (-\Xtmp,0)  --++ (0,\Xtmp)  --++ (\Xtmp,0)  -- cycle;
+
+   \coordinate (A) at (0.01\paperwidth,0.99\paperheight);
+   \renewcommand\Xtmp{0.4}
+   \def\n{4} % number of rows
+   \def\m{5} % number of columns
+   \foreach \i in {1,...,\n} 
+   \foreach \j in {1,...,\m}
+   {
+     \coordinate (c) at ($(A)+(0.28*\i,-0.34*\j)$);
+     \fill[white] (c) circle(0.074cm);
+   }                               
+   \coordinate (A) at (-0.14,-0.14);
+   \draw[line width=1pt,white,step=0.5cm] (A) grid (2.5,2);
+   \coordinate (A) at (0.75,2.2);
+   \draw[vertesme,line width=2pt] (A) circle[radius=0.5cm]; 
+   \node[anchor=south west] at (0.84\paperwidth,0.1) 
+   {\includegraphics[width=0.14\paperwidth]{ESME_LOGO_VILLES_QUADRI_2021}};
+  \fi
+  \end{tikzpicture}
+}
+% Title page
+\defbeamertemplate*{title page}{esme}[1][]
+{ 
+   \vskip3cm%
+   \hfill
+   \begin{beamercolorbox}[wd=0.4\paperwidth,center,#1]{title page header}
+    \usebeamerfont{title page}\inserttitle\par%
+    \end{beamercolorbox}%
+    \vskip0.6cm%
+    \hfill
+    \begin{beamercolorbox}[wd=0.4\paperwidth,center]{title page header}
+        \usebeamerfont{subtitle page}\insertsubtitle\par%
+    \end{beamercolorbox}%
+    \vfill
+}
+% Items
+\setbeamertemplate{itemize items}{\ding{111}}
+\setbeamertemplate{section in toc}{\leavevmode\leftskip=2.75ex%
+  \llap{%
+    \normalsize%
+    \begin{pgfpicture}{-1ex}{-0.7ex}{1ex}{1ex}
+      \pgftext{\beamer@usesphere{section number projected}{tocsphere}}
+      \pgftext{%
+        \usebeamerfont*{section number projected}%
+        \usebeamercolor{section number projected}%
+        %\color{fg!90!bg}%
+        \inserttocsectionnumber}
+    \end{pgfpicture}%
+    \kern1.25ex}%
+  \inserttocsection\par
+}
+
+\pgfdeclareradialshading[bg,parent.bg]{tocsmallsphere}{\pgfpoint{-0.4ex}{0.48ex}}%
+{%
+  color(0cm)=(bg!35!white);
+  color(0.352ex)=(bg!75!white);
+  color(0.704ex)=(bg!70!black!90!parent.bg);
+  color(0.96ex)=(bg!50!black!90!parent.bg);
+  color(1.04ex)=(parent.bg)
+}
+
+\defbeamertemplate*{section page}{esme}[1][]
+{
+   \ifinsectiontypeOne%
+   \vfill
+   \hfill
+   \begin{beamercolorbox}[wd=\paperwidth,center,
+                         rounded=true,shadow=true]{section title}
+        \begin{tikzpicture}
+        \useasboundingbox (0,0) rectangle(\the\paperwidth,3);
+        \draw[grayesme,line width=1pt,fill=bleuesme] (0.1\paperwidth,-1) rectangle(0.9\paperwidth,1);
+        \node[anchor=center] at (0.5\paperwidth,0) 
+        {\usebeamerfont{section title}\insertsection\par};
+        %\usebeamerfont{section title}\insertsectionnumber~\insertsection\par;
+        \node[draw,circle,minimum size=2.3cm,vertesme,anchor=center,line width=2pt] at (0.5\paperwidth,2.5) {\Huge\insertsectionnumber};
+        \draw[bleuesme,fill=bleuesme] (0.11\paperwidth,3.5) circle[radius=2.2cm];
+        \draw[white,fill=white] (0.11\paperwidth,3.5) circle[radius=0.9cm];
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %petit triangle vert
+        \coordinate (A) at (0.95\paperwidth,2);
+        \renewcommand\Xtmp{0.25}
+        \renewcommand\Ytmp{0.25}
+        \draw[vertesme,fill=vertesme] (A) --++ (\Xtmp,-1.7*\Ytmp) --++ (-2*\Xtmp,0) -- cycle;
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \draw[bleuesme,line width=1.8pt] (0.97\paperwidth,-3) circle[radius=1.2cm];
+        \end{tikzpicture}
+   %\usebeamerfont{section title}\insertsectionnumber~\insertsection\par
+   \end{beamercolorbox}
+   \vfill
+   \else
+   \vfill
+   \hfill
+   \begin{beamercolorbox}[wd=\paperwidth,center,
+                         rounded=true,shadow=true]{section title}
+        \begin{tikzpicture}
+            \useasboundingbox (0,0) rectangle (\the\paperwidth,3);
+            \node[anchor=center,bleuesme] at (0.5\paperwidth,1) 
+            {\usebeamerfont{section title}\insertsectionnumber~\insertsection\par};
+        \end{tikzpicture}
+    \end{beamercolorbox}\hspace{2cm}
+   \vfill
+   \fi
+}
+
+\mode
+<all>

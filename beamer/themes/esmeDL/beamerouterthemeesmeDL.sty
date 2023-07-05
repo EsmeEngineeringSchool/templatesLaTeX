@@ -1,0 +1,54 @@
+\mode<presentation>
+% Frame title
+\defbeamertemplate*{frametitle}{esme}[1][]
+{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm,center]{frametitle}
+  \begin{tikzpicture}
+  \useasboundingbox[fill=white] (0,0) rectangle(\the\paperwidth,1.4);
+  \coordinate (A) at (0.9\paperwidth,0.9);
+  \draw[vertesme,line width=1.5pt] (A) circle[radius=0.6cm]; 
+  \fill[grayesme,opacity=0.5] (0,0) rectangle (\paperwidth,1.4);
+  \node at (0.05\paperwidth,0.6) {\includegraphics[height=1cm]{ESME_LOGO_SEUL_QUADRI_2021}};
+  \draw[fill=bleuesme] (0.1\paperwidth,0.15) rectangle (0.9\paperwidth,1.1);
+  \ifx\insertframesubtitle\@empty%
+      {\node[anchor=center, white,font=\Large] at (0.5\paperwidth,0.6){\usebeamerfont{frametitle}\insertframetitle};}
+  \else%
+      {\node[anchor= center, white,font=\Large] at (0.5\paperwidth,0.81){\usebeamerfont{frametitle}\insertframetitle};%
+       \node[anchor= center, white,font=\small] at (0.5\paperwidth,0.41){\usebeamerfont{framesubtitle}\insertframesubtitle};}%
+  \fi
+  \end{tikzpicture}
+  \end{beamercolorbox}
+}
+\defbeamertemplate*{footline}{esme}[1][]
+{
+  \ifnum \theframenumber=1
+  \else
+  \ifinsectionframe%
+  \else
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm,center]{footline}
+  \begin{tikzpicture}
+  \useasboundingbox[fill=white] (0,0) rectangle(\the\paperwidth,0.6);
+    % croix plus
+    \renewcommand\Xtmp{0.22}
+    \coordinate (A) at (15.7,1.5);
+    \draw[bleuesme,fill=bleuesme] (A)         --++ (\Xtmp,0)   --++ (0,-\Xtmp) --++ (\Xtmp,0)  --++ 
+                                  (0 ,-\Xtmp) --++ (-\Xtmp,0)  --++ (0,-\Xtmp) --++ (-\Xtmp,0) --++ 
+                                  (0,\Xtmp)   --++ (-\Xtmp,0)  --++ (0,\Xtmp)  --++ (\Xtmp,0)  -- cycle;
+    \node at (15.65,0.32) {\usebeamerfont{pagenumber in head/foot}\insertframenumber{}};
+   % matrice de points
+   \coordinate (A) at (-0.3,0.135\paperheight);
+   \renewcommand\Xtmp{0.4}
+   \def\n{4} % number of rows
+   \def\m{4} % number of columns
+   \foreach \i in {1,...,\n}
+   \foreach \j in {1,...,\m}
+   {
+     \coordinate (c) at ($(A)+(0.34*\i,-0.28*\j)$);
+     \fill[bleuesme] (c) circle(0.074cm);
+   }
+    \end{tikzpicture}
+  \end{beamercolorbox}
+  \fi
+  \fi
+}
+\mode<all>

@@ -1,0 +1,79 @@
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}
+\usetikzlibrary{spy}
+\RequirePackage{ifthen}
+\RequirePackage{pifont}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins}
+
+% Settings
+\usefonttheme{esmeDL}
+\useinnertheme{esmeDL}
+\useoutertheme{esmeDL}
+\usecolortheme{esmeDL}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]  
+
+\makeatletter
+\setbeamertemplate{theorem begin}
+{%
+\begin{\inserttheoremblockenv}
+{%
+\inserttheoremheadfont
+\inserttheoremname
+\ifx\inserttheoremaddition\@empty\else\inserttheoremaddition\fi%
+\inserttheorempunctuation
+}%
+}
+\setbeamertemplate{theorem end}{\end{\inserttheoremblockenv}}
+\makeatother
+
+
+\theoremstyle{definition}
+\newtheorem{blockQues}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=0.75cm]{icone_question_vert}~Consigne :~}
+\AtBeginEnvironment{blockQues}{%
+\setbeamercolor{block title}{fg=vertesme,bg=white}
+\setbeamercolor{block body}{bg=verttransparentesme!11!white,fg=bleuesme}
+}
+\AfterEndEnvironment{blockQues}{%
+\begin{tikzpicture}[overlay]
+    \draw[dashed,rounded corners,vertesme,line width=1.5pt] (-0.13,1.25) rectangle (14.13,2.3);
+\end{tikzpicture}\par
+}
+\newtheorem{blockRep}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=0.75cm]{icone_reponse_vert}~Réponses :~}
+\AtBeginEnvironment{blockRep}{%
+\setbeamercolor{block title}{fg=vertesme,bg=white}
+\setbeamercolor{block body}{bg=verttransparentesme!11!white,fg=bleuesme}
+}
+\AfterEndEnvironment{blockRep}{%
+\begin{tikzpicture}[overlay]
+    \draw[dashed,rounded corners,vertesme,line width=1.5pt] (-0.13,1.25) rectangle (14.13,2.3);
+\end{tikzpicture}\par
+}
+\newtheorem{blockDef}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{definition}~Définition}
+\AtBeginEnvironment{blockDef}{%
+  \setbeamercolor{block title}{fg=white,bg=bleuesme}
+  \setbeamercolor{block body}{bg=bleuclairesme,fg=bleuesme}
+}
+\newtheorem{blockProp}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{propriete}~Propriétés}
+\AtBeginEnvironment{blockProp}{%
+  \setbeamercolor{block title}{fg=white,bg=rougeesme}
+  \setbeamercolor{block body}{bg=rougeclairesme,fg=rougeesme}
+}
+\newtheorem{blockEx}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{exemple_blanc}~Exemple}
+\AtBeginEnvironment{blockEx}{%
+  \setbeamercolor{block title}{fg=white,bg=vertesme}
+  \setbeamercolor{block body}{bg=vertesme!25!white,fg=vertesme}
+}
+\newtheorem{blockRem}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{remarque_blanc}~Remarque}
+\AtBeginEnvironment{blockRem}{%
+  \setbeamercolor{block title}{fg=white,bg=grisesme}
+  \setbeamercolor{block body}{bg=grisesme!25!white,fg=grisesme}
+}
+
+\graphicspath{{./img/}}
+
+\mode<all>
