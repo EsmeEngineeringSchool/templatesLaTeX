@@ -4,7 +4,12 @@ Templates LaTeX de l'ESME.
 
 ## beamer :
 
-Il existe deux thèmes : `esmeDL`(nouveau) et `esme` (ancien)
+Il existe deux thèmes : `esmeDL`(nouveau) et `esme` (ancien). 
+Ces deux thèmes nécessitent l'option `aspectratio=169` de la classe beamer :
+
+```
+\documentclass[aspectratio=169,11pt]{beamer}
+```
 
 Deux possibilités :
 1. copier les fichiers `*.sty` et le dossier `img/` 
