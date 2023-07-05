@@ -135,20 +135,7 @@
 }
 % Items
 \setbeamertemplate{itemize items}{\ding{111}}
-\setbeamertemplate{section in toc}{\leavevmode\leftskip=2.75ex%
-  \llap{%
-    \normalsize%
-    \begin{pgfpicture}{-1ex}{-0.7ex}{1ex}{1ex}
-      \pgftext{\beamer@usesphere{section number projected}{tocsphere}}
-      \pgftext{%
-        \usebeamerfont*{section number projected}%
-        \usebeamercolor{section number projected}%
-        %\color{fg!90!bg}%
-        \inserttocsectionnumber}
-    \end{pgfpicture}%
-    \kern1.25ex}%
-  \inserttocsection\par
-}
+\setbeamertemplate{section in toc}[circle]
 
 \pgfdeclareradialshading[bg,parent.bg]{tocsmallsphere}{\pgfpoint{-0.4ex}{0.48ex}}%
 {%
