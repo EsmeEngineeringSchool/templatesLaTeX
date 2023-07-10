@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169]{beamer}
+\documentclass[t,aspectratio=169]{beamer}
 \usepackage[french]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -146,6 +146,24 @@ autour d'un texte
 \textbackslash begin\{block\}\{Bloc générique\}\\
 \ldots\emph{Votre texte}\ldots\\
 \textbackslash end\{block\}
+}%
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]
+\frametitle{Bloc \og Wooclap\fg}
+\begin{blockWooclap}[\textit{Exemple de code}]
+    \lancerWooclap{}
+\end{blockWooclap}
+\noindent\texttt{\textbackslash begin\{blockWooclap\}\\
+\ldots\emph{\textbackslash lancerWooclap\{URL de la question\}}\ldots\\
+\textbackslash end\{blockWooclap\}
+}%
+
+Noter que la frame doit utiliser l'option \texttt{[t]} :\\
+
+\noindent\texttt{\textbackslash begin\{frame\}[t]\\ 
+    \ldots\\
 }%
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
