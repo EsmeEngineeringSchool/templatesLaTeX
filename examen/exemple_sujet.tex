@@ -4,20 +4,20 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage{geometry}
-\geometry{hmargin=2.5cm,vmargin=2.5cm}
+\usepackage[top=2cm,bottom=2.2cm,right=2.2cm,left=2.2cm]{geometry}
 \usepackage{graphicx}
 \graphicspath{{./img/}}
 \usepackage{examen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Modifier les variables suivantes 
-\newcommand\promo{\texttt{<PROMO>}}                %ex. IngéSUP, IngéSPE, Ingé1
-\newcommand\module{\texttt{<MODULE>}}                   %ex. Systèmes Techniques, Mathématiques Fondamentales
-\newcommand\annee{\texttt{2022-2023}}                   %ex. 2022-2023
-\newcommand\epreuve{\texttt{<EPREUVE>}}                 %ex. MidTerm, FinalExam, Rattrapage
-\newcommand\titreEval{\texttt{<TITRE DE L'EVALUATION>}} %ex. Dynamique et Déformation
-\newcommand\dureeEval{\texttt{<X>}}                     %en nombre d'heures
-\reponse{false}
+%Modifier les variables suivantes (Vous pouvez évidemment enlever les texttt} 
+\promo{\texttt{PROMO}}     % ex. IngéSUP, IngéSPE, Ingé1
+\module{\texttt{MODULE}}   % ex. Systèmes Techniques, Mathématiques Fondamentales
+\annee{\texttt{DATE}}      % ex. 2022-2023
+\epreuve{\texttt{EPREUVE}}  % ex. MidTerm, FinalExam, Rattrapage
+\titreEval{\texttt{TITRE}} % ex. Dynamique et Déformation
+\dureeEval{2}              % ex. 2 (en nombre d'heures)
+\esme{true}                % examen ESME true or false %sinon modifier la commande logo
+\reponse{false}            % Document réponse true or false
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
