@@ -1,3 +1,7 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeesme}[2023/06/30 v1.0 Main Beamer Theme of ESME]
+%Main author: fmv (Filipe Manuel Vasconcelos)
+%
 \mode<presentation>
 
 % Requirement
@@ -15,26 +19,47 @@
 \setbeamertemplate{blocks}[rounded][shadow=true]  
 
 \theoremstyle{definition}
+\IfLanguageName{french}{
 \newtheorem{blockDef}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{definition}~Définition}
+}%
+{%      
+\newtheorem{blockDef}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{definition}~Definition}
+}
 \AtBeginEnvironment{blockDef}{%
   \setbeamercolor{block title}{fg=white,bg=bleuesme}
   \setbeamercolor{block body}{bg=bleuclairesme,fg=bleuesme}
 }
-\newtheorem{blockProp}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{propriete}~Propriétés}
+\IfLanguageName{french}{%
+\newtheorem{blockProp}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{propriete}~Propriéte}
+}%
+{
+\newtheorem{blockProp}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{propriete}~Property}
+}%
 \AtBeginEnvironment{blockProp}{%
   \setbeamercolor{block title}{fg=white,bg=rougeesme}
   \setbeamercolor{block body}{bg=rougeclairesme,fg=rougeesme}
 }
+\IfLanguageName{french}{%
 \newtheorem{blockEx}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{exemple_blanc}~Exemple}
+}%
+{%
+\newtheorem{blockEx}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{exemple_blanc}~Example}
+}
 \AtBeginEnvironment{blockEx}{%
   \setbeamercolor{block title}{fg=white,bg=vertesme}
   \setbeamercolor{block body}{bg=vertesme!25!white,fg=vertesme}
 }
+\IfLanguageName{french}{%
 \newtheorem{blockRem}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{remarque_blanc}~Remarque}
+}%
+{%
+\newtheorem{blockRem}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=\fontcharht\font`\B]{remarque_blanc}~Note}
+}
 \AtBeginEnvironment{blockRem}{%
   \setbeamercolor{block title}{fg=white,bg=grisesme}
   \setbeamercolor{block body}{bg=grisesme!25!white,fg=grisesme}
 }
 
+\graphicspath{{./img/}}
 
 \mode<all>
