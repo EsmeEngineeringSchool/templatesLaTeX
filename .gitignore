@@ -10,6 +10,7 @@
 *.blg
 *.ps
 *.md5
+sync
 
 *-eps-converted-to.pdf
 *.svg
