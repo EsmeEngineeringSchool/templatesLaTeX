@@ -1,4 +1,4 @@
-# esme
+# templatesLaTeX
 
 Templates LaTeX de l'ESME. 
 
