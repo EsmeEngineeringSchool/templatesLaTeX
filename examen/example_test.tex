@@ -10,15 +10,18 @@
 \usepackage{examen}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Modifier les variables suivantes (Vous pouvez évidemment enlever les texttt} 
+%Modifier les variables suivantes 
 \promo{\texttt{PROMO}}     % ex. IngéSUP, IngéSPE, Ingé1
 \module{\texttt{MODULE}}   % ex. Systèmes Techniques, Mathématiques Fondamentales
 \annee{\texttt{DATE}}      % ex. 2022-2023
-\epreuve{\texttt{EPREUVE}}  % ex. MidTerm, FinalExam, Rattrapage
+\epreuve{\texttt{EPREUVE}} % ex. MidTerm, FinalExam, Rattrapage
 \titreEval{\texttt{TITRE}} % ex. Dynamique et Déformation
-\dureeEval{2}              % ex. 2 (en nombre d'heures)
-\esme{true}                % examen ESME true or false %sinon modifier la commande logo
-\reponse{false}            % Document réponse true or false
+\dureeEval{\texttt{2}}     % ex. 2 (en nombre d'heures)
+\esme{true}                % examen ESME true or false
+\reponse{true}             % document réponse true or false
+\documentautorise{true}    % documents autorisés 
+\moyencalcul{true}         % moyen de calcul autorisés
+\dispositions{true}        % dispositions en cas d'erreur rencontrée 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -28,13 +31,18 @@
 \exercice{\texttt{<TITRE DE L'EXERCICE>}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \question{\texttt{<ENONCE DE LA QUESTION>}}
+\feuilleDR{6cm}
 \question{\texttt{<ENONCE DE LA QUESTION>}}
+\feuilleDR{6cm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \exercice{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \question{}
+\feuilleDR{6cm}
 \question{}
+\feuilleDR{6cm}
 \question{}
+\feuilleDR[\clearpage]{6cm}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \exercice{\texttt{<TITRE DE L'EXERCICE>}}

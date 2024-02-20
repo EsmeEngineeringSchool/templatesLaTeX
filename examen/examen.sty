@@ -18,6 +18,9 @@
 \newcommand{\@logo}{None}
 \newcommand{\@esme}{false}
 \newcommand{\@reponse}{None}
+\newcommand{\@documentautorise}{None}
+\newcommand{\@moyencalcul}{None}
+\newcommand{\@dispositions}{None}
 %main def
 \newcommand{\promo}[1]{\renewcommand{\@promo}{#1}}
 \newcommand{\module}[1]{\renewcommand{\@module}{#1}}
@@ -28,6 +31,9 @@
 \newcommand{\logo}[1]{\renewcommand{\@logo}{#1}}
 \newcommand{\esme}[1]{\renewcommand{\@esme}{#1}\renewcommand{\@logo}{ESME_LOGO_SEUL_NOIR_2021}}
 \newcommand{\reponse}[1]{\renewcommand{\@reponse}{#1}}
+\newcommand{\documentautorise}[1]{\renewcommand{\@documentautorise}{#1}}
+\newcommand{\moyencalcul}[1]{\renewcommand{\@moyencalcul}{#1}}
+\newcommand{\dispositions}[1]{\renewcommand{\@dispositions}{#1}}
 \makeatother
 
 
@@ -45,75 +51,101 @@
 \newcommand{\Apply@consignes}{%
   \begingroup
   \long\def\@true{true}\long\def\@false{false}%
+  \noindent\fbox{\parbox{\linewidth\fboxrule\fboxsep}{
+
+  % ---------------------------------------------------------------------
+  % document réponse 
+  % ---------------------------------------------------------------------
   \ifx\@reponse\@true 
-       
     \iflanguage{francais}{%
-        \noindent\fbox{\parbox{\linewidth\fboxrule\fboxsep}{
         \textbf{Les réponses seront exclusivement reportées sur le
-        document réponse. Aucun autre document ne sera corrigé.\\}
-
-        \textbf{Documents non
-        autorisés.}~\textbf{Moyens de calculs autorisés }: calculatrice de
-        poche, y compris calculatrice programmable, alphanumérique ou à
-        écran graphique, à fonctionnement autonome, non imprimante, autorisée
-        conformément à la circulaire \no 99-186 du 16 novembre 1999.\\
-
-        \textbf{Le candidat qui décèle ce qu'il pense être une erreur d'énoncé
-        doit indiquer toutes les dispositions et initiatives qu'il est amené
-        à prendre pour poursuivre son travail.}
-        }}%
+        document réponse. Aucun autre document ne sera corrigé.}\\
+        
     }{%
-    \noindent\fbox{\parbox{\linewidth\fboxrule\fboxsep}{
         \textbf{Responses will be reported exclusively on the
-        response document. No other document will be corrected.\\}
-        \textbf{Use of documents are not authorized}.
-        \textbf{Means of calculation authorized:} the used of pocket calculators
-        are strictly permitted, including programmable calculators,
-        alphanumeric, graphic display, stand-alone or non-printer are permitted
-        in accordance with circular n°99-186 of November 16, 1999.\\
+        response document. No other document will be corrected.}\\
 
-        \textbf{Any candidate who detects what he thinks was a statement error
-        must indicate the means and initiatives he/she takes to continue
-        his/her work.}
-    }}
     }
   \fi
-  \ifx\@reponse\@false
+  % ---------------------------------------------------------------------
+  % documents autorsisés
+  % ---------------------------------------------------------------------
+  \ifx\@documentautorise\@true 
     \iflanguage{francais}{%
-    \noindent\fbox{\parbox{\linewidth\fboxrule\fboxsep}{
-        \textbf{Documents non autorisés. Moyens de calculs autorisés}:
-        calculatrice de poche, y compris calculatrice programmable,
-        alphanumérique ou à écran graphique,
-        à fonctionnement autonome, non imprimante, autorisée
-        conformément à la circulaire \no 99-186 du 16 novembre 1999.\\
+        \textbf{Documents autorisés.}\\
 
+    }{%
+        \textbf{Use of documents is authorized}.\\
+
+    }%
+  \fi
+  % ---------------------------------------------------------------------
+  % documents non autorsisés
+  % ---------------------------------------------------------------------
+  \ifx\@documentautorise\@false
+    \iflanguage{francais}{%
+        \textbf{Documents non autorisés.}\\
+
+    }{%
+        \textbf{Use of documents is not authorized.}\\
+
+    }%
+  \fi
+  % ---------------------------------------------------------------------
+  % moyen de calcul autorisé
+  % ---------------------------------------------------------------------
+  \ifx\@moyencalcul\@true
+    \iflanguage{francais}{%
+    \textbf{Moyens de calculs autorisés }: calculatrice de
+            poche, y compris calculatrice programmable, alphanumérique ou à
+            écran graphique, à fonctionnement autonome, non imprimante, autorisée
+            conformément à la circulaire \no 99-186 du 16 novembre 1999.\\
+
+    }{%
+    \textbf{Means of calculation authorized:} the used of pocket calculators
+            are strictly permitted, including programmable calculators,
+            alphanumeric, graphic display, stand-alone or non-printer are permitted
+            in accordance with circular n°99-186 of November 16, 1999.\\
+
+    }%
+  \fi
+  \ifx\@moyencalcul\@false
+    \iflanguage{francais}{%
+    \textbf{Moyens de calculs non autorisés.}\\
+
+    }{%
+    \textbf{Means of calculation not authorized.}\\
+
+    }%
+  \fi
+  % ---------------------------------------------------------------------
+  % dispositions à prendre en cas d'erreur 
+  % ---------------------------------------------------------------------
+  \ifx\@dispositions\@true
+    \iflanguage{francais}{%
         \textbf{Le candidat qui décèle ce qu'il pense être une erreur d'énoncé
         doit indiquer toutes les dispositions et initiatives qu'il est amené
-        à prendre pour poursuivre son travail.}
-    }}
+        à prendre pour poursuivre son travail.}\\
     }{%
-    \noindent\fbox{\parbox{\linewidth\fboxrule\fboxsep}{
-        \textbf{Use of documents are not authorized}.
-        \textbf{Means of calculation authorized:} the used of pocket calculators
-        are strictly permitted, including programmable calculators,
-        alphanumeric, graphic display, stand-alone or non-printer are permitted
-        in accordance with circular n°99-186 of November 16, 1999.\\
-
         \textbf{Any candidate who detects what he thinks was a statement error
         must indicate the means and initiatives he/she takes to continue
-        his/her work.}
-    }}
+        his/her work.}\\
     }
   \fi
+  }}
 \endgroup
 }
 \makeatother
 
 % Grille réponse
-\newcommand{\feuilleDR}[1]{%
+\makeatletter
+\newcommand{\feuilleDR}[2][]{%
+\ifx\@reponse\@true
 \begin{tikzpicture}
-    \draw[gray!30](0,0)grid[step=0.5cm](\linewidth,#1);
-\end{tikzpicture}}%
+    \draw[gray!30](0,0)grid[step=0.5cm](\linewidth,#2);
+\end{tikzpicture}#1\fi}%
+\makeatother
+
 %Page title
 \makeatletter
 \newcommand\logoIMG{%
@@ -187,6 +219,7 @@
   {\Large\noindent\textbf{\textsc{First Name/ Last Name}}}\\[0.8cm]
   {\centering\rule{0.8\textwidth}{1pt}}
   }
+
   \vspace{1cm}
   \fi
   \Apply@consignes

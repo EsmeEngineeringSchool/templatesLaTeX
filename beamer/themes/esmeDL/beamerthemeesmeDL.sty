@@ -4,6 +4,7 @@
 \RequirePackage{tikz}
 \usetikzlibrary{spy}
 \RequirePackage{ifthen}
+\RequirePackage{iflang}
 \RequirePackage{pifont}
 \RequirePackage{xpatch  }
 \newcommand{\cmark}{\ding{51}}%
@@ -53,11 +54,11 @@
 \setbeamercolor{block title}{fg=bleuesme!90!white,bg=white}
 \setbeamercolor{block body}{bg=bleuesme!11!white,fg=bleuesme}
 }%
-\AfterEndEnvironment{blockWooclap}{%
-\begin{tikzpicture}[remember picture,overlay]
-\draw[dashed,rounded corners,bleuesme,line width=1.5pt] (-0.13,\paperheight-7.7cm) rectangle (14.13,\paperheight-6.5cm);
-\end{tikzpicture}\par
-}%
+%\AfterEndEnvironment{blockWooclap}{%
+%\begin{tikzpicture}[remember picture,overlay]
+%\draw[dashed,rounded corners,bleuesme,line width=1.5pt] (-0.13,\paperheight-7.7cm) rectangle (14.13,\paperheight-6.5cm);
+%\end{tikzpicture}\par
+%}%
 \newtheorem{blockQues}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=0.75cm]{icone_question_vert}~Consigne :~}
 \AtBeginEnvironment{blockQues}{%
 \setbeamercolor{block title}{fg=vertesme,bg=white}
