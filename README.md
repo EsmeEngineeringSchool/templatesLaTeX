@@ -98,7 +98,7 @@ Vous pouvez utiliser la commande `\fr{<texte en français>}{<texte en anglais>}`
 pour permettre d'interpréter à la fois le texte en français et en anglais selon 
 la langue utilisée en option du paquet `babel`.
 
-Note : Vous pouvez utiliser la commande \fr{}{} à l'intérieur d'autres commandes. Cela peut être utile 
+Note : Vous pouvez utiliser la commande `\fr{}{}` à l'intérieur d'autres commandes. Cela peut être utile 
 pour la définition des variables précédentes ou les commandes exercice et question. 
 ```
 \module{\fr{Mathématique}{Mathematics}}
