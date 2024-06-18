@@ -99,7 +99,7 @@ pour permettre d'interpréter à la fois le texte en français et en anglais sel
 la langue utilisée en option du paquet `babel`.
 
 Note : Vous pouvez utiliser la commande `\fr{}{}` à l'intérieur d'autres commandes. Cela peut être utile 
-pour la définition des variables précédentes ou les commandes exercice et question. 
+pour la définition des variables précédentes ou les commandes `\exercice` et `\question`. 
 ```
 \module{\fr{Mathématique}{Mathematics}}
 
