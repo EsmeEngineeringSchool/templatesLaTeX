@@ -43,7 +43,7 @@ Placer `examen.sty` en local ou dans votre installation TEXMFHOME
 
 ### Utilisation
 
-Pour chaque examen l'utilisateur doit alors configurer quelques variables 
+Pour chaque examen l'utilisateur doit configurer quelques variables 
 dans le fichier `.tex` :
 
 ```
@@ -84,3 +84,17 @@ avec ou sans grille réponses.
 ![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-0.png?raw=true)
 #### Exemple de grille de réponse 
 ![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-1.png?raw=true)
+
+### Sujet en français et en anglais.
+
+Vous pouvez utiliser la commande `\fr{<texte en français>}{<texte en anglais>}` 
+pour permettre d'interpréter à la fois le texte en français et en anglais selon 
+la langue utilisée en option du paquet `babel`.
+
+Note : Vous pouvez utiliser la commande \fr{}{} à l'intérieur d'autres commandes. Cela peut être utile 
+pour la définition des variables précédentes ou les commandes exercice et question. 
+```
+\module{\fr{Mathématique}{Mathematics}}
+
+\exercice{\fr{Le pendule simple}{Pendulum}}
+```
