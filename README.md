@@ -1,4 +1,4 @@
-# esme
+# templatesLaTeX
 
 Templates LaTeX de l'ESME. 
 
@@ -47,14 +47,17 @@ Pour chaque examen l'utilisateur doit configurer quelques variables
 dans le fichier `.tex` :
 
 ```
-\newcommand\promo{\texttt{<PROMO>}}                     
-\newcommand\module{\texttt{<MODULE>}}                  
-\newcommand\annee{\texttt{2022-2023}}                  
-\newcommand\epreuve{\texttt{<EPREUVE>}}                
-\newcommand\titreEval{\texttt{<TITRE DE L'EVALUATION>}}
-\newcommand\dureeEval{\texttt{<X>}}                   
-\usepackage{examen}
-\reponse{false}
+\promo{\texttt{PROMO}}     % ex. IngéSUP, IngéSPE, Ingé1
+\module{\texttt{MODULE}}   % ex. Systèmes Techniques, Mathématiques Fondamentales
+\annee{\texttt{DATE}}      % ex. 2022-2023
+\epreuve{\texttt{EPREUVE}} % ex. MidTerm, FinalExam, Rattrapage
+\titreEval{\texttt{TITRE}} % ex. Dynamique et Déformation
+\dureeEval{\texttt{2}}     % ex. 2 (en nombre d'heures)
+\esme{true}                % examen ESME true or false
+\reponse{true}             % document réponse true or false
+\documentautorise{false}   % documents autorisés
+\moyencalcul{false}        % moyen de calcul autorisés
+\dispositions{false}       % dispositions en cas d'erreur rencontrée
 ```
 
 1. `promo` : Nom de la promo (ex. IngéSUP, IngéSPE, Ingé1)
@@ -63,7 +66,11 @@ dans le fichier `.tex` :
 4. `epreuve` : Nom de l'épreuve (ex. Midterm, Final Exam)
 5. `titreEval` : Nom de l'évaluation (ex. Dynamique et Déformation, Série Entière)
 6. `dureeEval` : Nombre d'heures de l'évaluation (ex. 2)
-7. `reponse` : variable spécifiant si le document est un document réponse (ex. `\reponse{true}` ou `\reponse{false}` 
+7. `esme` : Examen au logo de l'esme
+8. `reponse` : variable spécifiant si le document est un document réponse (ex. `\reponse{true}` ou `\reponse{false}` 
+9. `documentautorise` : Les documents sont-ils autorisés ?
+10. `moyendecalcul` : Les moyens de calcul sont-ils autorisés ?
+11. `dispositions` : Afficher une phrase consernant la rencontre d'une erreur d'énoncé
 
 
 Si `\reponse{true}` vous pouvez utiliser la commande `\feuilleDR{10cm}`
