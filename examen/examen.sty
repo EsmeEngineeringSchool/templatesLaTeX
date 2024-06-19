@@ -232,5 +232,10 @@
   \Apply@consignes
   \thispagestyle{empty}
   \newpage
+  %adding a blank page after title page
+  \thispagestyle{empty}
+  \pagenumbering{gobble}
+  $\,$\clearpage
+  \thispagestyle{fancy}\pagenumbering{arabic}\setcounter{page}{3}
 }
 \makeatother
