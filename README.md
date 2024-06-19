@@ -90,7 +90,7 @@ pour la définition des variables précédentes ou les commandes `\exercice` et 
 \exercice{\fr{Le pendule simple}{Pendulum}}
 ```
 
-#### Exemples :
+### Exemples :
    Le dépôt propose des exemples :
 1. Examen classes anglophones :
  `example_test.tex`  `example_test_responses.tex`
