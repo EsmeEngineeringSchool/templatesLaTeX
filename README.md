@@ -76,22 +76,6 @@ dans le fichier `.tex` :
 Si `\reponse{true}` vous pouvez utiliser la commande `\feuilleDR{10cm}`
 qui insère une grille réponse de 10cm de hauteur.
 
-### Exemples :
- Le dépôt propose des exemples :
-1. Examen classes anglophones :
- `example_test.tex`  `example_test_responses.tex`
-2. Examen classes francophones :
-`exemple_sujet.tex`  `exemple_sujet_reponses.tex`
-
-avec ou sans grille réponses.
-
-### Aperçu
-
-#### Page de titre
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-0.png?raw=true)
-#### Exemple de grille de réponse 
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-1.png?raw=true)
-
 ### Sujet en français et en anglais.
 
 Vous pouvez utiliser la commande `\fr{<texte en français>}{<texte en anglais>}` 
@@ -105,3 +89,22 @@ pour la définition des variables précédentes ou les commandes `\exercice` et 
 
 \exercice{\fr{Le pendule simple}{Pendulum}}
 ```
+
+#### Exemples :
+   Le dépôt propose des exemples :
+1. Examen classes anglophones :
+ `example_test.tex`  `example_test_responses.tex`
+2. Examen classes francophones :
+`exemple_sujet.tex`  `exemple_sujet_reponses.tex`
+3. Examen en deux langues dans un même fichier :
+`exemple_sujet_deuxlangues.tex` `exemple_sujet_reponses_deuxlangues.tex`
+avec ou sans grille réponses.
+
+### Aperçu
+
+#### Page de titre
+![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-0.png?raw=true)
+#### Exemple de grille de réponse 
+![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-1.png?raw=true)
+
+
