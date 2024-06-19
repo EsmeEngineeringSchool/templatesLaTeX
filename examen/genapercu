@@ -1,9 +1,9 @@
 #!/bin/bash
-usage()
-{
-    echo "Usage : $0 <pdffile> <page>"
-}
-file=$(basename $1 pdf)
-page=$2
-[ -z ${page} ] && usage
-convert -density 300 ${file}.pdf[${page}] -resize 25% ${file}_${page}.png
+set -x
+k=0
+for page in 0 2 
+do
+    ./pdf2png exemple_sujet_reponses.pdf ${page} 
+    mv exemple_sujet_reponses_${page}.png ../img/exemple_sujet_reponses-${k}.png
+    k=$((k+1))
+done
