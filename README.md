@@ -85,7 +85,7 @@ la langue utilisée en option du paquet `babel`.
 Note : Vous pouvez utiliser la commande `\fr{}{}` à l'intérieur d'autres commandes. Cela peut être utile 
 pour la définition des variables précédentes ou les commandes `\exercice` et `\question`. 
 ```
-\module{\fr{Mathématique}{Mathematics}}
+\module{\fr{Mathématiques}{Mathematics}}
 
 \exercice{\fr{Le pendule simple}{Pendulum}}
 ```
