@@ -1,0 +1,9 @@
+#!/bin/bash
+usage()
+{
+    echo "Usage : $0 <pdffile> <page>"
+}
+file=$(basename $1 pdf)
+page=$2
+[ -z ${page} ] && usage
+convert -density 300 ${file}.pdf[${page}] -resize 25% ${file}_${page}.png
