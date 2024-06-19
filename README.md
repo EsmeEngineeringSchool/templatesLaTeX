@@ -76,13 +76,28 @@ dans le fichier `.tex` :
 Si `\reponse{true}` vous pouvez utiliser la commande `\feuilleDR{10cm}`
 qui insère une grille réponse de 10cm de hauteur.
 
+### Sujet en français et en anglais.
+
+Vous pouvez utiliser la commande `\fr{<texte en français>}{<texte en anglais>}` 
+pour permettre d'interpréter à la fois le texte en français et en anglais selon 
+la langue utilisée en option du paquet `babel`.
+
+Note : Vous pouvez utiliser la commande `\fr{}{}` à l'intérieur d'autres commandes. Cela peut être utile 
+pour la définition des variables précédentes ou les commandes `\exercice` et `\question`. 
+```
+\module{\fr{Mathématiques}{Mathematics}}
+
+\exercice{\fr{Le pendule simple}{Pendulum}}
+```
+
 ### Exemples :
- Le dépôt propose des exemples :
+   Le dépôt propose des exemples :
 1. Examen classes anglophones :
  `example_test.tex`  `example_test_responses.tex`
 2. Examen classes francophones :
 `exemple_sujet.tex`  `exemple_sujet_reponses.tex`
-
+3. Examen en deux langues dans un même fichier :
+`exemple_sujet_deuxlangues.tex` `exemple_sujet_reponses_deuxlangues.tex`
 avec ou sans grille réponses.
 
 ### Aperçu
@@ -92,16 +107,4 @@ avec ou sans grille réponses.
 #### Exemple de grille de réponse 
 ![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-1.png?raw=true)
 
-### Sujet en français et en anglais.
 
-Vous pouvez utiliser la commande `\fr{<texte en français>}{<texte en anglais>}` 
-pour permettre d'interpréter à la fois le texte en français et en anglais selon 
-la langue utilisée en option du paquet `babel`.
-
-Note : Vous pouvez utiliser la commande \fr{}{} à l'intérieur d'autres commandes. Cela peut être utile 
-pour la définition des variables précédentes ou les commandes exercice et question. 
-```
-\module{\fr{Mathématique}{Mathematics}}
-
-\exercice{\fr{Le pendule simple}{Pendulum}}
-```
