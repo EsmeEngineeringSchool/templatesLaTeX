@@ -23,3 +23,6 @@ esme-example.blg
 esme-example.ps
 esme-example.tex.md5
 makefile
+
+*.fls
+*.fdb_latexmk
