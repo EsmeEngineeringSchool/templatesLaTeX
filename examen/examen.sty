@@ -11,13 +11,16 @@
 \makeatletter
 %commandes internes au paquet examen.sty
 \newcommand{\@promo}{None}     %ex. IngéSUP, IngéSPE, Ingé1
-\newcommand{\@module}{None}   %ex. Systèmes Techniques, Mathématiques Fondamentales
-\newcommand{\@annee}{None}      %ex. 2022-2023
-\newcommand{\@epreuve}{None}  %ex. MidTerm, FinalExam, Rattrapage
+\newcommand{\@module}{None}    %ex. Systèmes Techniques, Mathématiques Fondamentales
+\newcommand{\@annee}{None}     %ex. 2022-2023
+\newcommand{\@epreuve}{None}   %ex. MidTerm, FinalExam, Rattrapage
 \newcommand{\@titreEval}{None} %ex. Dynamique et Déformation
 \newcommand{\@dureeEval}{None}
 \newcommand{\@logo}{None}
 \newcommand{\@esme}{false}
+\newcommand{\@correction}{false}
+%\newboolean{correction}
+%\setboolean{correction}{false} % Set to true or false as needed
 \newcommand{\@reponse}{None}
 \newcommand{\@documentautorise}{None}
 \newcommand{\@moyencalcul}{None}
@@ -32,11 +35,23 @@
 \newcommand{\logo}[1]{\renewcommand{\@logo}{#1}}
 \newcommand{\esme}[1]{\renewcommand{\@esme}{#1}\renewcommand{\@logo}{ESME_LOGO_SEUL_NOIR_2021}}
 \newcommand{\reponse}[1]{\renewcommand{\@reponse}{#1}}
+\newcommand{\correction}[1]{\renewcommand{\@correction}{#1}}
 \newcommand{\documentautorise}[1]{\renewcommand{\@documentautorise}{#1}}
 \newcommand{\moyencalcul}[1]{\renewcommand{\@moyencalcul}{#1}}
 \newcommand{\dispositions}[1]{\renewcommand{\@dispositions}{#1}}
 \makeatother
 
+\makeatletter
+%  \long\def\@true{true}\long\def\@false{false}%
+\newcommand{\corrige}[2]{%
+    \ifx\@correction\@true
+    #1
+    \fi
+    \ifx\@correction\@false
+    #2
+    \fi
+}%
+\makeatother
 
 \thispagestyle{plain}
 \pagestyle{fancy}
