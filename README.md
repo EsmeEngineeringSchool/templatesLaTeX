@@ -18,7 +18,7 @@ Deux possibilités :
 ou 
 
 2. copier le dossier `beamer` dans votre TEXMFHOME (ex.  ~/texmf/tex/latex/ )
-   ou le dossier `esme` dans `beamer/themes` si ces derniers existent déjà  
+   ou les dossier `esme` et `esmeDL` dans `beamer/themes` si ces derniers existent déjà  
 ### Aperçu (thème esmeDL)
 
 #### Page de titre
