@@ -61,6 +61,30 @@
   \setbeamercolor{block body}{bg=grisesme!25!white,fg=grisesme}
 }
 
+% Ceci permet d'afficher une diapositive de table des matières
+% à chaque fois qu'une section est définie
+\IfLanguageName{french}{%
+    \AtBeginSection[]
+    {%
+    \begin{frame}
+        \frametitle{Table des matières}
+        \tableofcontents[currentsection]
+    \end{frame}
+    }%
+}%
+{%
+    \AtBeginSection[]
+    {%
+    \begin{frame}
+        \frametitle{Table of contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+    }%
+}
+
+
+
+
 \graphicspath{{./img/}}
 
 \mode<all>
