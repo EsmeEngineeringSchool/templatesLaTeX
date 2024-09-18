@@ -2,11 +2,13 @@
 
 % Requirement
 \RequirePackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
 \usetikzlibrary{spy}
 \RequirePackage{ifthen}
 \RequirePackage{iflang}
 \RequirePackage{pifont}
-\RequirePackage{xpatch  }
+\RequirePackage{xpatch}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 \RequirePackage{tcolorbox}
@@ -18,6 +20,10 @@
 \useinnertheme{esmeDL}
 \useoutertheme{esmeDL}
 \usecolortheme{esmeDL}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip1em}{}{}
+\makeatother
 
 \setbeamersize{text margin left=12mm,text margin right=12mm}
 \setbeamertemplate{navigation symbols}{}
@@ -49,9 +55,13 @@
 
 \theoremstyle{definition}
 % QUESTION WOOCLAP
-\newtheorem{blockWooclap}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=0.75cm]{icone_wooclap}~Allez sur wooclap.com et utilisez le code :~}
+\IfLanguageName{french}{%
+\newtheorem{blockWooclap}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=0.75cm]{icone_wooclap}~Lancez l'activité wooclap de la séance: ~}
+}{%
+\newtheorem{blockWooclap}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=0.75cm]{icone_wooclap}~Launch the Wooclap activity of the current lecture: ~}
+}%
 \AtBeginEnvironment{blockWooclap}{%
-\setbeamercolor{block title}{fg=bleuesme!90!white,bg=white}
+\setbeamercolor{block title}{fg=bleuesme!11!white,bg=bleuesme}
 \setbeamercolor{block body}{bg=bleuesme!11!white,fg=bleuesme}
 }%
 %\AfterEndEnvironment{blockWooclap}{%
@@ -120,6 +130,21 @@
   \setbeamercolor{block title}{fg=white,bg=grisesme}
   \setbeamercolor{block body}{bg=grisesme!25!white,fg=grisesme}
 }%
+\IfLanguageName{french}{%
+    \newtheorem{blockAav}[theorem]{\textbf{AAV}}
+}%
+{%
+    \newtheorem{blockAav}[theorem]{\textbf{ILO}}
+}%
+\AtBeginEnvironment{blockAav}{%
+  \setbeamercolor{block title}{fg=white,bg=bleuesme}
+  \setbeamercolor{block body}{bg=bleuclairesme,fg=bleuesme}
+ \vfill
+}%
+%\AtEndEnvironment{blockAav}{%
+%    \vspace{1cm}
+%}
+
 
 % Ceci permet d'afficher une diapositive de table des matières
 % à chaque fois qu'une section est définie
@@ -127,8 +152,8 @@
     \AtBeginSection[]
     {%
     \begin{frame}
-        \frametitle{Table des matières}
-        \tableofcontents[currentsection]
+        \frametitle{Sommaire}
+        \tableofcontents[sections=1-5,currentsection,hideothersubsections]
     \end{frame}
     }%
 }%
@@ -136,12 +161,35 @@
     \AtBeginSection[]
     {%
     \begin{frame}
-        \frametitle{Table of contents}
-        \tableofcontents[currentsection]
+        \frametitle{Outline}
+        \tableofcontents[sections=1-5,currentsection,hideothersubsections]
     \end{frame}
     }%
 }
 
+% Ajoute la page de titre et le sommaire lorsque l'environnement document est appelé/
+\IfLanguageName{french}{%
+    \AddToHook{begindocument/end}{%
+        \begin{frame}
+            \titlepage
+        \end{frame}%
+        \begin{frame}
+            \frametitle{Sommaire}
+            \tableofcontents[hideallsubsections]
+        \end{frame}
+    }%
+}%
+{%
+    \AddToHook{begindocument/end}{%
+        \begin{frame}
+            \titlepage
+        \end{frame}%
+        \begin{frame}
+            \frametitle{Outline}
+            \tableofcontents[hideallsubsections]
+        \end{frame}
+    }%
+}%
 
 \graphicspath{{./img/}}
 

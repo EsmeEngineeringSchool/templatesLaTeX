@@ -67,7 +67,7 @@
     \AtBeginSection[]
     {%
     \begin{frame}
-        \frametitle{Table des matières}
+        \frametitle{Sommaire}
         \tableofcontents[currentsection]
     \end{frame}
     }%
@@ -76,14 +76,36 @@
     \AtBeginSection[]
     {%
     \begin{frame}
-        \frametitle{Table of contents}
+        \frametitle{Outline}
         \tableofcontents[currentsection]
     \end{frame}
     }%
 }
 
 
-
+% Ajoute la page de titre et le sommaire lorsque l'environnement document est appelé/
+\IfLanguageName{french}{%
+    \AddToHook{begindocument/end}{%
+        \begin{frame}
+            \titlepage
+        \end{frame}%
+        \begin{frame}
+            \frametitle{Sommaire}
+            \tableofcontents[hideallsubsections]
+        \end{frame}
+    }%
+}%
+{%
+    \AddToHook{begindocument/end}{%
+        \begin{frame}
+            \titlepage
+        \end{frame}%
+        \begin{frame}
+            \frametitle{Outline}
+            \tableofcontents[hideallsubsections]
+        \end{frame}
+    }%
+}%
 
 \graphicspath{{./img/}}
 
