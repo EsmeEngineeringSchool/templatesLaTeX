@@ -1,6 +1,6 @@
-# Thèmes esme pour beamer
+# Thèmes `esme` et `esmeDL` pour beamer
 
-Il existe deux thèmes : `esmeDL`(nouveau) et `esme` (ancien). 
+Il existe deux thèmes :  `esme` (ancien) et `esmeDL`(nouveau)/
 Ces deux thèmes nécessitent l'option `aspectratio=169` de la classe beamer :
 
 ```
