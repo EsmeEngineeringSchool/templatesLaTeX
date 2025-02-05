@@ -1,4 +1,4 @@
-## `td` :
+# Documentation sur le template `td` 
 
 Placer `td.sty` en local ou dans votre installation TEXMFHOME
 
@@ -43,8 +43,8 @@ pour la définition des variables précédentes ou les commandes `\exercice` et 
 ### Aperçu
 
 #### Page de titre
-![Page de titre](../img/exemple_td.png)
+![Page de titre](../img/exemple_td-0.png)
 #### Exemple avec grilles
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-1.png?raw=true)
+![Page de titre](../img/exemple_td_reponse-0.png)
 
 

@@ -1,5 +1,7 @@
 # Thèmes `esme` et `esmeDL` pour beamer
 
+## Utilisation 
+
 Il existe deux thèmes :  `esme` (ancien) et `esmeDL`(nouveau)/
 Ces deux thèmes nécessitent l'option `aspectratio=169` de la classe beamer :
 
@@ -18,18 +20,18 @@ ou
 ### Aperçu (thème esmeDL)
 
 #### Page de titre
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esmeDL-example-0.png?raw=true)
+![Page de titre](../img/esmeDL-example-0.png)
 #### Frame title 
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esmeDL-example-1.png?raw=true)
+![Page de titre](../img/esmeDL-example-1.png)
 #### Section page 
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esmeDL-example-4.png?raw=true)
+![Page de titre](../img/esmeDL-example-4.png)
 
 ### Aperçu (thème esme)
 
 #### Page de titre
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esme-example-0.png?raw=true)
+![Page de titre](../img/esme-example-0.png)
 #### Frame title 
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esme-example-1.png?raw=true)
+![Page de titre](../img/esme-example-1.png)
 #### Section page 
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/esme-example-4.png?raw=true)
+![Page de titre](../img/esme-example-4.png)
 

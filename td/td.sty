@@ -101,8 +101,14 @@
   \vskip 2em%
   \begin{center}%
   \let \footnote \thanks
-   {\LARGE \textsc{\@promo~-~\@module}\\[0.5em]
-    \emph{TD~\@tdno~ -- \@titre}
+    \ifthenelse{\equal{\@correction}{true}}{
+        {\LARGE \textsc{\@promo~-~\@module}\\[0.5em]
+        \emph{TD~\@tdno~ -- \@titre~\textbf{(Corrigé)}}
+        }%
+    }{
+        {\LARGE \textsc{\@promo~-~\@module}\\[0.5em]
+        \emph{TD~\@tdno~ -- \@titre}
+        }%
     }%
     \ifthenelse{\equal{\@esme}{true}}{%
     \vskip 0.5em%

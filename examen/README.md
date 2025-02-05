@@ -1,8 +1,8 @@
-# examen :
-
-Placer `examen.sty` en local ou dans votre installation TEXMFHOME
+# Documentation sur le template `examen`
 
 ## Utilisation
+
+Placer `examen.sty` en local ou dans votre installation TEXMFHOME
 
 Pour chaque examen l'utilisateur doit configurer quelques variables 
 dans le fichier `.tex` :
@@ -64,6 +64,7 @@ avec ou sans grille réponses.
 ### Aperçu
 
 #### Page de titre
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-0.png?raw=true)
+![Page de titre](../img/exemple_sujet_reponses-0.png)
 #### Exemple de grille de réponse 
-![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-1.png?raw=true)
+![Page de titre](../img/exemple_sujet_reponses-1.png)
+
