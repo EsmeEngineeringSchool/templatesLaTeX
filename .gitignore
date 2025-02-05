@@ -26,3 +26,7 @@ makefile
 
 *.fls
 *.fdb_latexmk
+
+
+genapercu
+pdf2png

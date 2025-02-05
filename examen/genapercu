@@ -1,9 +1,0 @@
-#!/bin/bash
-set -x
-k=0
-for page in 0 2 
-do
-    ./pdf2png exemple_sujet_reponses.pdf ${page} 
-    mv exemple_sujet_reponses_${page}.png ../img/exemple_sujet_reponses-${k}.png
-    k=$((k+1))
-done
