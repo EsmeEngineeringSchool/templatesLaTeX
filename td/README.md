@@ -40,13 +40,11 @@ pour la définition des variables précédentes ou les commandes `\exercice` et 
 \exercice{\fr{Le pendule simple}{Pendulum}}
 ```
 
-### Exemples :
-
 ### Aperçu
 
 #### Page de titre
-![Page de titre](../img/exemple_sujet_reponses-0.png)
-#### Exemple de grille de réponse 
+![Page de titre](../img/exemple_td.png)
+#### Exemple avec grilles
 ![Page de titre](https://github.com/FilipeVasconcelos/esme/blob/main/img/exemple_sujet_reponses-1.png?raw=true)
 
 
