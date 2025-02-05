@@ -1,4 +1,4 @@
-# beamer
+# Thèmes esme pour beamer
 
 Il existe deux thèmes : `esmeDL`(nouveau) et `esme` (ancien). 
 Ces deux thèmes nécessitent l'option `aspectratio=169` de la classe beamer :
