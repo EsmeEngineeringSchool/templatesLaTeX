@@ -1,7 +1,7 @@
 # templatesLaTeX
 
-Ce dépôt regroupe différents templates $\LaTeX$ pour l'ESME 
-(il peut être utile à la fois aux enseignants et aux étudiants de cette école). 
+Ce dépôt regroupe différents templates $\LaTeX$ pour la composition de documents des **enseignants** et
+des **étudiants** de l'ESME. 
 
 * [beamer](beamer/README.md) : template `beamer` pour les présentations de diapositives.
 * [examen](examen/README.md) : template pour la production d'examen au format $\LaTeX$.
