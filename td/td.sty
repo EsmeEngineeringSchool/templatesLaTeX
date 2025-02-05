@@ -1,0 +1,123 @@
+% Requirement
+\RequirePackage{fancyhdr}
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\RequirePackage{xargs}
+\RequirePackage{xspace}
+\RequirePackage{ifthen}
+\newcommand{\fr}[2]{\iflanguage{francais}{#1}{#2}}
+\makeatletter
+%commandes internes au paquet td.sty
+\newcommand{\@promo}{None}     %ex. IngéSUP, IngéSPE, Ingé1
+\newcommand{\@module}{None}    %ex. Systèmes Techniques, Mathématiques Fondamentales
+\newcommand{\@titre}{None}     %ex. 2022-2023
+\newcommand{\@tdno}{None}     %ex. 2022-2023
+\newcommand{\@logo}{None}
+\newcommand{\@esme}{false}
+\newcommand{\@correction}{false}
+\newcommand{\@reponse}{None}
+%main def
+\newcommand{\promo}[1]{\renewcommand{\@promo}{#1}}
+\newcommand{\module}[1]{\renewcommand{\@module}{#1}}
+\newcommand{\titre}[1]{\renewcommand{\@titre}{#1}}
+\newcommand{\tdno}[1]{\renewcommand{\@tdno}{#1}}
+\newcommand{\logo}[1]{\renewcommand{\@logo}{#1}}
+\newcommand{\esme}[1]{\renewcommand{\@esme}{#1}\renewcommand{\@logo}{ESME_LOGO_SEUL_NOIR_2021}}
+%\newcommand{\esme}[1]{\renewcommand{\@esme}{#1}}
+\newcommand{\correction}[1]{\renewcommand{\@correction}{#1}}
+\newcommand{\reponse}[1]{\renewcommand{\@reponse}{#1}}
+\newcommand{\corrige}[2]{%
+    \ifx\@correction\@true
+    #1
+    \fi
+    \ifx\@correction\@false
+    #2
+    \fi
+}%
+\makeatother
+
+\thispagestyle{plain}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[RO,LE]{\textbf{\thepage}} 
+\makeatletter
+\fancyfoot[RE,LO]{\includegraphics[height=1.25cm]{\@logo}} 
+\fancyfoot[C]{\@promo~-~TD~\@tdno~-~\@module}
+\makeatother
+
+% Grille réponse
+\makeatletter
+\newcommand{\feuilleDR}[2][]{%
+\def\sizegrid{#2}
+\ifx\@reponse\@true
+\ifthenelse{\equal{\sizegrid}{0cm}}{%
+#1
+}{%
+    \begin{tikzpicture}
+        \draw[gray!40](0,0)grid[step=0.5cm](\linewidth,\sizegrid);
+    \end{tikzpicture}#1%
+}%
+\fi}%
+\makeatother
+
+%Page title
+\makeatletter
+\newcommand\logoIMG{%
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.25\textwidth]{\@logo}
+    \end{figure}
+}%
+\makeatother
+%Exercices/Questions 
+\newcounter{numexos}
+\newcounter{numques}
+\setcounter{numques}{0}
+\newcommandx{\question}[2][1=]{%
+\addtocounter{numques}{1}
+\hfill\break\noindent{\normalfont#1\bfseries Q\thenumques.\xspace\normalfont\normalcolor~#2\\[0.1cm]}
+}%
+\iflanguage{francais}{%
+\newcommand\exercicetitle{Exercice}
+}{%
+\newcommand\exercicetitle{Exercise}
+}%
+\newcommandx{\exercice}[2][2=\Large,usedefault]{%
+    \setcounter{numques}{0}
+    \addtocounter{numexos}{1}
+    \ifthenelse{\equal{#1}{}}%
+    {\bigskip\noindent{\newline\normalfont#2\bfseries\exercicetitle\,\thenumexos\,}\\[0.2cm]}
+    {\bigskip\noindent{\newline\normalfont#2\bfseries\exercicetitle\,\thenumexos\,:\,\,\,#1}\\[0.2cm]}
+}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\long\def\@true{true}\long\def\@false{false}%
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+   {\LARGE \textsc{\@promo~-~\@module}\\[0.5em]
+    \emph{TD~\@tdno~ -- \@titre}
+    }%
+    \ifthenelse{\equal{\@esme}{true}}{%
+    \vskip 0.5em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        ESME Bordeaux-Lille-Lyon-Paris 
+      \end{tabular}\par
+    }%
+    \vskip 1em%
+    }{}%
+  \end{center}%
+  \par
+  \vskip 0.5em
+  \thispagestyle{empty}
+  \thispagestyle{fancy}\pagenumbering{arabic}\setcounter{page}{1}
+}
+\makeatother
