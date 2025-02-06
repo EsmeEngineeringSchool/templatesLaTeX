@@ -1,4 +1,4 @@
-# Documentation sur le template `td` 
+# Template `td` 
 
 Placer `td.sty` en local ou dans votre installation TEXMFHOME
 
