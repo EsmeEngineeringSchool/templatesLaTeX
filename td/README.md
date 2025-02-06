@@ -8,12 +8,12 @@ Pour chaque document de TD l'utilisateur doit configurer quelques variables
 dans le fichier `.tex` :
 
 ```
-\promo{\texttt{PROMO}}     % ex. IngéSUP, IngéSPE, Ingé1
-\module{\texttt{MODULE}}   % ex. Systèmes Techniques, Mathématiques Fondamentales
-\tdno{1}                   % ex. 1 pour que TD 1
-\titre{\texttt{DATE}}      % ex. Cinématique des solides indéformables 
-\esme{true}                % examen ESME true or false
-\grille{true}              % document réponse true or false
+\promo{PROMO}     % ex. IngéSUP, IngéSPE, Ingé1
+\module{MODULE}   % ex. Systèmes Techniques, Mathématiques Fondamentales
+\tdno{1}          % ex. 1 pour que TD 1
+\titre{TITRE}     % ex. Cinématique des solides indéformables 
+\esme{true}       % examen ESME true or false
+\grille{true}     % document réponse true or false
 ```
 
 1. `promo`  : Nom de la promo (ex. IngéSUP, IngéSPE, Ingé1)
