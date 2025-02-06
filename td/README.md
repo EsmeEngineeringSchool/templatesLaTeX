@@ -33,11 +33,13 @@ pour permettre d'interpréter à la fois le texte en français et en anglais sel
 la langue utilisée en option du paquet `babel`.
 
 Note : Vous pouvez utiliser la commande `\fr{}{}` à l'intérieur d'autres commandes. Cela peut être utile 
-pour la définition des variables précédentes ou les commandes `\exercice` et `\question`. 
+pour la définition des variables précédentes ou les commandes `\exercice{}`, `\question{}` ou `\reponse{}`. 
 ```
 \module{\fr{Mathématiques}{Mathematics}}
 
 \exercice{\fr{Le pendule simple}{Pendulum}}
+
+\question{\fr{Quelle est la valeur de $\pi$ ?}{What is the value of $\pi$?}}
 
 \reponse[6cm]{\fr{La réponse est $\sqrt{2}$}{The answer is $\sqrt{2}$}}
 ```
