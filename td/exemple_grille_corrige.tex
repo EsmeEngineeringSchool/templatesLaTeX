@@ -1,11 +1,12 @@
 \documentclass[11pt,a4paper,twoside]{article} %twocolumn
-\usepackage[english]{babel}
+\usepackage[francais]{babel}
 \usepackage[babel=true,kerning=true]{microtype}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[top=2cm,bottom=2.2cm,right=2.2cm,left=2.2cm]{geometry}
 \usepackage{graphicx}
+\usepackage{fig-planes}
 \graphicspath{{./img/}}
 \usepackage{td}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -16,20 +17,24 @@
 \titre{\fr{Cinématique des solides indéformables}
           {Kinematics of rigid bodies}}                 % ex. 2022-2023
 \esme{true}                                             % TD ESME true or false
-\grille{true}                                           % document avec grille réponse true or false
-\corrige{false}
+\grille{true}                                          % document réponse true or false
+\corrige{true}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \thispagestyle{fancy}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\exercice{\fr{Robot Scara}{Scara Robot}}
+\exercice{Robot Scara}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\question{\fr{Tracer les figures planes illustrant les 2 paramètres d'orientation.}
-             {Draw the two basis change representations.}}
+\question{Tracer les figures planes illustrant les 2 paramètres d'orientation.}
 \reponse{6cm}{%
-\fr{La réponse à la question est $\frac{\pi}{2}$}
-   {The answer is $\frac{\pi}{2}$}}{}
+\begin{tikzpicture}
+    \figplanes[n][alpha][][1][black][0][black]{[x][y][z][O]}
+\end{tikzpicture}
+\hspace{2cm}
+\begin{tikzpicture}
+    \figplanes[n][beta][][2][black][1][black]{[x][y][z][A]}
+\end{tikzpicture}}{\clearpage}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

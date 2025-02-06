@@ -6,6 +6,7 @@
 \usepackage{lmodern}
 \usepackage[top=2cm,bottom=2.2cm,right=2.2cm,left=2.2cm]{geometry}
 \usepackage{graphicx}
+\usepackage{fig-planes}
 \graphicspath{{./img/}}
 \usepackage{td}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -17,7 +18,7 @@
           {Kinematics of rigid bodies}}                 % ex. 2022-2023
 \esme{true}                                             % TD ESME true or false
 \grille{false}                                          % document réponse true or false
-\correction{true}
+\corrige{true}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \maketitle
@@ -27,9 +28,13 @@
 \exercice{Robot Scara}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \question{Tracer les figures planes illustrant les 2 paramètres d'orientation.}
-\corrige{%
-\fr{La réponse à la question est $\frac{\pi}{2}$}
-   {The answer is $\frac{\pi}{2}$}}%
-{\feuilleDR{6cm}}
+\reponse{6cm}{%
+\begin{tikzpicture}
+\figplanes[n][alpha][][1][black][0][black]{[x][y][z][O]}
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}
+\figplanes[n][beta][][2][black][1][black]{[x][y][z][A]}
+\end{tikzpicture}}{\clearpage}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
