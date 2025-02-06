@@ -1,4 +1,4 @@
-# `compall`
+# Compiler un document $\TeX$ avec `compall`
 
 `compall` permet de compiler un ensemble de documents différents avec un seul fichier tex.
 
