@@ -45,9 +45,9 @@ pour la définition des variables précédentes ou les commandes `\exercice` et 
 ### Aperçu
 
 #### Deux langues 
-![Page de titre](../img/exemple_grille_deuxlangues-0.png)
-<img src="../img/exemple_grille_deuxlangues-0.png" width="48">
+<img src="../img/exemple_grille_deuxlangues-0.png" width="300" class="center">
 #### Exemple avec grilles (corrigé)
-![Page de titre](../img/exemple_grille_corrige-0.png)
+<img src="../img/exemple_grille_corrige-0.png" width="300" class="center">
+
 
 
