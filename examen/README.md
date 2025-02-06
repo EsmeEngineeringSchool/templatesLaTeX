@@ -50,6 +50,8 @@ pour la définition des variables précédentes ou les commandes `\exercice` et 
 \module{\fr{Mathématiques}{Mathematics}}
 
 \exercice{\fr{Le pendule simple}{Pendulum}}
+
+\reponse[6cm]{\fr{La réponse est $\sqrt{2}$}{The answer is $\sqrt{2}$}}
 ```
 
 ### Exemples :

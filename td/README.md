@@ -13,20 +13,20 @@ dans le fichier `.tex` :
 \tdno{1}                   % ex. 1 pour que TD 1
 \titre{\texttt{DATE}}      % ex. Cinématique des solides indéformables 
 \esme{true}                % examen ESME true or false
-\reponse{true}             % document réponse true or false
+\grille{true}              % document réponse true or false
 ```
 
-1. `promo` : Nom de la promo (ex. IngéSUP, IngéSPE, Ingé1)
+1. `promo`  : Nom de la promo (ex. IngéSUP, IngéSPE, Ingé1)
 2. `module` : Nom du module (ex. Systèmes Techniques, Mathématiques Fondamentales )
-3. `tdno` : Numéro du TD dans la progression
-4. `titre` : Titre du TD
-5. `esme` : TD au logo de l'esme
-6. `reponse` : variable spécifiant si le document est un document réponse (ex. `\reponse{true}` ou `\reponse{false}` 
+3. `tdno`   : Numéro du TD dans la progression
+4. `titre`  : Titre du TD
+5. `esme`   : TD au logo de l'esme
+6. `grille` : Variable spécifiant si le document est un document grille-réponse 
 
-Si `\reponse{true}` vous pouvez utiliser la commande `\feuilleDR{10cm}`
-qui insère une grille réponse de 10cm de hauteur.
+Si `\corrige{true}` vous pouvez utiliser la commande `\reponse[10cm]{Le texte de la réponse}`
+qui insère une grille réponse de 10cm de hauteur et permet de définir le texte de la réponse.
 
-### Sujet en français et en anglais.
+### Document en français et en anglais.
 
 Vous pouvez utiliser la commande `\fr{<texte en français>}{<texte en anglais>}` 
 pour permettre d'interpréter à la fois le texte en français et en anglais selon 
@@ -38,6 +38,8 @@ pour la définition des variables précédentes ou les commandes `\exercice` et 
 \module{\fr{Mathématiques}{Mathematics}}
 
 \exercice{\fr{Le pendule simple}{Pendulum}}
+
+\reponse[6cm]{\fr{La réponse est $\sqrt{2}$}{The answer is $\sqrt{2}$}}
 ```
 
 ### Aperçu
