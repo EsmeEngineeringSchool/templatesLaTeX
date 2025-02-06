@@ -1,6 +1,7 @@
 # `compall`
 
 `compall` permet de compiler un ensemble de documents différents avec un seul fichier tex.
+
 Ce script fonctionne avec les templates `examen` et `td` de ce dépôt.
 
 Le fichier tex source doit comporté 3 variables qui seront modifié au moment de lancer le script:
@@ -40,4 +41,4 @@ Le fichier tex source doit comporté 3 variables qui seront modifié au moment d
     `compall francais true true exemple.tex`
 
 ## Aperçu
-![Page de titre](img/exemple_francais_grille_corrige.pdf-0.png)
+![Page de titre](../img/exemple_francais_grille_corrige.pdf-0.png)
