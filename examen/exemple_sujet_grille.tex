@@ -1,5 +1,5 @@
 \documentclass[11pt,a4paper,twoside]{article} %twocolumn
-\usepackage[english]{babel}
+\usepackage[francais]{babel}
 \usepackage[babel=true,kerning=true]{microtype}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -17,7 +17,7 @@
 \titreEval{\texttt{TITRE}} % ex. Dynamique et Déformation
 \dureeEval{\texttt{2}} % ex. 2 (en nombre d'heures)
 \esme{true}          %examen ESME true or false
-\reponse{true}
+\grille{true}        %document réponse true or false
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -28,12 +28,11 @@
 \exercice{\texttt{<TITRE DE L'EXERCICE>}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \question{\texttt{<ENONCE DE LA QUESTION>}}
-\feuilleDR{6cm}
+\reponse[10cm]{}
 \question{\texttt{<ENONCE DE LA QUESTION>}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\exercice{}
+\exercice{test}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\question{}
 \question{}
 \question{}
 \newpage
@@ -41,5 +40,7 @@
 \exercice{\texttt{<TITRE DE L'EXERCICE>}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \question{\texttt{<ENONCE DE LA QUESTION>}}
+\reponse[10cm]{}
 \question{\texttt{<ENONCE DE LA QUESTION>}}
+\reponse[10cm]{}
 \end{document}
