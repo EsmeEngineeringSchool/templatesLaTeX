@@ -44,9 +44,9 @@ pour la définition des variables précédentes ou les commandes `\exercice` et 
 
 ### Aperçu
 
-#### Page de titre
-![Page de titre](../img/exemple_td-0.png)
-#### Exemple avec grilles
-![Page de titre](../img/exemple_td_reponse-0.png)
+#### Deux langues 
+![Page de titre](../img/exemple_grille_deuxlangues-0.png)
+#### Exemple avec grilles (corrigé)
+![Page de titre](../img/exemple_grille_corrige-0.png)
 
 
