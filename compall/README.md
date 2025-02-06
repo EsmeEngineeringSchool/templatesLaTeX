@@ -5,9 +5,9 @@ Ce script fonctionne avec les templates `examen` et `td` de ce dépôt.
 
 Le fichier tex source doit comporté 3 variables qui seront modifié au moment de lancer le script:
 
-1. __LANG__    -> `\usepackage[__LANG__]{babel}` pour controler la langue `francais` ou `english`
-2. __GRILLE__  -> `\grille{__GRILLE__}`  `true` ou `false`
-3. __CORRIGE__ -> `\corrige{__CORRIGE__}` `true` ou `false`
+1. `\usepackage[__LANG__]{babel}` pour controler la langue `[francais,english]`
+2. `\grille{__GRILLE__}`  pour controler l'affiche d'une grille `[true,false]`
+3. `\corrige{__CORRIGE__}` pour controler l'affichage du corrigé `[true,false]`
 
 ## Utilisation 
 
