@@ -1,0 +1,43 @@
+# `compall`
+
+`compall` permet de compiler un ensemble de documents différents avec un seul fichier tex.
+Ce script fonctionne avec les templates `examen` et `td` de ce dépôt.
+
+Le fichier tex source doit comporté 3 variables qui seront modifié au moment de lancer le script:
+
+1. __LANG__    -> `\usepackage[__LANG__]{babel}` pour controler la langue `francais` ou `english`
+2. __GRILLE__  -> `\grille{__GRILLE__}`  `true` ou `false`
+3. __CORRIGE__ -> `\corrige{__CORRIGE__}` `true` ou `false`
+
+## Utilisation 
+
+`compall LANG GRILLE CORRIGE <inputfile>`
+
+## Exemples :
+
+1. La version française de l'énoncé (sans grille) s'obtient par :
+
+    `compall francais false false exemple.tex`
+
+2. La version française de l'énoncé (avec grille) s'obtient par :
+
+    `compall francais true false exemple.tex`
+
+3. La version anglaise de l'énoncé (sans grille) s'obtient par :
+
+    `compall english false false exemple.tex`
+
+4. La version anglaise de l'énoncé (avec grille) s'obtient par :
+
+    `compall english true false exemple.tex`
+
+5. La version francaise du corrigé (sans grille) s'obtient par :
+
+    `compall francais false true exemple.tex`
+
+5. La version francaise du corrigé (avec grille) s'obtient par :
+
+    `compall francais true true exemple.tex`
+
+## Aperçu
+![Page de titre](img/exemple_francais_grille_corrige.pdf-0.png)

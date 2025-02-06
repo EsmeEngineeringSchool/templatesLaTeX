@@ -1,0 +1,51 @@
+#!/bin/bash
+usage()
+{
+    echo "Usage : $0 LANG GRILLE CORRIGE <inputfile>"
+    echo "LANG GRILLE CORRIGE : compilation d'une version spécifique
+                    - LANG    = {francais,english}
+                    - GRILLE  = {true,false}
+                    - CORRIGE = {true,false}
+         "
+    exit 1
+}
+
+pdflatex_()
+{
+    pdflatex -shell-escape -interaction=batchmode -file-line-error $1
+    pdflatex -shell-escape -interaction=batchmode -file-line-error $1
+}
+
+compile()
+{
+    echo '---------------------------------'
+    echo "grille  : ${grille}"
+    echo "lang    : ${lang}"
+    echo "corrige : ${corrige}"
+    echo '---------------------------------'
+    texout=$1
+    cat ${texin} | sed s/__GRILLE__/${grille}/g | 
+                   sed s/__LANG__/${lang}/g | 
+                   sed s/__CORRIGE__/${corrige}/g > ${texout}.tex
+    echo ${texout}.tex
+    pdflatex_ ${texout}.tex
+    rm ${texout}.tex ${texout}.log ${texout}.aux
+}
+
+declare -A GRILLE_VALUE 
+GRILLE_VALUE["true"]="grille"
+GRILLE_VALUE["false"]="no_grille"
+lang=$1
+grille=$2
+corrige=$3
+texin=$4
+[ $# -ne 4 ] && usage
+base_texin=$(basename ${texin} .tex)
+if [ $corrige == "true" ]
+then
+    echo "version corrigée (francais uniquement)"
+    lang=francais
+    compile ${base_texin}_${lang}_${GRILLE_VALUE[$grille]}_corrige
+else
+    compile ${base_texin}_${lang}_${GRILLE_VALUE[$grille]}
+fi

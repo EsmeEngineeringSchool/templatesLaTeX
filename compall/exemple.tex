@@ -1,0 +1,346 @@
+\documentclass[11pt,a4paper,twoside]{article} %twocolumn
+\usepackage[__LANG__]{babel}
+\usepackage[babel=true,kerning=true]{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[top=2cm,bottom=2.2cm,right=2.2cm,left=2.2cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{./img/}}
+\usepackage{examen}
+\usepackage{multirow}
+\usepackage{tabularx,booktabs}
+\usepackage{siunitx}
+\sisetup{inter-unit-product=\ensuremath{{}\cdot{}}}
+\usepackage{schemabloc}
+\usepackage{kinematik}
+\usepackage{amsmath}
+\usepackage{MnSymbol}
+\usepackage{mathfmv}
+\usepackage{wrapfig}
+\usepackage{pgf,tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{tikzfmv}
+\usepackage{tkz-euclide}
+\usepackage{tikz-3dplot}
+\usepackage{pst-3dplot}
+\usetikzlibrary{calc}
+\usetikzlibrary{tikzmark}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{arrows.meta,bending,automata,positioning}
+\usetikzlibrary{shapes.geometric}       
+\usetikzlibrary{babel} 
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{matrix}
+\usetikzlibrary{fill.image}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{intersections}
+\newcommand{\tikzmarkk}[2]{
+        \tikz[overlay,remember picture,baseline] 
+        \node[anchor=base] (#1) {$#2$};
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paquets fmv
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fig-planes}
+\usepackage{vecteurs}
+\usepackage{poles}
+\usepackage{bm}
+%\usepackage{stanli}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Modifier les variables suivantes
+\annee{2024-2025}                  
+\promo{IngéSUP}                         % ex. IngéSUP, IngéSPE, Ingé1
+\module{\fr{Systèmes Techniques}{Technical Systems}}
+\epreuve{\fr{Examen Final}{Final Exam}} % ex. MidTerm, FinalExam, Rattrapage
+\titreEval{\fr{Systèmes Mécaniques}{Mechanical Systems}} % ex. Dynamique et Déformation
+\dureeEval{2}                           % ex. 2 (en nombre d'heures)
+\esme{true}                             % examen ESME true or false
+\documentautorise{false}
+\moyencalcul{false}
+\dispositions{true}
+\grille{__GRILLE__}                   % document réponse true or false
+\corrige{__CORRIGE__}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercice{
+    \fr{Produits scalaire et vectoriel}
+       {Dot and cross products } \textbf{(2pts)} 
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fr{%
+Soit un repère orthonormé direct $\rep{O}{1}$ orienté d'un angle $\theta$ par rapport à 
+un second repère orthonormé direct $\rep{O}{0}$ tel que $\theta$ soit l'angle entre 
+les vecteurs de bases $(\xx{0},\xx{1})$ et $(\yy{0},\yy{1})$ et avec les deux vecteurs confondus $\zz{0}=\zz{1}$.
+}{%
+Let a direct orthonormal frame $\rep{O}{1}$ be oriented at an angle $\theta$ relatively 
+to a second direct orthonormal frame $\rep{O}{0}$ such that $\theta$ is the angle between
+the basis vectors $(\xx{0},\xx{1})$ and $(\yy{0},\yy{1})$ and such that $\zz{0}=\zz{1}$.
+}%
+\begin{center}
+    \begin{tikzpicture}
+    \figplanes[n][theta][][1][][0][]{[x][y][z][O][]}
+    \end{tikzpicture}
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question{%
+\fr
+{Donner le résultat des trois produits scalaires suivants :
+$\xx{0}\cdot\xx{1}$, $\xx{1}\cdot\yy{1}$ et $\zz{0}\cdot\zz{1}$}
+{Give the result of the following three dot products:
+$\xx{0}\cdot\xx{1}$, $\xx{1}\cdot\yy{1}$ and $\zz{0}\cdot\zz{1}$}
+[0.5 pt]}
+\reponse[3cm]{%
+\[
+    \xx{0}\cdot\xx{1} = \cos\theta 
+\]
+\[
+    \xx{1}\cdot\yy{1} = 0 
+\]
+\[
+    \zz{0}\cdot\zz{1} = 1
+\]
+}%
+\question{%
+\fr
+{Donner le résultat des trois produits vectoriels suivants :
+$\xx{0}\land\yy{0}$, $\xx{1}\land\yy{1}$ et $\zz{0}\land\zz{1}$
+}
+{Give the result of the following three cross products:
+$\xx{0}\times\yy{1}$, $\xx{1}\times\yy{1}$ and $\zz{0}\times\zz{1}$
+}
+[0.5 pt]}
+\reponse[3cm]
+{%
+\[
+    \xx{0}\land\yy{0} = \zz{0}
+\]
+\[
+    \xx{1}\land\yy{1} = \zz{1}
+\]
+\[
+    \zz{0}\land\zz{1} = \vnull 
+\]
+}%
+\fr
+{On définit un vecteur position $\oa$ tel que $\bm{\oa=\xx{1}+2\yy{1}}$}
+{We define a position vector $\oa$ such that $\bm{\oa=\xx{1}+2\yy{1}}$}
+
+\question{%
+\fr
+{Donner le résultat des trois produits scalaires suivants :
+$\oa\cdot\xx{0}$, $\oa\cdot\yy{0}$ et $\oa\cdot\xx{1}$}
+{Give the result of the folowing three dot products: 
+$\oa\cdot\xx{0}$, $\oa\cdot\yy{0}$ and $\oa\cdot\xx{1}$}
+[0.5 pt]}
+\reponse[3cm]
+{
+\[
+    \oa\cdot\xx{0}= \cos\theta-2\sin\theta
+\]
+\[
+    \oa\cdot\yy{0}= \sin\theta+2\cos\theta
+\]
+\[
+    \oa\cdot\xx{1}= 1
+\]
+}%
+
+\question{%
+\fr
+{Donner le résultat des trois produits vectoriels suivants :
+$\oa\times\xx{0}$, $\oa\times\yy{0}$ et $\oa\times\xx{1}$}
+{Give the result of the folowing three cross products: 
+$\oa\times\xx{0}$, $\oa\times\yy{0}$ and $\oa\times\xx{1}$}
+[0.5 pt]}
+\reponse[3cm]
+{
+\[
+    \oa\times\xx{0}=(-\sin\theta-2\cos\theta)\zz{0}
+\]
+\[
+    \oa\times\yy{0}=-\sin\theta\zz{0}
+\]
+\[
+    \oa\times\xx{1}=-2\zz{1}
+\]
+}[\clearpage]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercice{
+    \fr{Calcul vectoriel et centre de masse}
+       {Vector calculus and center of mass} \textbf{(5pts)} 
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fr{On étudie une plaque de bois (d'épaisseur négligeable) de masse surfacique  
+homogène. La géométrie de masse sera donnée dans le repère associé $\rep{A}{1}$
+comme représenté ci-dessous.
+Rappel: la masse d'une plaque de surface $S$ de ce matériau sera donnée 
+par $m=\sigma S$, où $\sigma$ est la masse surfacique.}
+{We study a wooden plate (of negligible thickness) of homogeneous surface mass. 
+The mass geometry will be given in the associated frame $\rep{A}{1}$ as shown below. 
+Reminder: the mass of a plate of surface $S$ of this material will be given 
+by $m=\sigma S$, where $\sigma$ is the surface mass.}
+
+\definecolor{nnn}{rgb}{0.122,0.122,0.122}
+\begin{center}
+\begin{tikzpicture}
+    \def\a{4}
+    \def\ha{2.0}
+    \def\hb{1.0}
+    \coordinate (a) at (0   ,0);
+    \coordinate (b) at (\a  ,0);
+    \coordinate (c) at (\a  ,\a);
+    \coordinate (d) at (\a-\hb ,\a);
+    \coordinate (e) at (\a-\hb ,\ha);
+    \coordinate (f) at (\hb   ,\ha);
+    \coordinate (g) at (\hb   ,\a);
+    \coordinate (h) at (0   ,\a);
+    \draw[fill stretch image=img/Ikcfv.png] (a) -- 
+                                            (b) -- 
+                                            (c) -- 
+                                            (d) -- 
+                                            (e) -- 
+                                            (f) -- 
+                                            (g) -- 
+                                            (h) -- cycle;
+    \draw[decorate,decoration={brace,amplitude=2pt,mirror,raise=1ex}]  
+         (a) -- (b) node[midway,yshift=-1.5em]{$a$};
+    \draw[decorate,decoration={brace,amplitude=2pt,raise=1ex}]  
+         (a) -- (h) node[midway,xshift=-1.5em]{$a$};
+    \draw[decorate,decoration={brace,amplitude=2pt,raise=1ex}]  
+         (d) -- (c) node[midway,yshift=1.5em]{$\frac{a}{4}$};
+    \draw[decorate,decoration={brace,amplitude=2pt,raise=1ex}]  
+         (h) -- (g) node[midway,yshift=1.5em]{$\frac{a}{4}$};
+    \draw[decorate,decoration={brace,mirror,amplitude=2pt,raise=1ex}]  
+         (d) -- (e) node[midway,xshift=-1.5em]{$\frac{a}{2}$};
+    \draw[fill=nnn,draw=nnn] (a) circle[radius=1.5pt];
+    \draw[fill=nnn,draw=nnn] (b) circle[radius=1.5pt];
+    \draw[fill=nnn,draw=nnn] (c) circle[radius=1.5pt];
+    \draw[fill=nnn,draw=nnn] (d) circle[radius=1.5pt];
+    \draw[fill=nnn,draw=nnn] (e) circle[radius=1.5pt];
+    \draw[fill=nnn,draw=nnn] (f) circle[radius=1.5pt];
+    \draw[fill=nnn,draw=nnn] (g) circle[radius=1.5pt];
+    \draw[fill=nnn,draw=nnn] (h) circle[radius=1.5pt];
+    \node[below left] at (a) {A};
+    \node[below right] at (b) {B};
+    \node[above right] at (c) {C};
+    \node[above left] at (d) {D};
+    \node[below left] at (e) {E};
+    \node[below right] at (f) {F};
+    \node[above right] at (g) {H};
+    \node[above left] at (h) {I};
+    \draw[black,ultra thick, -latex] (a) --++ (5,0) node[below] {$\xx{1}$} ;
+    \draw[black,ultra thick, -latex] (a) --++ (0,5) node[left] {$\yy{1}$} ;
+\end{tikzpicture}
+\end{center}
+
+\question{
+\fr
+{Donner les vecteurs positions des points C,D et F  dans le repère $\rep{A}{1}$}
+{Give the position vectors of points C, D and F in the frame $\rep{A}{1}$}
+[1 pt]}
+\reponse[5cm]
+{%
+\[
+    \ac=a\xx{1}+a\yy{1}
+\]
+\[
+    \ad=\dfrac{3a}{4}\xx{1}+a\yy{1}
+\]
+\[
+    \af=\dfrac{a}{4}\xx{1}+\dfrac{a}{2}\yy{1}
+\]
+}%
+
+\question{
+\fr
+{Donner la masse totale de la plaque en fonction des paramètres de la plaque, $\sigma$ et $a$}
+{Give the total mass of the plate as a function of the plate parameters, $\sigma$ and $a$}
+[1 pt]}
+\reponse[6cm]
+{
+\[
+    S=\dfrac{3}{4}a^2
+\]
+\[
+    M=\sigma\dfrac{3}{4}a^2
+\]
+}%
+
+\fr
+{On rappel que le centre de masse $\ag$ d'un ensemble de solides $\SO[i]$ de masse $m_i$ et 
+de centre de masse G$_i$ est donnée par : 
+\[
+    \ag=\dfrac{1}{M}\sum_i m_i\ag[][i].
+\]
+Par exemple un solide composé de deux plaques rectangulaires posséde un centre de masse donné par
+le vecteur posision $\ag=\dfrac{1}{M}\left(m_1 \ag[][1] + m_2 \ag[][2]\right)$, où $M=m_1+m_2$.}
+{We recall that the center of mass $\ag$ of a set of solids $\SO[i]$ of mass $m_i$ and center of 
+mass G$_i$ is given by: 
+\[
+\ag=\dfrac{1}{M}\sum_i m_i\ag[][i]. 
+\]
+For example, a solid composed of two rectangular plates has a center of mass given by the position vector 
+$\ag=\dfrac{1}{M}\left(m_1 \ag[][1] + m_2 \ag[][2]\right)$, where $M=m_1+m_2$.}
+
+\question{
+\fr
+{Donner le centre de masse de la plaque, représenté par le vecteur position $\ag$, dans le repère $\rep{A}{1}$}
+{Give the center of mass of the plate, represented by the position vector $\ag$, in the frame $\rep{A}{1}$}
+[1 pt]}
+\reponse[5cm]
+{%
+\[
+    \ag=\dfrac{a}{2}\xx{1}+\dfrac{5a}{12}\yy{1}
+\]
+}[\clearpage]
+
+\fr
+{On considère maintenant la rotation de cette plaque autour de l'axe $\axe{A}{z}[0]$ d'un repère fixe $\rep{A}{0}$.
+ On notera $\theta$, l'angle entre les vecteurs de bases $(\xx{0},\xx{1})$ et $(\yy{0},\yy{1})$.}
+{We now consider the rotation of this plate around the axis $\axe{A}{z}[0]$ of a fixed frame $\rep{A}{0}$.
+ We will denote $\theta$, the angle between the basis vectors $(\xx{0},\xx{1})$ and $(\yy{0},\yy{1})$.}
+\question{
+\fr
+{Tracer la figure plane permettant de représenter cette rotation.}
+{Draw the plane figure to represent this rotation.}
+[1 pt]}
+\reponse[5cm]
+{
+\begin{center}
+    \begin{tikzpicture}
+        \figplanes[][theta][][1][][0][]{[][][][A][][][]}
+    \end{tikzpicture}
+\end{center}
+}
+
+\question{
+\fr
+{À partir de cette représentation, donner le vecteur position $\ag$ dans le repère fixe $\rep{A}{0}$.} 
+{From this representation, give the position vector $\ag$ in the fixed frame $\rep{A}{0}$.}
+[1 pt]}
+\reponse[6cm]
+{
+\[
+    \xx{1}=\cos\theta\xx{0}+\sin\theta\yy{0}
+\]
+
+\[
+    \yy{1}=-\sin\theta\xx{0}+\cos\theta\yy{0}
+\]
+\[
+    \ag=\dfrac{a}{2}\left(\cos\theta\xx{0}+\sin\theta\yy{0}\right)+\dfrac{5a}{12}\left(-\sin\theta\xx{0}+\cos\theta\yy{0}\right)
+\]
+\[  
+    \ag=\left(\dfrac{a}{2}\cos\theta-\dfrac{5a}{12}\sin\theta\right)\xx{0}+\left(\dfrac{a}{2}\sin\theta+\dfrac{5a}{12}\cos\theta\right)\yy{0}                                                                                                                             \]
+}
+
+\end{document}
