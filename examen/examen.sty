@@ -36,7 +36,6 @@
 \newcommand{\documentautorise}[1]{\renewcommand{\@documentautorise}{#1}}
 \newcommand{\moyencalcul}[1]{\renewcommand{\@moyencalcul}{#1}}
 \newcommand{\dispositions}[1]{\renewcommand{\@dispositions}{#1}}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Grille réponse + corrige
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -60,13 +59,14 @@
             \begin{tikzpicture}
                 \draw[ultra thick,inner sep=0] (0,0) rectangle (\linewidth,\sizegrid);
                 \draw[gray!40] (0,0) grid[step=0.5cm] (\linewidth,\sizegrid);
-                \node[anchor = center,inner sep=0] at (0.5\linewidth,\halfgrid) {\Large \answer};
+                \node[anchor = center,inner sep=0,text width=\linewidth] at (0.5\linewidth,\halfgrid) {\answer};
             \end{tikzpicture}
         \fi
         % si on n'utilise pas de grille on donne juste la réponse
         \ifx\@grille\@false
-            \answer
+            \answer 
         \fi
+    \aprescorrige
     \fi
     % Si on ne compile pas le corrigé
     \ifx\@corrige\@false
@@ -78,8 +78,6 @@
             \end{tikzpicture}
         \fi
     \fi
-    % si 
-    \aprescorrige
 }%
 
 \thispagestyle{plain}
@@ -213,6 +211,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
 \long\def\@true{true}\long\def\@false{false}%
 \def\@maketitle{%
   \newpage
@@ -262,3 +261,4 @@
   $\,$\clearpage
   \thispagestyle{fancy}\pagenumbering{arabic}\setcounter{page}{3}
 }
+\makeatother
