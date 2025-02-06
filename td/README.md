@@ -45,9 +45,10 @@ pour la définition des variables précédentes ou les commandes `\exercice` et 
 ### Aperçu
 
 #### Deux langues 
-<img src="../img/exemple_grille_deuxlangues-0.png" width="300" class="center">
+<img src="../img/exemple_grille_deuxlangues-0.png" width="600" class="center">
+
 #### Exemple avec grilles (corrigé)
-<img src="../img/exemple_grille_corrige-0.png" width="300" class="center">
+<img src="../img/exemple_grille_corrige-0.png" width="600" class="center">
 
 
 
