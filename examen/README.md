@@ -1,4 +1,4 @@
-# Documentation sur le template `examen`
+# Template `examen`
 
 ## Utilisation
 
