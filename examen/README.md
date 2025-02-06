@@ -68,6 +68,8 @@ avec ou sans grille réponses.
 
 #### Page de titre
 ![Page de titre](../img/exemple_sujet_grille-0.png)
+<img src="../img/exemple_sujet_grille-0.png" width="800" class="center">
 #### Exemple de grille de réponse 
 ![Page de titre](../img/exemple_sujet_grille-1.png)
+<img src="../img/exemple_sujet_grille-1.png" width="800" class="center">
 
