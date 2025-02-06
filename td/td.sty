@@ -16,7 +16,7 @@
 \newcommand{\@logo}{None}
 \newcommand{\@esme}{false}
 \newcommand{\@correction}{false}
-\newcommand{\@reponse}{None}
+\newcommand{\@grille}{None}
 %main def
 \newcommand{\promo}[1]{\renewcommand{\@promo}{#1}}
 \newcommand{\module}[1]{\renewcommand{\@module}{#1}}
@@ -26,7 +26,7 @@
 \newcommand{\esme}[1]{\renewcommand{\@esme}{#1}\renewcommand{\@logo}{ESME_LOGO_SEUL_NOIR_2021}}
 %\newcommand{\esme}[1]{\renewcommand{\@esme}{#1}}
 \newcommand{\correction}[1]{\renewcommand{\@correction}{#1}}
-\newcommand{\reponse}[1]{\renewcommand{\@reponse}{#1}}
+\newcommand{\grille}[1]{\renewcommand{\@grille}{#1}}
 \newcommand{\corrige}[2]{%
     \ifx\@correction\@true
     #1
@@ -51,7 +51,7 @@
 \makeatletter
 \newcommand{\feuilleDR}[2][]{%
 \def\sizegrid{#2}
-\ifx\@reponse\@true
+\ifx\@grille\@true
 \ifthenelse{\equal{\sizegrid}{0cm}}{%
 #1
 }{%
