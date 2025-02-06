@@ -15,10 +15,11 @@ dans le fichier `.tex` :
 \titreEval{\texttt{TITRE}} % ex. Dynamique et Déformation
 \dureeEval{\texttt{2}}     % ex. 2 (en nombre d'heures)
 \esme{true}                % examen ESME true or false
-\reponse{true}             % document réponse true or false
+\grille{true}              % document grille réponse true or false
 \documentautorise{false}   % documents autorisés
 \moyencalcul{false}        % moyen de calcul autorisés
 \dispositions{false}       % dispositions en cas d'erreur rencontrée
+\corrige{false}            % produire le corrigé
 ```
 
 1. `promo` : Nom de la promo (ex. IngéSUP, IngéSPE, Ingé1)
@@ -28,14 +29,14 @@ dans le fichier `.tex` :
 5. `titreEval` : Nom de l'évaluation (ex. Dynamique et Déformation, Série Entière)
 6. `dureeEval` : Nombre d'heures de l'évaluation (ex. 2)
 7. `esme` : Examen au logo de l'esme
-8. `reponse` : variable spécifiant si le document est un document réponse (ex. `\reponse{true}` ou `\reponse{false}` 
+8. `grille` : variable spécifiant si le document est un document réponse  
 9. `documentautorise` : Les documents sont-ils autorisés ?
 10. `moyendecalcul` : Les moyens de calcul sont-ils autorisés ?
 11. `dispositions` : Afficher une phrase consernant la rencontre d'une erreur d'énoncé
+12. `corrige` : Produire le document corrigé en utilisant les macros `\reponse{}`
 
-
-Si `\reponse{true}` vous pouvez utiliser la commande `\feuilleDR{10cm}`
-qui insère une grille réponse de 10cm de hauteur.
+Si `\corrige{true}` vous pouvez utiliser la commande `\reponse[10cm]{Le texte de la réponse}`
+qui insère une grille réponse de 10cm de hauteur et permet de définir le texte de la réponse.
 
 ### Sujet en français et en anglais.
 
@@ -54,17 +55,17 @@ pour la définition des variables précédentes ou les commandes `\exercice` et 
 ### Exemples :
    Le dépôt propose des exemples :
 1. Examen classes anglophones :
- `example_test.tex`  `example_test_responses.tex`
+ `example_test.tex`  `example_test_grille.tex`
 2. Examen classes francophones :
-`exemple_sujet.tex`  `exemple_sujet_reponses.tex`
+`exemple_sujet.tex`  `exemple_sujet_grille.tex`
 3. Examen en deux langues dans un même fichier :
-`exemple_sujet_deuxlangues.tex` `exemple_sujet_reponses_deuxlangues.tex`
+`exemple_sujet_deuxlangues.tex` `exemple_sujet_grille_deuxlangues.tex`
 avec ou sans grille réponses.
 
 ### Aperçu
 
 #### Page de titre
-![Page de titre](../img/exemple_sujet_reponses-0.png)
+![Page de titre](../img/exemple_sujet_grille-0.png)
 #### Exemple de grille de réponse 
-![Page de titre](../img/exemple_sujet_reponses-1.png)
+![Page de titre](../img/exemple_sujet_grille-1.png)
 
