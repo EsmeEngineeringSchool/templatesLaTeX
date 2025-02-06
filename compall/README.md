@@ -41,4 +41,4 @@ Le fichier tex source doit comporté 3 variables qui seront modifié au moment d
     `compall francais true true exemple.tex`
 
 ## Aperçu
-<img src="../img/exemple_francais_no_grille_corrige_2.png" width="800" class="center">
+<img src="../img/exemple_francais_grille_corrige-0.png" width="800" class="center">
