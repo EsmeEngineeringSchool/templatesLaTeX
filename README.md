@@ -7,5 +7,5 @@ des **étudiants** de l'ESME.
 * [examen](examen/README.md) : template  `LaTeX` pour la composition d'examen.
 * [td](td/README.md) : template `LaTeX` pour la production de fiches de Travaux dirigés TD.
 
-* [compall](compall/README.md) : ce script permet de compiler plusierurs documents avec un seul fichier source tex.
+* [compall](compall/README.md) : ce script permet de compiler plusieurs documents avec un seul fichier source tex.
 
