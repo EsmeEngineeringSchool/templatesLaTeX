@@ -4,7 +4,10 @@
 
 Ce script fonctionne avec les templates `examen` et `td` de ce dépôt.
 
-Le fichier tex source doit comporter 3 variables (`__LANG__`,`__GRILLE__` et `__CORRIGE__`) qui seront modifiées au moment de lancer le script:
+Le fichier tex source doit comporter 3 variables (`__LANG__`,`__GRILLE__` et `__CORRIGE__`) qui seront modifiées 
+au moment de la compilation.
+
+Plus précisèment, il faut que le fichier `tex` source présente les macros $\LaTeX$ :
 
 1. `\usepackage[__LANG__]{babel}` pour controler la langue `[francais,english]`
 2. `\grille{__GRILLE__}`  pour controler l'affiche d'une grille `[true,false]`
