@@ -1,4 +1,4 @@
-# Documentation sur le template `examen`
+# Template `examen`
 
 ## Utilisation
 
@@ -32,7 +32,7 @@ dans le fichier `.tex` :
 8. `grille` : variable spécifiant si le document est un document réponse  
 9. `documentautorise` : Les documents sont-ils autorisés ?
 10. `moyendecalcul` : Les moyens de calcul sont-ils autorisés ?
-11. `dispositions` : Afficher une phrase consernant la rencontre d'une erreur d'énoncé
+11. `dispositions` : Afficher une phrase concernant la rencontre d'une erreur d'énoncé
 12. `corrige` : Produire le document corrigé en utilisant les macros `\reponse{}`
 
 Si `\corrige{true}` vous pouvez utiliser la commande `\reponse[10cm]{Le texte de la réponse}`
@@ -45,11 +45,13 @@ pour permettre d'interpréter à la fois le texte en français et en anglais sel
 la langue utilisée en option du paquet `babel`.
 
 Note : Vous pouvez utiliser la commande `\fr{}{}` à l'intérieur d'autres commandes. Cela peut être utile 
-pour la définition des variables précédentes ou les commandes `\exercice` et `\question`. 
+pour la définition des variables précédentes ou les commandes `\exercice{}`, `\question{}` ou `\reponse{}`. 
 ```
 \module{\fr{Mathématiques}{Mathematics}}
 
 \exercice{\fr{Le pendule simple}{Pendulum}}
+
+\question{\fr{Quelle est la valeur de $\pi$ ?}{What is the value of $\pi$?}}
 
 \reponse[6cm]{\fr{La réponse est $\sqrt{2}$}{The answer is $\sqrt{2}$}}
 ```

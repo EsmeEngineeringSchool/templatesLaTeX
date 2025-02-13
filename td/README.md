@@ -1,4 +1,4 @@
-# Documentation sur le template `td` 
+# Template `td` 
 
 Placer `td.sty` en local ou dans votre installation TEXMFHOME
 
@@ -8,12 +8,12 @@ Pour chaque document de TD l'utilisateur doit configurer quelques variables
 dans le fichier `.tex` :
 
 ```
-\promo{\texttt{PROMO}}     % ex. IngéSUP, IngéSPE, Ingé1
-\module{\texttt{MODULE}}   % ex. Systèmes Techniques, Mathématiques Fondamentales
-\tdno{1}                   % ex. 1 pour que TD 1
-\titre{\texttt{DATE}}      % ex. Cinématique des solides indéformables 
-\esme{true}                % examen ESME true or false
-\grille{true}              % document réponse true or false
+\promo{PROMO}     % ex. IngéSUP, IngéSPE, Ingé1
+\module{MODULE}   % ex. Systèmes Techniques, Mathématiques Fondamentales
+\tdno{1}          % ex. 1 pour que TD 1
+\titre{TITRE}     % ex. Cinématique des solides indéformables 
+\esme{true}       % examen ESME true or false
+\grille{true}     % document réponse true or false
 ```
 
 1. `promo`  : Nom de la promo (ex. IngéSUP, IngéSPE, Ingé1)
@@ -33,11 +33,13 @@ pour permettre d'interpréter à la fois le texte en français et en anglais sel
 la langue utilisée en option du paquet `babel`.
 
 Note : Vous pouvez utiliser la commande `\fr{}{}` à l'intérieur d'autres commandes. Cela peut être utile 
-pour la définition des variables précédentes ou les commandes `\exercice` et `\question`. 
+pour la définition des variables précédentes ou les commandes `\exercice{}`, `\question{}` ou `\reponse{}`. 
 ```
 \module{\fr{Mathématiques}{Mathematics}}
 
 \exercice{\fr{Le pendule simple}{Pendulum}}
+
+\question{\fr{Quelle est la valeur de $\pi$ ?}{What is the value of $\pi$?}}
 
 \reponse[6cm]{\fr{La réponse est $\sqrt{2}$}{The answer is $\sqrt{2}$}}
 ```
