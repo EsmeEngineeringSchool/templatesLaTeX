@@ -22,6 +22,7 @@
 \newcommand{\@documentautorise}{false}
 \newcommand{\@moyencalcul}{false}
 \newcommand{\@dispositions}{true}
+\newcommand{\@none}{None}
 %main def
 \newcommand{\promo}[1]{\renewcommand{\@promo}{#1}}
 \newcommand{\module}[1]{\renewcommand{\@module}{#1}}
@@ -36,46 +37,50 @@
 \newcommand{\documentautorise}[1]{\renewcommand{\@documentautorise}{#1}}
 \newcommand{\moyencalcul}[1]{\renewcommand{\@moyencalcul}{#1}}
 \newcommand{\dispositions}[1]{\renewcommand{\@dispositions}{#1}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Grille réponse + corrige
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newlength\sizegrid
 \newlength\halfgrid
-\newcommandx{\reponse}[3][1=1cm,3=]{%
-\def\aprescorrige{#3}
+\newcommandx{\reponse}[4][1=1cm,2=,3=,usedefault]
+{%
+\def\answer{#4}
+\def\aprescorrige{#2}
+\def\apresgrille{#3}
 \setlength{\sizegrid}{#1}
 \setlength{\halfgrid}{0.5\sizegrid}
+% vérifier que l'argument de réponse n'est pas vide.
     % Si on compile le corrigé
     \ifx\@corrige\@true
-        % vérifier que l'argument de réponse n'est pas vide.
-        \ifthenelse{\equal{#2}{}}{%
+        \ifx\answer\@empty
             \def\answer{\fr{Aucune réponse n'a été fournie pour cette question.}
                            {No answer was provided for this question.}}
-        }{%
-            \def\answer{#2}
-        }
+        \fi
         % si on utilise une grille, on écrit la réponse sur la grille
         \ifx\@grille\@true
             \begin{tikzpicture}
                 \draw[ultra thick,inner sep=0] (0,0) rectangle (\linewidth,\sizegrid);
                 \draw[gray!40] (0,0) grid[step=0.5cm] (\linewidth,\sizegrid);
-                \node[anchor = center,inner sep=0,text width=\linewidth] at (0.5\linewidth,\halfgrid) {\answer};
+                \node[align=center,text width=\linewidth] at (0.5\linewidth,\halfgrid) {\answer};
             \end{tikzpicture}
+            \apresgrille
         \fi
         % si on n'utilise pas de grille on donne juste la réponse
         \ifx\@grille\@false
             \answer 
         \fi
-    \aprescorrige
-    \fi
-    % Si on ne compile pas le corrigé
+        \aprescorrige
+   \fi
+   % Si on ne compile pas le corrigé
     \ifx\@corrige\@false
-        % on trace la grille réponse
+       % on trace la grille réponse
         \ifx\@grille\@true
             \begin{tikzpicture}
                 \draw[ultra thick,inner sep=0] (0,0) rectangle (\linewidth,\sizegrid);
-                \draw[gray!40](0,0)grid[step=0.5cm](\linewidth,\sizegrid);
+                \draw[gray!40] (0,0) grid[step=0.5cm](\linewidth,\sizegrid);
             \end{tikzpicture}
+            \apresgrille
         \fi
     \fi
 }%
@@ -100,7 +105,7 @@
         \textbf{Les réponses seront exclusivement reportées sur le
         document réponse. Aucun autre document ne sera corrigé. 
         Soyez aussi concis que possible et utilisez l'espace à bon escient}\\
-        
+
     }{%
         \textbf{Responses will be reported exclusively on the
         response document. No other document will be corrected.
@@ -167,10 +172,12 @@
         \textbf{Le ou la candidate qui décèle ce qu'il ou elle pense être une erreur d'énoncé
         doit indiquer toutes les dispositions et initiatives qu'il ou elle est amené
         à prendre pour poursuivre son travail.}\\
+
     }{%
         \textbf{Any candidate who detects what he/she thinks was a statement error
         must indicate the means and initiatives he/she takes to continue
         his/her work.}\\
+
     }
   \fi
   }}
@@ -190,16 +197,17 @@
 \setcounter{numques}{0}
 \newcommandx{\question}[2][1=]{%
 \addtocounter{numques}{1}
-\hfill\break\noindent{\normalfont#1\bfseries Q\thenumques.\xspace\normalfont\normalcolor~#2\\[0.1cm]}
+\hfill\break\noindent{\normalfont#1\bfseries Q\thenumques.\xspace\normalfont\normalcolor~#2\\[0.1em]}
+
 }%
 \iflanguage{francais}{%
-\newcommand\exercicetitle{Exercice}
-\newcommand\dureetitle{Durée}
-\newcommand\heuretitle{heures}
+    \newcommand\exercicetitle{Exercice}
+    \newcommand\dureetitle{Durée}
+    \newcommand\heuretitle{heures}
 }{%
-\newcommand\exercicetitle{Exercise}
-\newcommand\dureetitle{Time}
-\newcommand\heuretitle{hours}
+    \newcommand\exercicetitle{Exercise}
+    \newcommand\dureetitle{Time}
+    \newcommand\heuretitle{hours}
 }%
 \newcommandx{\exercice}[2][2=\Large,usedefault]{%
     \setcounter{numques}{0}
@@ -219,22 +227,31 @@
   \vskip 2em%
   \begin{center}%
   \let \footnote \thanks
+
     {\LARGE \@annee~-~\@promo~-~\@module\\
-    \ifthenelse{\equal{\@titreEval}{None}}{%
-        \emph{\@epreuve}\\
-    }{%
-        \emph{\@epreuve~-~\@titreEval}\\
-    }%
+    \ifx\@titreEval\@none
+        \ifx\@corrige\@true
+            \emph{\@epreuve~\textbf{(\fr{Corrigé}{Answers})}}\\
+        \else
+            \emph{\@epreuve}\\
+        \fi
+    \else
+        \ifx\@corrige\@true
+            \emph{\@epreuve~-~\@titreEval~\textbf{(\fr{Corrigé}{Answers})}}\\
+        \else
+            \emph{\@epreuve~-~\@titreEval}\\
+        \fi
+    \fi
     \dureetitle : \@dureeEval~\heuretitle\par}%
-    \ifthenelse{\equal{\@esme}{true}}{%
-    \vskip 1.5em%
-    {\large
-      \lineskip .5em%
-      \begin{tabular}[t]{c}%
-        ESME Bordeaux-Lille-Lyon-Paris 
-      \end{tabular}\par}%
-    \vskip 1em%
-    }{}%
+    \ifx\@esme\@true
+        \vskip 1.5em%
+        {\large
+          \lineskip .5em%
+          \begin{tabular}[t]{c}%
+            ESME Bordeaux-Lille-Lyon-Paris 
+          \end{tabular}\par}%
+        \vskip 1em%
+    \fi
   \end{center}%
   \par
   \vskip 1.5em
