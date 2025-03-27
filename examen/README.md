@@ -59,8 +59,22 @@ pour la définition des variables précédentes ou les commandes `\exercice{}`, 
 ### Exemples :
    Plusieurs exemples sont présentés dans le repertoire `exemples`.
 
+### Astuces
 
-### Astuce 
+#### Variables utiles
+Il n'est pas nécessaire d'utiliser grillereponse pour obtenir un corrigé.
+Il est également possible d'utiliser `\ifeditiongrillereponse` si l'on souhaite
+que certaines parties ne soient affichées que dans le cas de l'édition corrigé du document.
+ou encore avec la construction plus globale :
+```latex
+\ifeditiongrillereponse
+    Ce qui sera affiché au corrigé
+\else
+    Ce qui ne sera pas affiché dans le corrigé
+\fi
+```
+
+#### Pour la compilation 
 
 Il est tout à fait possible de n'avoir qu'un seul et unique fichier `.tex` et
 de compiler les différentes versions à l'aide d'un script qui filtre les valeurs

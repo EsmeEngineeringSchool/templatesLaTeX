@@ -31,8 +31,6 @@
 \newcommand{\@dureeEval}{None}
 \newcommand{\@logo}{None}
 \newcommand{\@esme}{false}
-\newcommand{\@corrige}{false}
-\newcommand{\@grille}{None}
 \newcommand{\@documentautorise}{false}
 \newcommand{\@moyencalcul}{false}
 \newcommand{\@dispositions}{true}
@@ -47,84 +45,94 @@
 \newcommand{\dureeEval}[1]{\renewcommand{\@dureeEval}{#1}}
 \newcommand{\logo}[1]{\renewcommand{\@logo}{#1}}
 \newcommand{\esme}[1]{\renewcommand{\@esme}{#1}\renewcommand{\@logo}{ESME_LOGO_SEUL_NOIR_2021}}
-\newcommand{\grille}[1]{\renewcommand{\@grille}{#1}}
-\newcommand{\corrige}[1]{\renewcommand{\@corrige}{#1}}
 \newcommand{\documentautorise}[1]{\renewcommand{\@documentautorise}{#1}}
 \newcommand{\moyencalcul}[1]{\renewcommand{\@moyencalcul}{#1}}
 \newcommand{\dispositions}[1]{\renewcommand{\@dispositions}{#1}}
 \newcommand{\location}[1]{\renewcommand{\@location}{#1}}
-
-\newcommand{\notatcorrige}[1]
-{
-    \ifx\@corrige\@false
-    #1
+% edition corrige
+\newboolean{editioncorrige} 
+\newcommand{\corrige}[1]{
+    \setboolean{editioncorrige}{#1}
+    \newif\ifnoteditioncorrige
+    \ifeditioncorrige
+        \noteditioncorrigefalse
+    \else
+        \noteditioncorrigetrue
     \fi
-}
+} 
+\newboolean{langfrancais}   
+\setboolean{langfrancais}{\fr{true}{false}}
+\newboolean{langenglish}  
+\setboolean{langenglish}{\fr{false}{true}}
+
+% ifeditiongrillereponse
+\newboolean{editiongrillereponse}
+\newcommand{\grille}[1]{\setboolean{editiongrillereponse}{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Grille réponse + corrige
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newlength\sizegrid
 \newlength\halfgrid
-\newcommandx{\reponse}[5][1=1cm,2=,3=,4=]
+\newcommandx{\grillereponse}[5][1=1cm,2=,3=,4=]
 {%
 \def\answer{#5}
-\def\pasaucorrige{#4}
-\def\apresgrille{#3}
-\def\aprescorrige{#2}
+\def\enoncesansgrille{#4}   % seulement dans l'énoncé sans grille
+\def\enoncegrille{#3}       % seulement dans l'énoncé avec grille
+\def\corrigegrille{#2}      % au corrigé avec grille
 \setlength{\sizegrid}{#1}
 \setlength{\halfgrid}{0.5\sizegrid}
 % vérifier que l'argument de réponse n'est pas vide.
     % Si on compile le corrigé
-    \ifx\@corrige\@true
+    \ifeditioncorrige
         \ifx\answer\@empty
             \def\answer{\fr{Aucune réponse n'a été fournie pour cette question.}
                            {No answer was provided for this question.}}
         \fi
         % si on utilise une grille, on écrit la réponse sur la grille
-        \ifx\@grille\@true
+        \ifeditiongrillereponse
             \ifdim\sizegrid>0pt 
                 \begin{tikzpicture}
                     \draw[ultra thick,inner sep=0] (0,0) rectangle (\linewidth,\sizegrid);
                     \draw[gray!40] (0,0) grid[step=0.5cm] (\linewidth,\sizegrid);
                     %\node[align=center,text width=\linewidth] at (0.5\linewidth,\halfgrid) {\answer};
-                    \node[text width=\linewidth,xshift=1em] at (0.5\linewidth,\halfgrid) {\answer};
+                    \node[text width=0.9\linewidth] at (0.5\linewidth,\halfgrid) {\answer};
                 \end{tikzpicture}
             \else
                 \answer 
             \fi
-            \apresgrille
-        \fi
+            \corrigegrille
+        \else
         % si on n'utilise pas de grille on donne juste la réponse
-        \ifx\@grille\@false
             \answer 
         \fi
-        \aprescorrige
-   \fi
+   \else
    % Si on ne compile pas le corrigé
-    \ifx\@corrige\@false
        % on trace la grille réponse
-        \ifx\@grille\@true
+        \ifeditiongrillereponse
             \ifdim\sizegrid>0pt
                 \begin{tikzpicture}
                     \draw[ultra thick,inner sep=0] (0,0) rectangle (\linewidth,\sizegrid);
                     \draw[gray!40] (0,0) grid[step=0.5cm](\linewidth,\sizegrid);
                 \end{tikzpicture}
             \fi
-            \apresgrille
-        \fi
-        \ifx\@grille\@false
-            \pasaucorrige
+            \enoncegrille
+        \else
+            \enoncesansgrille
         \fi
     \fi
 }%
 
-\thispagestyle{plain}
-\pagestyle{fancy}
+\fancypagestyle{esmestyle}{
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \fancyfoot[RO,LE]{\textbf{\thepage}} 
 \fancyfoot[RE,LO]{\includegraphics[height=1.25cm]{\@logo}} 
+\ifeditioncorrige
+\fancyfoot[C]{\textbf{\fr{Corrigé}{Answers}}~-~\@epreuve~-~\@promo~-~\@annee~-~\@module}
+\else
 \fancyfoot[C]{\@epreuve~-~\@promo~-~\@annee~-~\@module}
+\fi
+}
 
 \newcommand{\Apply@consignes}{%
   \begingroup
@@ -133,7 +141,7 @@
   % ---------------------------------------------------------------------
   % document réponse 
   % ---------------------------------------------------------------------
-  \ifx\@grille\@true 
+  \ifeditiongrillereponse
     \iflanguage{francais}{%
         \textbf{Les réponses seront exclusivement reportées sur le
         document réponse. Aucun autre document ne sera corrigé. 
@@ -230,9 +238,13 @@
 \setcounter{numques}{0}
 \newcommandx{\question}[2][1=]{%
 \addtocounter{numques}{1}
-\hfill\break\noindent{\normalfont#1\bfseries Q\thenumques.\xspace\normalfont\normalcolor~#2\\[0.1em]}
-
+\ifeditioncorrige
+\hfill\break\noindent{\normalfont#1\bfseries Q\thenumques.\xspace~#2\\[0.5ex]}
+\else
+\hfill\break\noindent{\normalfont#1\bfseries Q\thenumques.\xspace\normalfont\normalcolor~#2\\[0.5ex]}
+\fi
 }%
+
 \iflanguage{francais}{%
     \newcommand\exercicetitle{Exercice}
     \newcommand\dureetitle{Durée}
@@ -256,6 +268,7 @@
 \long\def\@true{true}\long\def\@false{false}%
 \def\@maketitle{%
   \newpage
+  \pagestyle{esmestyle}
   \null
   \vskip 2em%
   \begin{center}%
@@ -263,13 +276,13 @@
 
     {\LARGE \@annee~-~\@promo~-~\@module\\
     \ifx\@titreEval\@none
-        \ifx\@corrige\@true
+        \ifeditioncorrige
             \emph{\@epreuve~\textbf{(\fr{Corrigé}{Answers})}}\\
         \else
             \emph{\@epreuve}\\
         \fi
     \else
-        \ifx\@corrige\@true
+        \ifeditioncorrige
             \emph{\@epreuve~-~\@titreEval~\textbf{(\fr{Corrigé}{Answers})}}\\
         \else
             \emph{\@epreuve~-~\@titreEval}\\
@@ -290,25 +303,26 @@
   \vskip 1.5em
   \logoIMG
   \vfill
-  \ifx\@grille\@true
-  \iflanguage{francais}{%
-  {\Large\noindent\textbf{\textsc{Prénom / Nom}}}\\[0.8cm]
-  {\centering\rule{0.8\textwidth}{1pt}}
-  }{% 
-  {\Large\noindent\textbf{\textsc{First Name/ Last Name}}}\\[0.8cm]
-  {\centering\rule{0.8\textwidth}{1pt}}
-  }
+  \ifnoteditioncorrige
+    \ifeditiongrillereponse
+      \fr{{\Large\noindent\textbf{\textsc{Prénom / Nom}}}\\[0.8cm]}
+         {{\Large\noindent\textbf{\textsc{First Name/ Last Name}}}\\[0.8cm]}
+         {\centering\rule{0.8\textwidth}{1pt}}
 
-  %espace nécessaire pour le passage à la ligne des consignes
-  \vspace{1cm}
+    %espace nécessaire pour le passage à la ligne des consignes
+      \vspace{1cm}
+    \fi
   \fi
-  \Apply@consignes
+  \ifnoteditioncorrige
+      \Apply@consignes
+  \fi  
   \thispagestyle{empty}
   \newpage
   %adding a blank page after title page
   \thispagestyle{empty}
   \pagenumbering{gobble}
   $\,$\clearpage
-  \thispagestyle{fancy}\pagenumbering{arabic}\setcounter{page}{3}
+  %\pagenumbering{arabic}\setcounter{page}{3}
+  \pagenumbering{arabic}\setcounter{page}{3}\thispagestyle{esmestyle}
 }
 \makeatother
