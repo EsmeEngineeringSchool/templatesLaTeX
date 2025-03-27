@@ -1,78 +1,61 @@
-% bode_diagram package
+% td package
 %
 % (c) Filipe Vasconcelos
 %
 %% This program can be redistributed and/or modified under the terms
 %% of the LaTeX Project Public License Distributed from CTAN archives
 %% in directory macros/latex/base/lppl.txt.
-%
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesPackage{td}
-  [2025/02/10 v0.01 LaTeX package pour composer un document de TD de l'ESME]
-  \def\hi{Ce paquet est un template pour les TD.}
+  [2025/02/10 v0.01 LaTeX package pour composer un document d'une activité pédagogique de l'ESME]
+  \def\hi{Ce paquet est un template pour les activités pédagogiques.}
 \let\myDate\date
 % Requirement
 \RequirePackage{fancyhdr}
 \RequirePackage{tikz}
 \RequirePackage{minted}
 \RequirePackage{tcolorbox}
-
 %\RequirePackage{listings}
 \usetikzlibrary{calc}
 \usetikzlibrary{positioning}
 \RequirePackage{xargs}
 \RequirePackage{xspace}
 \RequirePackage{ifthen}
+\long\def\@francais{francais}\long\def\@english{english}
+\long\def\@true{true}\long\def\@false{false}%
 \newcommand{\fr}[2]{\iflanguage{francais}{#1}{#2}}
 \newcommand{\ttbf}[1]{{\fontseries{b}\texttt{\textbf{#1}}}}
 %commandes internes au paquet td.sty
+\newcommand{\@none}{None}
 \newcommand{\@promo}{None}     %ex. IngéSUP, IngéSPE, Ingé1
 \newcommand{\@module}{None}    %ex. Systèmes Techniques, Mathématiques Fondamentales
 \newcommand{\@titre}{None}     %ex. 2022-2023
+\newcommand{\@activite}{None}     %ex. TD, TP, TG 
 \newcommand{\@tdno}{None}     %ex. 2022-2023
 \newcommand{\@logo}{None}
 \newcommand{\@esme}{false}
-\newcommand{\@corrige}{false}
 \newcommand{\@grille}{None}
 \newcommand{\@lang}{None}
+\newcommand{\@location}{Bordeaux-Lille-Lyon-Paris}
 %main def
 \newcommand{\promo}[1]{\renewcommand{\@promo}{#1}}
 \newcommand{\module}[1]{\renewcommand{\@module}{#1}}
 \newcommand{\titre}[1]{\renewcommand{\@titre}{#1}}
+\newcommand{\activite}[1]{\renewcommand{\@activite}{#1}}
 \newcommand{\tdno}[1]{\renewcommand{\@tdno}{#1}}
 \newcommand{\logo}[1]{\renewcommand{\@logo}{#1}}
 \newcommand{\esme}[1]{\renewcommand{\@esme}{#1}\renewcommand{\@logo}{ESME_LOGO_SEUL_NOIR_2021}}
-\newcommand{\corrige}[1]{\renewcommand{\@corrige}{#1}}
 \newcommand{\grille}[1]{\renewcommand{\@grille}{#1}}
-\newcommand{\lang}[1]{\renewcommand{\@lang}{#1}}
+\newcommand{\location}[1]{\renewcommand{\@location}{#1}}
+\fr{\renewcommand{\@lang}{francais}}{\renewcommand{\@lang}{english}}
 
-\newcommand\IF[1]{%
-  \begingroup
-  \csname if#1\endcsname
-    \let\THEN\relax
-    \let\ELSE\skipsecondpart
-  \else
-    \let\THEN\skipfirstpart
-    \def\FI{\endgroup}%
-  \fi
-}
-\let\ELSE\relax
-\let\FI\endgroup
-\long\def\skipsecondpart#1\FI{\endgroup}
-\long\def\skipfirstpart#1\ELSE{}
+\newboolean{editioncorrige}
+\newcommand{\corrige}[1]{\setboolean{editioncorrige}{#1}}
+\newboolean{langfrancais}
+\setboolean{langfrancais}{\fr{true}{false}}
+\newboolean{langenglish}
+\setboolean{langenglish}{\fr{false}{true}}
 
-
-\newcommand{\mynewminted}[2]{%
-  \newminted[#1]{bash}{#2}%
-  \tcbset{myminted/#1/.style={minted language=bash,minted options={#2}}}}
-
-\mynewminted{rbash}{tabsize=2,fontsize=\small}
-
-\newtcblisting[
-  list inside=mypyg]{listingsbox}[1][]{%
-  listing only,enhanced,breakable,boxrule=0.5pt,
-  sharpish corners, width=\linewidth,
-  colback=white, colframe=black!75, drop shadow=blue!25,myminted/rbash,#1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Grille réponse + corrige
@@ -80,54 +63,55 @@
 \newlength\sizegrid
 \newlength\halfgrid
 
-\newcommandx{\reponse}[4][1=1cm,3=,4=]{%
-\def\aprescorrige{#3}
-\def\pasaucorrige{#4}
+\newcommandx{\grillereponse}[5][1=1cm,2=,3=,4=]{%
+\def\answer{#5}
+\def\enoncesansgrille{#4}   % seulement dans l'énoncé sans grille
+\def\enoncegrille{#3}       % seulement dans l'énoncé avec grille
+\def\corrigegrille{#2}      % au corrigé avec grille
 \setlength{\sizegrid}{#1}
 \setlength{\halfgrid}{0.5\sizegrid}
     % Si on compile le corrigé
-    \ifx\@corrige\@true
+    %\ifx\@corrige\@true
+    \ifeditioncorrige
         % vérifier que l'argument de réponse n'est pas vide.
-        \ifthenelse{\equal{#2}{}}{%
-            \def\answer{\fr{Aucune réponse n'a été fournie pour cette question.}
-                           {No answer was provided for this question.}}
-        }{%
-            \ifthenelse{\equal{#2}{None}}{%
-                \def\answer{}
-            }
-            {%
-                \def\answer{#2}
-            }
-        }
+        %\ifx\answer\@empty
+        %    \def\answer{\fr{Aucune réponse n'a été fournie pour cette question.}
+        %                   {No answer was provided for this question.}}
+        %\fi
         % si on utilise une grille, on écrit la réponse sur la grille
         \ifx\@grille\@true
-            \begin{tikzpicture}
-                \draw[ultra thick,inner sep=0] (0,0) rectangle (\linewidth,\sizegrid);
-                \draw[gray!40] (0,0) grid[step=0.5cm] (\linewidth,\sizegrid);
-                \node[anchor = center,inner sep=0] at (0.5\linewidth,\halfgrid) {\Large \answer};
-            \end{tikzpicture}
+            \ifdim\sizegrid>0pt
+                \begin{tikzpicture}
+                    \draw[ultra thick,inner sep=0] (0,0) rectangle (\linewidth,\sizegrid);
+                    \draw[gray!40] (0,0) grid[step=0.5cm] (\linewidth,\sizegrid);
+                    \node[anchor = center,inner sep=0] at (0.5\linewidth,\halfgrid) {\Large \answer};
+                \end{tikzpicture}
+            \else
+                \answer
+            \fi
+            \corrigegrille 
         \fi
         % si on n'utilise pas de grille on donne juste la réponse
         \ifx\@grille\@false
             \protect\answer
         \fi
-    % si 
-    \aprescorrige
-    \fi
+    %\fi
     % Si on ne compile pas le corrigé
-    \ifx\@corrige\@false
-        \ifthenelse{\equal{\pasaucorrige}{}}{%
+    %\ifx\@corrige\@false
+    \else
         % on trace la grille réponse
         \ifx\@grille\@true
-            \begin{tikzpicture}
-                \draw[ultra thick,inner sep=0] (0,0) rectangle (\linewidth,\sizegrid);
-                \draw[gray!40](0,0)grid[step=0.5cm](\linewidth,\sizegrid);
-            \end{tikzpicture}
+            \ifdim\sizegrid>0pt
+                \begin{tikzpicture}
+                    \draw[ultra thick,inner sep=0] (0,0) rectangle (\linewidth,\sizegrid);
+                    \draw[gray!40](0,0)grid[step=0.5cm](\linewidth,\sizegrid);
+                \end{tikzpicture}
+            \fi
+            \enoncegrille 
         \fi
-        }{
-            \pasaucorrige
-        }
+        \enoncesansgrille
     \fi
+    \medskip
 }%
 
 \thispagestyle{plain}
@@ -136,7 +120,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \fancyfoot[RO,LE]{\textbf{\thepage}} 
 \fancyfoot[RE,LO]{\includegraphics[height=1.25cm]{\@logo}} 
-\fancyfoot[C]{\@promo~-~TD~\@tdno~-~\@titre~-~\@module}
+\fancyfoot[C]{\@promo~-~\@activite~\@tdno~-~\@titre~-~\@module}
 
 %Page title
 \newcommand\logoIMG{%
@@ -151,13 +135,15 @@
 \setcounter{numques}{0}
 \newcommandx{\question}[2][1=]{%
 \addtocounter{numques}{1}
-\ifx\@corrige\@true
+\ifeditioncorrige
 \hfill\break\noindent{\normalfont#1\bfseries Q\thenumques.\xspace~#2\\[0.5ex]}
-\fi
-\ifx\@corrige\@false
+\else
 \hfill\break\noindent{\normalfont#1\bfseries Q\thenumques.\xspace\normalfont\normalcolor~#2\\[0.5ex]}
 \fi
 }%
+\long\def\@td{TD}
+\long\def\@tp{TP}%
+\long\def\@tg{TG}%
 \iflanguage{francais}{%
 \newcommand\exercicetitle{Exercice}
 }{%
@@ -167,34 +153,32 @@
     \setcounter{numques}{0}
     \addtocounter{numexos}{1}
     \ifthenelse{\equal{#1}{}}%
-    {\bigskip\noindent{\newline\normalfont#2\bfseries\exercicetitle\,\thenumexos\,}\\[1ex]}
+    {\bigskip\noindent{\newline\normalfont#2\bfseries\exercicetitle\,\thenumexos\,}\\[0.5ex]}
     {\bigskip\noindent{\newline\normalfont#2\bfseries\exercicetitle\,\thenumexos\,:\,\,\,#1}\\[0.5ex]}
 }%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\long\def\@francais{francais}\long\def\@english{english}
-\long\def\@true{true}\long\def\@false{false}%
 \def\@maketitle{%
   \newpage
   \null
   \vskip 1em%
   \begin{center}%
   \let \footnote \thanks
-    \ifthenelse{\equal{\@corrige}{true}}{
+    \ifeditioncorrige
         {\LARGE \textsc{\@promo~-~\@module}\\[0.5em]
-        \emph{\fr{TD}{LAB}~\@tdno~ -- \@titre~\textbf{(\fr{Corrigé}{Answers})}}
+        \emph{\@activite~\@tdno~ -- \@titre~\textbf{(\fr{Corrigé}{Answers})}}
         }%
-    }{
+    \else
         {\LARGE \textsc{\@promo~-~\@module}\\[0.5em]
-        \emph{\fr{TD}{LAB}~\@tdno~ -- \@titre}
+        \emph{\@activite~\@tdno~ -- \@titre}
         }%
-    }%
+    \fi
     \ifthenelse{\equal{\@esme}{true}}{%
     \vskip 0.5em%
     {\large
       \lineskip .5em%
       \begin{tabular}[t]{c}%
-        ESME Bordeaux-Lille-Lyon-Paris 
+        ESME \@location 
       \end{tabular}\par
     }%
     \vskip 1.5em%
@@ -206,3 +190,4 @@
   \thispagestyle{fancy}\pagenumbering{arabic}\setcounter{page}{1}
 }%
 \endinput
+%td package
