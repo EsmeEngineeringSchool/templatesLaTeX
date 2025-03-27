@@ -1,0 +1,141 @@
+\documentclass[11pt,a4paper,twoside]{article} %twocolumn
+\usepackage[francais]{babel}
+\usepackage[babel=true,kerning=true]{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage[top=2cm,bottom=2.2cm,right=2.2cm,left=2.2cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{./img/}}
+\usepackage{examen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Modifier les variables suivantes 
+\promo{IngéSUP}                           % ex. IngéSUP, IngéSPE, Ingé1
+\module{Mathématiques Fondamentales}      % ex. Systèmes Techniques, Mathématiques Fondamentales
+\annee{2024-2025}                         % ex. 2022-2023
+\epreuve{MidTerm}                         % ex. MidTerm, FinalExam, Rattrapage
+\titreEval{Algèbre Linéaire et Polynômes} %  ex. Dynamique et Déformation
+\dureeEval{2}                             % ex. 2 (en nombre d'heures)
+\esme{true}                               % examen ESME true or false
+\grille{false}                            % édition énoncé du document avec grille réponse true or false
+\corrige{true}                           % edition corrigé du document true or false
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{esmestyle}
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{esmestyle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercice{Diagonalisation d'une matrice 3x3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+On considère la matrice :
+\[
+A = \begin{bmatrix} 1 & 2 & 0 \\ 0 & 3 & 0 \\ 2 & -4 & 2 \end{bmatrix}
+\]
+\question{Déterminer une matrice diagonale \(D\) et une matrice inversible \(P\) telles que :}
+\[
+A = P D P^{-1}
+\]
+\grillereponse[20cm]{
+\subsection*{Étape 1 : Calcul du polynôme caractéristique}
+Le polynôme caractéristique est donné par :
+\[
+\det(A - \lambda I) = \begin{vmatrix} 1 - \lambda & 2 & 0 \\ 0 & 3 - \lambda & 0 \\ 2 & -4 & 2 - \lambda \end{vmatrix}
+\]
+
+En développant selon la dernière colonne :
+\[
+(2-\lambda) \begin{vmatrix} 1-\lambda & 2 \\ 0 & 3-\lambda \end{vmatrix}
+\]
+
+Le déterminant du mineur \( 2 \times 2 \) est :
+\[
+    (1-\lambda)(3-\lambda)
+\]
+
+Ainsi, l'équation caractéristique est :
+\[
+(1-\lambda)(2-\lambda)(3-\lambda) = 0
+\]
+
+\subsection*{Étape 2 : Détermination des valeurs propres et vecteurs propres}
+Les solutions de \(1-\lambda)(2-\lambda)(3-\lambda) = 0\) sont :
+\[
+\lambda_1 = 1, \quad \lambda_2 = 2, \quad \lambda_3 = 3
+\]
+
+Les vecteurs propres associés sont :
+\[
+    v_1=\begin{pmatrix}1\\0\\-2\end{pmatrix}\;
+    v_2=\begin{pmatrix}0\\0\\1\end{pmatrix}\;
+    v_3=\begin{pmatrix}1\\1\\-2\end{pmatrix}\;
+\]
+
+On construit la matrice \( P \) dont 
+les colonnes sont ces vecteurs propres, et la matrice diagonale \( D \) est :
+
+\[
+P = \begin{bmatrix} 1 & 0 & 1 \\ 0 & 0 & 1 \\ -2 & 1 & -2 \end{bmatrix}
+\]
+\[
+D = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \end{bmatrix}
+\]
+}
+
+\ifthenelse{\boolean{editiongrillereponse} \OR \boolean{editioncorrige}}
+\clearpage
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\exercice{Opérations sur les polynômes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Soient \( a, b \) des réels, et considérons le polynôme :
+\[
+P(X) = X^4 + 2aX^3 + bX^2 + 2X + 1.
+\]
+\question{Déterminer les valeurs de \( a \) et \( b \) pour lesquelles \( P(X) \) 
+          est le carré d'un polynôme à coefficients réels, c'est-à-dire 
+          qu'il existe un polynôme \( Q(X) \in \mathbb{R}[X] \) tel que :}
+\[
+P(X) = (Q(X))^2.
+\]
+\grillereponse[20cm]{%
+Si \( P = Q^2 \) est le carré d'un polynôme, alors \( Q \) est nécessairement 
+de degré 2, et son coefficient dominant est égal à \( 1 \) ou à \( -1 \).
+Dans le premier cas, on peut donc écrire :
+\[
+Q(X) = X^2 + cX + d.
+\]
+On a alors :
+\[
+Q^2(X) = X^4 + 2cX^3 + (2d + c^2)X^2 + 2cdX + d^2.
+\]
+
+Par identification avec \( P(X) = X^4 + 2aX^3 + bX^2 + 2X + 1 \), 
+on obtient le système :
+\[
+2c = 2a, \quad 2d + c^2 = b, \quad 2cd = 2, \quad d^2 = 1.
+\]
+
+On en déduit que \( c = a \) et \( d = \pm1 \).
+- Si \( d = 1 \), alors \( c = 1 \), donc \( a = 1 \) et \( b = 3 \).
+- Si \( d = -1 \), alors \( c = -1 \), donc \( a = -1 \) et \( b = -1 \).
+
+Les deux solutions sont donc :
+\[
+P_1(X) = X^4 + 2X^3 + 3X^2 + 2X + 1 = (X^2 + X + 1)^2,
+\]
+\[
+P_2(X) = X^4 - 2X^3 - X^2 + 2X + 1 = (X^2 - X - 1)^2.
+\]
+
+Dans le deuxième cas, on écrit \( Q(X) = -R(X) \) avec 
+\( R(X) = X^2 + cX + d \), de sorte que :
+\[
+Q^2(X) = R^2(X).
+\]
+On retrouve alors en réalité le cas précédent.
+}
+\end{document}

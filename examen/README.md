@@ -7,7 +7,7 @@ Placer `examen.sty` en local ou dans votre installation TEXMFHOME
 Pour chaque examen l'utilisateur doit configurer quelques variables 
 dans le fichier `.tex` :
 
-```
+```latex
 \promo{\texttt{PROMO}}     % ex. IngéSUP, IngéSPE, Ingé1
 \module{\texttt{MODULE}}   % ex. Systèmes Techniques, Mathématiques Fondamentales
 \annee{\texttt{DATE}}      % ex. 2022-2023
@@ -35,7 +35,7 @@ dans le fichier `.tex` :
 11. `dispositions` : Afficher une phrase concernant la rencontre d'une erreur d'énoncé
 12. `corrige` : Produire le document corrigé en utilisant les macros `\reponse{}`
 
-Si `\corrige{true}` vous pouvez utiliser la commande `\reponse[10cm]{Le texte de la réponse}`
+Si `\corrige{true}` vous pouvez utiliser la commande `\grillereponse[10cm]{Le texte de la réponse}`
 qui insère une grille réponse de 10cm de hauteur et permet de définir le texte de la réponse.
 
 ### Sujet en français et en anglais.
@@ -45,28 +45,40 @@ pour permettre d'interpréter à la fois le texte en français et en anglais sel
 la langue utilisée en option du paquet `babel`.
 
 Note : Vous pouvez utiliser la commande `\fr{}{}` à l'intérieur d'autres commandes. Cela peut être utile 
-pour la définition des variables précédentes ou les commandes `\exercice{}`, `\question{}` ou `\reponse{}`. 
-```
+pour la définition des variables précédentes ou les commandes `\exercice{}`, `\question{}` ou `\grillereponse{}`. 
+```latex
 \module{\fr{Mathématiques}{Mathematics}}
 
 \exercice{\fr{Le pendule simple}{Pendulum}}
 
 \question{\fr{Quelle est la valeur de $\pi$ ?}{What is the value of $\pi$?}}
 
-\reponse[6cm]{\fr{La réponse est $\sqrt{2}$}{The answer is $\sqrt{2}$}}
+\grillereponse[6cm]{\fr{La réponse est $\sqrt{2}$}{The answer is $\sqrt{2}$}}
 ```
 
 ### Exemples :
-   Le dépôt propose des exemples :
-1. Examen classes anglophones :
- `example_test.tex`  `example_test_grille.tex`
-2. Examen classes francophones :
-`exemple_sujet.tex`  `exemple_sujet_grille.tex`
-3. Examen en deux langues dans un même fichier :
-`exemple_sujet_deuxlangues.tex` `exemple_sujet_grille_deuxlangues.tex`
-avec ou sans grille réponses.
+   Plusieurs exemples sont présentés dans le repertoire `exemples`.
 
-### Aperçu
+
+### Astuce 
+
+Il est tout à fait possible de n'avoir qu'un seul et unique fichier `.tex` et
+de compiler les différentes versions à l'aide d'un script qui filtre les valeurs
+de la langue, des paramètres de grille réponse ou de corrigé.
+
+On pourra par exemple utiliser les instructions dans le fichier source:
+```latex
+\usepackage[__LANG__]{babel}
+\corrige{__CORRIGE__}
+\grille{__GRILLE__} 
+```
+et appliquer un filtre avant la compilation 
+```bash
+cat ${texin} | sed s/__LANG__/${lang}/g |
+               sed s/__CORRIGE__/${corrige}/g |
+                sed s/__GRILLE__/${grille}/g > ${texout}.tex
+```
+en bouclant sur toutes les valeurs souhaitées.
 
 #### Page de titre
 <img src="../img/exemple_sujet_grille-0.png" width="800" class="center">

@@ -1,0 +1,141 @@
+% fig-planes package
+% 
+% (c) Filipe Vasconcelos
+%
+%% This program can be redistributed and/or modified under the terms
+%% of the LaTeX Project Public License Distributed from CTAN archives
+%% in directory macros/latex/base/lppl.txt.
+% 
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{fig-planes}
+  [2017/06/05 v0.01 LaTeX package dessiner des figures planes;
+   2018/09/26 v0.02 LaTeX package dessiner des figures planes en couleur
+   2019/12/12 v0.03 LaTeX package dessiner des figures planes en couleur (rotation et translation)]
+
+\RequirePackage{xargs}
+\RequirePackage{xparse}
+\RequirePackage{ifthen}
+\RequirePackage{mathfmv}
+\RequirePackage{tikz}
+\usetikzlibrary{calc,quotes,angles}
+\RequirePackage{amsmath}
+\RequirePackage{kinematik}
+\def\hi{Ce paquet dessine des figures planes tikz de changement 
+de base pour la cinématique.}
+\let\myDate\date
+
+\newcommandx{\figplanes}[8][1=,2=alpha,3=,4=1,5=black,6=0,7=black,usedefault]{ 
+\def\mode{#1}
+\ifthenelse{\equal{\mode}{t}\OR\equal{\mode}{tv}}{%
+    \ifthenelse{\equal{#2}{alpha}}{%
+        \def\angle{\cang{lambda}{#3}}
+    }{\def\angle{\cang{#2}{#3}}}
+}{
+    \def\angle{\cang{#2}{#3}}
+}
+\def\rrt{#4}
+\def\cct{#5} % color
+\def\rrf{#6}
+\def\ccf{#7} % color
+\fplanescontinue#8
+}
+
+\newcommandx{\fplanescontinue}[7][1=x,2=y,3=z,4=O,5=,6=O,7=,usedefault]{ 
+\def\xxbt{\ccvect{#1}[\rrt]}
+\def\xxbf{\ccvect{#1}[\rrf]}
+\def\yybt{\ccvect{#2}[\rrt]}
+\def\yybf{\ccvect{#2}[\rrf]}
+\def\zzbt{\ccvect{#3}[\rrt]}
+\def\zzbf{\ccvect{#3}[\rrf]}
+\def\origine{\ccent{#4}{#5}}
+\def\originem{\ccentm{#4}{#5}}
+\def\origined{\ccent{#6}{#7}}
+\def\originedm{\ccentm{#6}{#7}}
+
+\ifthenelse{\equal{\mode}{h}}{%
+    %help mode
+    \texttt{\textbackslash fplanes[mode][a][a\_i][r\_t][col\_t][r\_f][col\_t]\{[axe1][axe2][axe3][c][c\_i][t][t\_i]\}}\\
+
+\begin{itemize}
+    \item \texttt{mode} $=$ h, t, r, b (défault : \texttt{vide})
+        \begin{itemize}
+            \item \texttt{h}    : afficher cette aide
+            \item \texttt{vide} : figure plane en rotation
+            \item \texttt{r}    : figure plane $+$ vecteur rotation
+            \item \texttt{b}    : figure plane $+$ vecteur rotation $+$ vecteur vitesse
+            \item \texttt{t}    : figure plane en translation
+            \item \texttt{tv}   : figure plane en translation $+$ vecteur vitesse
+        \end{itemize}
+    \item \texttt{a}    : lettre grec de l'angle/longueur (défault : \texttt{alpha} ou \texttt{lambda})
+    \item \texttt{a\_i} : indice de l'angle (défault : \texttt{vide})
+    \item \texttt{r\_t} : indice du repère tournant/translaté  (défault : \texttt{1})
+    \item \texttt{c\_t} : couleur du repère tournant/translaté (défault : \texttt{black})
+    \item \texttt{r\_f} : indice du repère fixe (défault : \texttt{0})
+    \item \texttt{c\_f} : couleur du repère fixe (défault : \texttt{black})
+    \item \texttt{axe1} : l'axe pointant vers la droite (défault : \texttt{x})
+    \item \texttt{axe2} : l'axe pointant vers le haut (défault : \texttt{y})
+    \item \texttt{axe3} : l'axe sortant (défault : \texttt{z})
+    \item \texttt{c}    : origine des repères (défault : \texttt{O})
+    \item \texttt{c\_i} : indice de l'origine (défault : \texttt{vide})
+    \item \texttt{t}    : origine du  repère translaté (défault : \texttt{O})
+    \item \texttt{t\_i} : indice de l'origine du repère translaté  (défault : \texttt{1})
+\end{itemize}
+Remarques : 
+\texttt{axe1,axe2,axe3} doivent être direct ! \texttt{xyz yzx zxy} !!
+}{%if not help mode
+    \ifthenelse{\equal{\mode}{t}\OR\equal{\mode}{tv}}{
+        % figures planes de rotation d'un repere par rapport à un autre
+        \coordinate (a) at (0,0);
+        \coordinate (b) at (1,0);
+        \coordinate (x0) at (1,0);
+        \coordinate (y0) at (0,1);
+        \coordinate (x1) at (1,0);
+        \coordinate (y1) at (0,1);
+        \draw [-latex,very thick,color=\cct] (b) -- ($(b)+2.4*(x1)$) node [below] {$\xxbt$};
+        \draw [-latex,very thick,color=\ccf] (a) -- ($(a)+2.4*(x0)$) node [below] {$\xxbf$} ;
+        \draw [-latex,very thick,color=\ccf] (a) -- ($(a)+2.4*(y0)$) node [above] {$\yybf$};
+        \draw [-latex,very thick,color=\cct] (b) -- ($(b)+2.4*(y1)$) node [above] {$\yybt$};
+        \draw [thick,fill=black] (a) circle (1pt)   node [below,yshift=-0.5ex]{\origine};
+        \draw [thick,fill=black] (b) circle (1pt)   node [below,yshift=-0.5ex]{\origined};
+        \coordinate (z) at ($(a)+(-1,0.3)$);
+        \draw [thick] (z) circle (3pt)              node [\ccf,below] {$\hphantom{\zzbt}=\zzbf$};
+        \draw [thick,fill=black] (z) circle (0.5pt) node [\cct,below] {$\zzbt\hphantom{=\zzbf}$};
+        \draw [-latex,thick] ($(a)+1.7*(y0)$) -- node[above] {$\angle$} ($(b)+1.7*(y0)$);
+        \ifthenelse{\equal{\mode}{tv}}{%
+        \node at (0.9,-1.4) {$\begin{aligned}\Om{\rrt/\rrf}&=\vnull\\\TCV{\originedm}{\rrt}{\rrf}
+                                                         &=\dot{\angle}\xxbf\end{aligned}$};
+        }{}
+    }{
+        \coordinate (a) at (0,0);
+        \coordinate (x0) at (1,0);
+        \coordinate (y0) at (0,1);
+        \coordinate (x1) at (0.93969256961929659, 0.34202028390474665);
+        \coordinate (y1) at (-0.34202028390474665, 0.93969256961929659);
+
+        \draw [-latex,very thick,color=\ccf] (a) -- ($(a)+2.4*(x0)$) node [right] {$\xxbf$} ;
+        \draw [-latex,very thick,color=\cct] (a) -- ($(a)+2.4*(x1)$) node [right] {$\xxbt$};
+        \draw [-latex,very thick,color=\ccf] (a) -- ($(a)+2.4*(y0)$) node [above] {$\yybf$};
+        \draw [-latex,very thick,color=\cct] (a) -- ($(a)+2.4*(y1)$) node [above] {$\yybt$};
+        \draw [-latex,very thick] 
+        pic["$\angle$",draw=black,-latex,
+        angle eccentricity=1.2,angle radius=1.7cm] {angle=x0--a--x1}
+        pic["$\angle$",draw=black,-latex,
+        angle eccentricity=1.2,angle radius=1.7cm] {angle=y0--a--y1};
+        \coordinate (z) at ($(a)+(-1,0.3)$);
+        \draw [thick,fill=black] (a) circle (1pt)   node [below,yshift=-0.5ex]{\origine};
+        \draw [thick] (z) circle (3pt)              node [\ccf,below] {$\hphantom{\zzbt}=\zzbf$};
+        \draw [thick,fill=black] (z) circle (0.5pt) node [\cct,below] {$\zzbt\hphantom{=\zzbf}$};
+        % if mode not t but r or b
+        \ifthenelse{\equal{\mode}{r}}{%
+            \node at (0.9,-1.0) {$\Om{\rrt/\rrf}=\dot{\angle}\zzbf$};}
+        {}
+        \ifthenelse{\equal{\mode}{b}}{%
+        \node at (0.9,-1.4) {$\begin{aligned}\Om{\rrt/\rrf}&=\dot{\angle}\zzbf\\\TCV{\originem}{\rrt}{\rrf}&=\vnull\end{aligned}$};
+        }{}
+    }
+}
+
+}
+\endinput
+%%
+%% End of file `fig-planes.sty'.
