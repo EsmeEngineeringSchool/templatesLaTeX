@@ -1,8 +1,11 @@
 # Compiler un document $\TeX$ avec `compall`
+** Ce script n'est donnée qu'à titre d'exemple.**
 
 `compall` permet de compiler un ensemble de documents différents avec un seul fichier tex.
 
+
 Ce script fonctionne avec les templates `examen` et `td` de ce dépôt.
+
 
 Le fichier tex source doit comporter 3 variables (`__LANG__`,`__GRILLE__` et `__CORRIGE__`) qui seront modifiées 
 au moment de la compilation.
