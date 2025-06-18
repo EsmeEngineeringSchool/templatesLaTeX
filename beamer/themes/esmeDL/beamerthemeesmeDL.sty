@@ -29,6 +29,12 @@
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{blocks}[rounded][shadow=true]  
 
+\newboolean{hooksommairebegindocument}
+\setboolean{hooksommairebegindocument}{true}
+\newcommand{\sommairebegindocument}[1]{
+    \setboolean{hooksommairebegindocument}{#1}
+}
+
 \makeatletter
 
 \setbeamertemplate{theorem begin}
@@ -148,23 +154,33 @@
 
 % Ceci permet d'afficher une diapositive de table des matières
 % à chaque fois qu'une section est définie
+\AtBeginSection[]{
 \IfLanguageName{french}{%
-    \AtBeginSection[]
-    {%
     \begin{frame}
         \frametitle{Sommaire}
         \tableofcontents[currentsection,hideothersubsections]
     \end{frame}
-    }%
-}%
-{%
-    \AtBeginSection[]
-    {%
+}
+{
     \begin{frame}
         \frametitle{Outline}
         \tableofcontents[currentsection,hideothersubsections]
     \end{frame}
-    }%
+}
+}
+\AtBeginSubsection[]{%
+\IfLanguageName{french}{%
+    \begin{frame}
+        \frametitle{Sommaire}
+        \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
+}
+{
+    \begin{frame}
+        \frametitle{Outline}
+        \tableofcontents[currentsection,currentsubsection]
+    \end{frame}
+}
 }
 
 % Ajoute la page de titre et le sommaire lorsque l'environnement document est appelé/
@@ -173,10 +189,12 @@
         \begin{frame}
             \titlepage
         \end{frame}%
+        \ifhooksommairebegindocument
         \begin{frame}
             \frametitle{Sommaire}
             \tableofcontents[hideallsubsections]
         \end{frame}
+        \fi
     }%
 }%
 {%
@@ -184,10 +202,12 @@
         \begin{frame}
             \titlepage
         \end{frame}%
+        \ifhooksommairebegindocument
         \begin{frame}
             \frametitle{Outline}
             \tableofcontents[hideallsubsections]
         \end{frame}
+        \fi
     }%
 }%
 

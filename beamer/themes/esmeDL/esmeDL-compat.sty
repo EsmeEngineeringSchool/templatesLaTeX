@@ -1,0 +1,69 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{esme-compat}[2024/01/01 Compatibilité thème ESME]
+
+\RequirePackage{xkeyval}
+\RequirePackage{ifthen}
+
+% Détection si le thème ESME est chargé (on teste si la macro sectionframe est chargée :/)
+\newif\ifesmeDLloaded
+\AtBeginDocument{%
+  \@ifundefined{sectionframe}{\esmeDLloadedfalse}{\esmeDLloadedtrue}%
+}
+
+% Définitions de fallback (uniquement si ESME non chargé)
+\AtBeginDocument{%
+  \ifesmeDLloaded
+  % Si le theme esme est chargé on ne fait rien 
+  \else
+    % Macros vides
+    \newcommand{\sectionframe}[1]{}
+    \newcommand{\lancerWooclap}[1]{}
+    
+    % Templates de frames question/reponse
+    \define@key{beamerframe}{question}[true]{%
+      \setbeamertemplate{frametitle}[default]%
+    }
+    
+    \define@key{beamerframe}{reponse}[true]{%
+      \setbeamertemplate{frametitle}[default]%
+    }
+    
+    % Blocs personnalisés (exemples)
+    \theoremstyle{definition}
+    \newtheorem{blockDef}[theorem]{Définition}
+    \AtBeginEnvironment{blockDef}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+    \newtheorem{blockProp}[theorem]{Propriéte}
+    \AtBeginEnvironment{blockProp}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+    \newtheorem{blockEx}[theorem]{Exemple}
+    \AtBeginEnvironment{blockEx}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+    \newtheorem{blockRem}[theorem]{Remarque}
+    \AtBeginEnvironment{blockRem}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+    \newtheorem{blockWooclap}[theorem]{Remarque}
+    \AtBeginEnvironment{blockWooclap}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+    \newtheorem{blockQues}[theorem]{Remarque}
+    \AtBeginEnvironment{blockQues}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+    \newtheorem{blockRep}[theorem]{Remarque}
+    \AtBeginEnvironment{blockQues}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+  \fi
+}

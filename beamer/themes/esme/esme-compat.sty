@@ -1,0 +1,54 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{esme-compat}[2024/01/01 Compatibilité thème ESME]
+
+\RequirePackage{xkeyval}
+\RequirePackage{ifthen}
+
+% Détection si le thème ESME est chargé (on teste si la macro sectionframe est chargée :/)
+\newif\ifesmeloaded
+\AtBeginDocument{%
+  \@ifundefined{sectionframe}{\esmeloadedfalse}{\esmeloadedtrue}%
+}
+
+% Définitions de fallback (uniquement si ESME non chargé)
+\AtBeginDocument{%
+  \ifesmeloaded
+  % Si le theme esme est chargé on ne fait rien 
+  \else
+    % Macro \sectionframe
+    \newcommand{\sectionframe}[1]{}
+    
+    % Templates de frames question/reponse
+    \define@key{beamerframe}{question}[true]{%
+      \setbeamertemplate{frametitle}[default]%
+    }
+    
+    \define@key{beamerframe}{reponse}[true]{%
+      \setbeamertemplate{frametitle}[default]%
+    }
+    
+    % Blocs personnalisés (exemples)
+    \theoremstyle{definition}
+    \newtheorem{blockDef}[theorem]{Définition}
+    \AtBeginEnvironment{blockDef}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+    \newtheorem{blockProp}[theorem]{Propriéte}
+    \AtBeginEnvironment{blockProp}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+    \newtheorem{blockEx}[theorem]{Exemple}
+    \AtBeginEnvironment{blockEx}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+    \newtheorem{blockRem}[theorem]{Remarque}
+    \AtBeginEnvironment{blockRem}{%
+      \setbeamercolor{block title}{}
+      \setbeamercolor{block body}{}
+    }
+
+  \fi
+}
