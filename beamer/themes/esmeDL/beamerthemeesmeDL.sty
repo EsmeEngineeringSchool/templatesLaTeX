@@ -136,21 +136,47 @@
   \setbeamercolor{block title}{fg=white,bg=grisesme}
   \setbeamercolor{block body}{bg=grisesme!25!white,fg=grisesme}
 }%
-\IfLanguageName{french}{%
-    \newtheorem{blockAav}[theorem]{\textbf{AAV}}
-}%
-{%
-    \newtheorem{blockAav}[theorem]{\textbf{ILO}}
-}%
-\AtBeginEnvironment{blockAav}{%
-  \setbeamercolor{block title}{fg=white,bg=bleuesme}
-  \setbeamercolor{block body}{bg=bleuclairesme,fg=bleuesme}
- \vfill
-}%
+%\IfLanguageName{french}{%
+%    \newtheorem{blockAav}[theorem]{\textbf{AAV}}
+%}%
+%{%
+%    \newtheorem{blockAav}[theorem]{\textbf{ILO}}
+%}%
+%\AtBeginEnvironment{blockAav}{%
+%  \setbeamercolor{block title}{fg=white,bg=bleuesme}
+%  \setbeamercolor{block body}{bg=bleuclairesme,fg=bleuesme}
+% \vfill
+%}%
 %\AtEndEnvironment{blockAav}{%
 %    \vspace{1cm}
 %}
 
+% Define the environment
+\NewDocumentCommand{\blockAav}{O{1} m}{%
+    \setbeamercolor{block title}{fg=white,bg=bleuesme}
+    \setbeamercolor{block body}{bg=bleuclairesme,fg=bleuesme}
+    \vfill
+  \IfLanguageName{french}{%
+    \begin{block}{AAV#1}
+  }{%
+    \begin{block}{ILO#1}
+  }
+  \input{#2}
+  \end{block}
+}
+    \NewDocumentCommand{\blockAas}{O{1} O{\small} m}{%
+    \setbeamercolor{block title}{fg=white,bg=bleuesme}
+    \setbeamercolor{block body}{bg=bleuclairesme,fg=bleuesme}
+    \setbeamerfont{block title}{size=#2,family=\sffamily,series=\bfseries}
+    \vfill
+  \IfLanguageName{french}{%
+    \begin{block}{AAS#1}
+  }{%
+    \begin{block}{SLO#1}
+  }
+  \input{#3}
+  \end{block}
+}
 
 % Ceci permet d'afficher une diapositive de table des matières
 % à chaque fois qu'une section est définie
