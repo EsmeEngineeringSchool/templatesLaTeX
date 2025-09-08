@@ -1,0 +1,44 @@
+#!/bin/bash
+usage()
+{
+    echo "Usage : $0 LANG CORRIGE <inputfile>"
+    echo "LANG CORRIGE : compilation d'une version spécifique
+                         - LANG    = {francais,english}
+                         - CORRIGE = {true,false}
+         "
+    exit 1
+}
+
+pdflatex_()
+{
+    pdflatex -shell-escape -interaction=batchmode $1
+    pdflatex -shell-escape -interaction=batchmode $1
+    #pdflatex -shell-escape $1
+    #pdflatex -shell-escape $1
+}
+
+compile()
+{
+    echo '---------------------------------'
+    echo "lang    : ${lang}"
+    echo "corrige : ${corrige}"
+    echo '---------------------------------'
+    texout=$1
+    cat ${texin} | sed s/__LANG__/${lang}/g | 
+                   sed s/__CORRIGE__/${corrige}/g > ${texout}.tex
+    echo ${texout}.tex
+    pdflatex_ ${texout}.tex
+    rm -f ${texout}.tex ${texout}.log ${texout}.aux ${texout}.listing
+}
+
+lang=$1
+corrige=$2
+texin=$3
+[ $# -ne 3 ] && usage
+base_texin=$(basename ${texin} .tex)
+if [ $corrige == "true" ]
+then
+    compile ${base_texin}_${lang}_corrige
+else
+    compile ${base_texin}_${lang}
+fi

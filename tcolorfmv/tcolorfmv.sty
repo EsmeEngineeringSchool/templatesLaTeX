@@ -1,0 +1,219 @@
+% tcolorfmv package
+% 
+% (c) Filipe Vasconcelos
+%
+%% This program can be redistributed and/or modified under the terms
+%% of the LaTeX Project Public License Distributed from CTAN archives
+%% in directory macros/latex/base/lppl.txt.
+% 
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{tcolorfmv}
+  [2019/10/21 v0.01 LaTeX package de macros tcolorbox variées]
+
+\RequirePackage{tcolorbox}
+\def\hi{Ce paquet regroupe des macros tcolorbox utiles pour fmv.}
+\let\myDate\date
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+\tcbuselibrary{many}
+\tcbuselibrary{listings,minted}
+%fmvstyle from pccstyle Portland Community College
+\tcbset{shield externalize,
+        fmvstyle/.style={,
+        enhanced,flushleft upper,
+        boxrule=1.5pt,
+        colback=white,colframe=black!50!yellow,
+        drop fuzzy midday shadow=black!50!yellow
+    }
+}
+\newtcolorbox{tips}[2][]{%
+  enhanced,
+  width=\textwidth,
+  fonttitle=\bfseries,
+  fonttitle=\bfseries\color{black},
+  colframe=Melon,
+  colback=Melon!10,
+  title={#2},
+	#1
+}
+\newtcolorbox{criteria}[2][]{%
+  enhanced,
+  width=\linewidth,
+  fonttitle=\bfseries\color{black},
+  colframe=gray!30,
+  colback=gray!10,
+  title={#2},
+  #1
+}
+\newtcolorbox{btheorem}[2][]{%
+    enhanced,
+    breakable,
+    width=\linewidth ,
+    fonttitle=\bfseries\color{black},
+    colframe=gray!30,
+    colback=gray!10,
+    title={#2},
+    #1
+}
+\newtcolorbox{code}[1][]{%
+    enhanced,
+    breakable,
+    sharpish corners,
+    width=\linewidth,
+    colframe=white,
+    colback=blue!8,
+    #1
+}
+\newtcolorbox{doc}[1][]{%
+    enhanced,
+    breakable,
+    sharpish corners,
+    width=\linewidth,
+    colframe=white,
+    colback=red!8,
+    #1
+}
+\newtcolorbox{bequation}[1][]{%
+  enhanced,
+  width=\linewidth,
+  sharpish corners,
+  colframe=white,
+  colback=gray!30,
+  %after={\par\baselineskip},
+  #1
+}
+\newtcolorbox{bequationm}[1][]{%
+  enhanced,
+  width=50mm,
+  sharpish corners,
+  colframe=white,
+  colback=gray!30,
+  after=,
+  fontlower=\small,
+  #1
+}
+\newtcolorbox{bdefinition}[2][]{%
+  enhanced,
+  width=\linewidth,
+  fonttitle=\bfseries\color{black},
+  colframe=gray!30,
+  colback=gray!10,
+  title={#2},
+  #1
+}
+\newtcolorbox{principe}[2][]{%
+  enhanced,
+  width=\linewidth,
+  fonttitle=\bfseries,
+  fonttitle=\bfseries\color{white},
+  colframe=Black,
+  colback=Black!10,
+  title={#2},
+  #1
+}
+\newtcolorbox{bbox}[1][]{%
+  enhanced,
+  width=\linewidth,
+  sharpish corners,
+  colframe=col1,
+  colback=white,
+  %after={\par\baselineskip},
+  #1
+}
+\newtcolorbox{ttheorem}[2][]{%
+    enhanced,
+    breakable,
+    width=\linewidth ,
+    fonttitle=\bfseries\color{white},
+    colframe=col1,
+    colback=white,
+    title={#2},
+    #1
+}
+\newtcolorbox{rrappel}[2][]{%
+    enhanced,
+    breakable,
+    width=\linewidth ,
+    fonttitle=\bfseries\color{white},
+    colframe=col2,
+    colback=white,
+    title={#2},
+    #1
+}
+\newtcolorbox{codebash}[2][]{%
+    enhanced,
+    breakable,
+    sharpish corners,
+    width=0.9\linewidth,
+    fonttitle=\bfseries\color{black},
+    frame hidden,
+    box align=center,
+    %colframe=white,
+    colback=blue!8,
+    title={#2},
+    #1
+}
+\newtcolorbox{resultatbash}[1][]{%
+    enhanced,
+    breakable,
+    sharpish corners,
+    width=0.9\linewidth,
+    box align=center,
+    frame hidden,
+    %colframe=white,
+    colback=red!8,
+    #1
+}
+\newtcolorbox{codebashverbatim}[1][]{%
+    enhanced,
+    breakable,
+    sharpish corners,
+    width=\linewidth,
+    colframe=white,
+    colback=blue!8,
+    #1
+}
+\newtcolorbox{resultatbashverbatim}[1][]{%
+    enhanced,
+    breakable,
+    sharpish corners,
+    width=\linewidth,
+    colframe=white,
+    colback=red!8,
+    #1
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pour les td d'Unix
+\newcommand{\mynewmintedconsole}[2]{%
+  \newminted[#1]{console}{#2}%
+  \tcbset{myminted/#1/.style={minted language=console,minted options={#2,breaklines}}}}
+\newcommand{\mynewmintedbash}[2]{%
+  \newminted[#1]{bash}{#2}%
+  \tcbset{myminted/#1/.style={minted language=bash,minted options={#2,breaklines}}}}
+
+\mynewmintedbash{rbash}{tabsize=4,fontsize=\small}
+\mynewmintedconsole{rconsole}{tabsize=4,fontsize=\small}
+
+\newtcblisting[list inside=mypyg]{consolebox}[1][]{%
+  listing only,
+  before skip=1pt,
+  enhanced,breakable,boxrule=0.5pt,
+  sharpish corners, width=\linewidth,
+  colback=white, 
+  colframe=black!75, 
+  drop shadow=blue!25,
+  myminted/rconsole,#1
+}
+\newtcblisting[list inside=mypyg]{bashbox}[1][]{%
+  listing only,
+  before skip=1pt,
+  enhanced,breakable,boxrule=0.5pt,
+  sharpish corners, width=\linewidth,
+  colback=white, 
+  colframe=black!75, 
+  drop shadow=blue!25,
+  myminted/rbash,#1
+}
+\endinput
+%%
+%% End of file `tcolorfmv.sty'.
