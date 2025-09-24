@@ -183,37 +183,52 @@
     #1
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Pour les td d'Unix
-\newcommand{\mynewmintedconsole}[2]{%
-  \newminted[#1]{console}{#2}%
-  \tcbset{myminted/#1/.style={minted language=console,minted options={#2,breaklines}}}}
-\newcommand{\mynewmintedbash}[2]{%
-  \newminted[#1]{bash}{#2}%
-  \tcbset{myminted/#1/.style={minted language=bash,minted options={#2,breaklines}}}}
-
-\mynewmintedbash{rbash}{tabsize=4,fontsize=\small}
-\mynewmintedconsole{rconsole}{tabsize=4,fontsize=\small}
-
-\newtcblisting[list inside=mypyg]{consolebox}[1][]{%
-  listing only,
-  before skip=1pt,
-  enhanced,breakable,boxrule=0.5pt,
-  sharpish corners, width=\linewidth,
-  colback=white, 
-  colframe=black!75, 
-  drop shadow=blue!25,
-  myminted/rconsole,#1
+% ==== Définition générique ==== ChatGPT 24/09/25
+\newcommand{\mynewminted}[3]{%
+  \newminted[#1]{#2}{#3}%
+  \tcbset{%
+    #2 fontsize/.store in=\currentfontsize,
+    #2 fontsize=\small,
+    myminted/#1/.style={%
+      minted language=#2,
+      minted options={#3, breaklines, escapeinside=!!, fontsize=\currentfontsize}%
+    }%
+  }%
 }
-\newtcblisting[list inside=mypyg]{bashbox}[1][]{%
+
+% ==== Instanciations ====
+\mynewminted{rbash}{bash}{tabsize=4}
+\mynewminted{rconsole}{console}{tabsize=4}
+
+% ==== Styles tcolorbox ====
+\newtcblisting{bashbox}[1][]{%
   listing only,
-  before skip=1pt,
+  before skip=5pt,
+  after skip=5pt,
   enhanced,breakable,boxrule=0.5pt,
-  sharpish corners, width=\linewidth,
-  colback=white, 
-  colframe=black!75, 
+  sharpish corners,
+  width=\linewidth,
+  colback=white,
+  colframe=black!75,
   drop shadow=blue!25,
-  myminted/rbash,#1
+  myminted/rbash,
+  #1
 }
+
+\newtcblisting{consolebox}[1][]{%
+  listing only,
+  before skip=2pt,
+  after skip=2pt,
+  enhanced,breakable,boxrule=0.5pt,
+  sharpish corners,
+  width=\linewidth,
+  colback=white,
+  colframe=black!75,
+  drop shadow=blue!25,
+  myminted/rconsole,
+  #1
+}
+
 \endinput
 %%
 %% End of file `tcolorfmv.sty'.
