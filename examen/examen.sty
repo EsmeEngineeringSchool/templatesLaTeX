@@ -1,3 +1,8 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{examen}[2026/10/28 examen]
+\newif\ifexamen@amc
+\DeclareOption{amc}{\examen@amctrue}
+\ProcessOptions\relax
 % Requirement
 \RequirePackage{fancyhdr}
 \RequirePackage{graphicx}
@@ -19,6 +24,7 @@
 \usetikzlibrary{intersections}
 \RequirePackage{xargs}
 \RequirePackage{xspace}
+\RequirePackage{xstring}
 \RequirePackage{ifthen}
 
 \newcommand{\fr}[2]{\iflanguage{francais}{#1}{#2}}
@@ -34,14 +40,21 @@
 \newcommand{\@documentautorise}{false}
 \newcommand{\@moyencalcul}{false}
 \newcommand{\@dispositions}{true}
+\newcommand{\@qcm}{false}
+\newcommand{\@qcmgradescope}{false}
+\newcommand{\@soin}{false}
+\newcommand{\@malus}{false}
+\newcommand{\@moodle}{false}
+\newcommand{\@luck}{true}
 \newcommand{\@none}{None}
 \newcommand{\@location}{Bordeaux-Lille-Lyon-Paris}
+\newcommand{\@vide}{}
 %main def
 \newcommand{\promo}[1]{\renewcommand{\@promo}{#1}}
 \newcommand{\module}[1]{\renewcommand{\@module}{#1}}
 \newcommand{\annee}[1]{\renewcommand{\@annee}{#1}}
 \newcommand{\epreuve}[1]{\renewcommand{\@epreuve}{#1}}
-\newcommand{\titreEval}[1]{\renewcommand{\@titreEval}{#1}}
+\newcommand{\titreEval}[1]{\renewcommand{\@titreEval}{#1}\ifx\@titreEval\@vide\renewcommand{\@titreEval}{None}\fi}
 \newcommand{\dureeEval}[1]{\renewcommand{\@dureeEval}{#1}}
 \newcommand{\logo}[1]{\renewcommand{\@logo}{#1}}
 \newcommand{\esme}[1]{\renewcommand{\@esme}{#1}\renewcommand{\@logo}{ESME_LOGO_SEUL_NOIR_2021}}
@@ -49,11 +62,19 @@
 \newcommand{\moyencalcul}[1]{\renewcommand{\@moyencalcul}{#1}}
 \newcommand{\dispositions}[1]{\renewcommand{\@dispositions}{#1}}
 \newcommand{\location}[1]{\renewcommand{\@location}{#1}}
+\newcommand{\luck}[1]{\renewcommand{\@luck}{#1}}
+\newcommand{\qcm}[1]{\renewcommand{\@qcm}{#1}}
+\newcommand{\qcmgradescope}[1]{\renewcommand{\@qcmgradescope}{#1}}
+\newcommand{\malus}[1]{\renewcommand{\@malus}{#1}}
+\newcommand{\moodle}[1]{\renewcommand{\@moodle}{#1}}
+\newcommand{\soin}[1]{\renewcommand{\@soin}{#1}}
 % edition corrige
 \newboolean{editioncorrige} 
+\setboolean{editioncorrige}{false}
+\newif\ifnoteditioncorrige
+\noteditioncorrigetrue
 \newcommand{\corrige}[1]{
     \setboolean{editioncorrige}{#1}
-    \newif\ifnoteditioncorrige
     \ifeditioncorrige
         \noteditioncorrigefalse
     \else
@@ -137,7 +158,8 @@
 \newcommand{\Apply@consignes}{%
   \begingroup
   \long\def\@true{true}\long\def\@false{false}%
-  \noindent\fbox{\parbox{\linewidth\fboxrule\fboxsep}{
+  \noindent\fbox{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
   % ---------------------------------------------------------------------
   % document réponse 
   % ---------------------------------------------------------------------
@@ -149,7 +171,7 @@
 
     }{%
         \textbf{Responses will be reported exclusively on the
-        response document. No other document will be corrected.
+        response document. No other document will be marked.
         Be as concise as possible and use the available spacing wisely.}\\
 
     }
@@ -184,13 +206,13 @@
   \ifx\@moyencalcul\@true
     \iflanguage{francais}{%
     \textbf{Moyens de calculs autorisés }: calculatrice de
-            poche, y compris calculatrice programmable, alphanumérique ou à
+            poche, calculatrice non programmable, alphanumérique ou à
             écran graphique, à fonctionnement autonome, non imprimante, autorisée
             conformément à la circulaire \no 99-186 du 16 novembre 1999.\\
 
     }{%
     \textbf{Means of calculation authorized:} the used of pocket calculators
-            are strictly permitted, including programmable calculators,
+            are strictly permitted, including non programmable calculators,
             alphanumeric, graphic display, stand-alone or non-printer are permitted
             in accordance with circular n°99-186 of November 16, 1999.\\
 
@@ -221,10 +243,102 @@
 
     }
   \fi
-  }}
+  % ---------------------------------------------------------------------
+  % Consigne QCM 
+  % ---------------------------------------------------------------------
+  \ifx\@qcm\@true
+    \ifexamen@amc
+      \iflanguage{francais}{%
+          \textbf{Cochez ou noircissez entièrement, au stylo noir ou bleu foncé, les cases correspondant aux bonnes réponses.}\\
+      }{%
+          \textbf{Fill in completely, with a dark pen, the boxes corresponding to the correct answers.}\\
+      }
+    \else
+      \iflanguage{francais}{%
+          \textbf{Lorsque la question est à choix multiples, entourer la ou les bonnes réponses directement sur le document.}\\
+      }{%
+          \textbf{For multiple-choice questions, please circle the correct answer(s) directly on the document.}\\
+      }
+    \fi
+  \fi
+  % ---------------------------------------------------------------------
+  % Consigne QCM GRADESCOPE 
+  % ---------------------------------------------------------------------
+  \ifx\@qcmgradescope\@true
+     \iflanguage{francais}{%
+        \textbf{Les réponses seront exclusivement reportées sur le
+                document réponse. Aucun autre document ne sera corrigé. 
+                Indiqué la version de l'énoncé sur celui-ci.}\\
+
+     }{%
+        \textbf{Answers must be submitted exclusively on the answer 
+                sheet. No other documents will be marked.
+                Indicate the version of the problem statement on this sheet.}\\
+
+     }
+  \fi
+  % ---------------------------------------------------------------------
+  % Consigne Soin 
+  % ---------------------------------------------------------------------
+  \ifx\@soin\@true
+     \iflanguage{francais}{%
+        \textbf{Attention au soin apporté à votre copie ! Des points négatifs si les réponses sont illisibles et/ou si les figures
+                manquent de clarté. Pensez à utiliser le papier brouillon pour mettre vos idées au clair avant de répondre sur la copie.}\\
+
+     }{%
+        \textbf{Pay close attention to the neatness of your work! 
+                Points will be deducted if answers are illegible and/or figures lack clarity. 
+                Remember to use scrap paper to organize your thoughts before writing on your final copy.}\\
+
+     }
+  \fi
+  % ---------------------------------------------------------------------
+  % Consigne Malus 
+  % ---------------------------------------------------------------------
+  \ifx\@malus\@true
+     \iflanguage{francais}{%
+        \textbf{Ne répondez pas au hasard car une réponse fausse est sanctionnée d'un malus pour compenser le biais lié au hasard.
+                Le malus est de $\frac{-1}{3}$, ce qui fait que trois réponses fausses annulent une réponse juste.}\\
+
+     }{%
+        \textbf{Don't guess your answers, as an incorrect answer will incur a penalty to offset the bias introduced by random chance. 
+                The penalty is $\frac{-1}{3}$, meaning three incorrect answers cancel out one correct answer.}\\
+
+     }
+  \fi
+  % ---------------------------------------------------------------------
+  % Consigne Version Moodle 
+  % ---------------------------------------------------------------------
+  \ifx\@moodle\@true
+     \iflanguage{francais}{%
+         \textbf{Cet examen est la version papier d'une évaluation Coderunner initialement conçue pour Moodle. 
+                 Si certains types de questions restent inchangées, les exercices de programmation 
+                 conservent leur contenu mais perdent les fonctionnalités interactives et les vérifications 
+                 automatiques propres à Coderunner; l’expérience utilisateur s’en trouve nécessairement dégradée.}\\
+
+     }{%
+        \textbf{This exam is the paper version of a Coderunner assessment originally designed for Moodle. 
+                While the multiple-choice questions remain unchanged, the programming exercises retain their content 
+                but lack the interactive features and automatic checks provided by Coderunner, 
+                resulting in a necessarily degraded user experience."}\\
+     }
+  \fi
+  % ---------------------------------------------------------------------
+  % Message d'entrain 
+  % ---------------------------------------------------------------------
+  \ifx\@luck\@true
+     \iflanguage{francais}{%
+        \textbf{Bon courage !}\\
+
+     }{%
+        \textbf{Good luck !}\\
+
+     }
+  \fi
+  \end{minipage}% 
+  }%
 \endgroup
 }
-
 %Page title
 \newcommand\logoIMG{%
     \begin{figure}[!h]
@@ -232,6 +346,71 @@
         \includegraphics[width=0.25\textwidth]{\@logo}
     \end{figure}
 }%
+%Définitions des exercices et de la durée en fonction de la langue 
+\iflanguage{francais}{%
+    \newcommand\name{Prénom et Nom :}
+    \newcommand\exercicetitle{Exercice}
+    \newcommand\dureetitle{Durée}
+    \newcommand\heuretitle[1]{%
+      \IfSubStr{#1}{minute}{%
+        #1% Affiche directement "10 minutes" sans test numérique
+      }{%
+        #1~heure\ifnum#1>1 s\fi\relax% Comportement initial pour les heures (ex: 2 -> 2 heures)
+      }%
+    }
+}{%
+    \newcommand\name{Name :}
+    \newcommand\exercicetitle{Exercise}
+    \newcommand\dureetitle{Time}
+    \newcommand\heuretitle[1]{%
+      \IfSubStr{#1}{minute}{%
+        #1% Affiche directement le texte en anglais (ex: 10 minutes)
+      }{%
+        #1~hour\ifnum#1>1 s\fi\relax% Comportement initial (ex: 2 -> 2 hours)
+      }%
+    }
+}
+
+\def\examen@patchloc{%
+  \def\AMC@loc@q##1##2{\textbf{Q##1.}~##2}%
+  \def\AMC@loc@qf##1{\textbf{Q##1.}}%
+  \def\AMC@loc@none{\fr{Aucune de ces r\'eponses n'est correcte.}%
+                       {None of these answers is correct.}}%
+}
+\AtBeginDocument{\g@addto@macro\AMC@loc@FR{\examen@patchloc}}
+
+\newlength{\examen@boxwidth}
+\ifexamen@amc
+%-------------------- mode AMC --------------------
+  \newcommand{\EnteteExamen}{%
+    \begingroup
+    % largeur intérieure d'une boîte \fbox qui occupe exactement \linewidth
+    \setlength{\examen@boxwidth}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}%
+    \noindent
+    \begin{minipage}[c]{0.2\linewidth}
+      \includegraphics[width=0.5\linewidth]{\@logo}
+    \end{minipage}%
+    \begin{minipage}[c]{0.8\linewidth}
+      \centering
+      {\large
+       \@annee~-~\@promo~-~\@module\\
+       \emph{\@epreuve\ifx\@titreEval\@none\else~-~\@titreEval\fi}\\
+       \dureetitle~:~\heuretitle{\@dureeEval}\par
+      }
+    \end{minipage}\par\medskip
+    % Bloc d'identification de l'élève (indispensable pour AMC)
+    \noindent
+    \champnom{\fbox{%
+      \begin{minipage}{\examen@boxwidth}
+        \textbf{\name}\\[0.5em]
+        \dotfill\\[0.5cm]
+      \end{minipage}%
+    }}\par\medskip
+    \noindent
+    \Apply@consignes
+    \endgroup}
+\else
+%-------------------- mode classique --------------------
 %Exercices/Questions 
 \newcounter{numexos}
 \newcounter{numques}
@@ -245,15 +424,6 @@
 \fi
 }%
 
-\iflanguage{francais}{%
-    \newcommand\exercicetitle{Exercice}
-    \newcommand\dureetitle{Durée}
-    \newcommand\heuretitle{heures}
-}{%
-    \newcommand\exercicetitle{Exercise}
-    \newcommand\dureetitle{Time}
-    \newcommand\heuretitle{hours}
-}%
 \newcommandx{\exercice}[2][2=\Large]{%
     \setcounter{numques}{0}
     \addtocounter{numexos}{1}
@@ -288,7 +458,7 @@
             \emph{\@epreuve~-~\@titreEval}\\
         \fi
     \fi
-    \dureetitle : \@dureeEval~\heuretitle\par}%
+      \dureetitle : \heuretitle{\@dureeEval}\par}%
     \ifx\@esme\@true
         \vskip 1.5em%
         {\large
@@ -326,3 +496,4 @@
   \pagenumbering{arabic}\setcounter{page}{3}\thispagestyle{esmestyle}
 }
 \makeatother
+\fi
