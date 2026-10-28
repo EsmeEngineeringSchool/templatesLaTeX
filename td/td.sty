@@ -50,7 +50,16 @@
 \fr{\renewcommand{\@lang}{francais}}{\renewcommand{\@lang}{english}}
 
 \newboolean{editioncorrige}
-\newcommand{\corrige}[1]{\setboolean{editioncorrige}{#1}}
+\newif\ifnoteditioncorrige
+\noteditioncorrigetrue
+\newcommand{\corrige}[1]{
+    \setboolean{editioncorrige}{#1}
+    \ifeditioncorrige
+        \noteditioncorrigefalse
+    \else
+        \noteditioncorrigetrue
+    \fi
+}
 \newboolean{langfrancais}
 \setboolean{langfrancais}{\fr{true}{false}}
 \newboolean{langenglish}
@@ -114,13 +123,17 @@
     \medskip
 }%
 
-\thispagestyle{plain}
-\pagestyle{fancy}
+\fancypagestyle{esmestyle}{
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
-\fancyfoot[RO,LE]{\textbf{\thepage}} 
-\fancyfoot[RE,LO]{\includegraphics[height=1.25cm]{\@logo}} 
+\fancyfoot[RO,LE]{\textbf{\thepage}}
+\fancyfoot[RE,LO]{\includegraphics[height=1.25cm]{\@logo}}
+\ifeditioncorrige
+\fancyfoot[C]{\textbf{\fr{Corrigé}{Answers}}~-~\@promo~-~\@activite~\@tdno~-~\@titre~-~\@module}
+\else
 \fancyfoot[C]{\@promo~-~\@activite~\@tdno~-~\@titre~-~\@module}
+\fi
+}
 
 %Page title
 \newcommand\logoIMG{%
