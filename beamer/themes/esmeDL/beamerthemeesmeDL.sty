@@ -15,6 +15,14 @@
 \RequirePackage{calc}
 \tcbuselibrary{skins}
 
+\makeatletter
+\newif\ifesme@showtitle
+\esme@showtitletrue
+\DeclareOptionBeamer{notitle}{\esme@showtitlefalse}
+\ProcessOptionsBeamer
+\makeatother
+
+
 % Settings
 \usefonttheme{esmeDL}
 \useinnertheme{esmeDL}
@@ -75,16 +83,16 @@
 %\draw[dashed,rounded corners,bleuesme,line width=1.5pt] (-0.13,\paperheight-7.7cm) rectangle (14.13,\paperheight-6.5cm);
 %\end{tikzpicture}\par
 %}%
-\newtheorem{blockQues}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=0.75cm]{icone_question_vert}~Consigne :~}
+\newtheorem{blockQues}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=0.75cm]{icone_question_vert}~Question :~}
 \AtBeginEnvironment{blockQues}{%
-\setbeamercolor{block title}{fg=vertesme,bg=white}
+\setbeamercolor{block title}{fg=vertesme,bg=white!21}
 \setbeamercolor{block body}{bg=verttransparentesme!11!white,fg=bleuesme}
 }%
-\AfterEndEnvironment{blockQues}{%
-\begin{tikzpicture}[overlay]
-    \draw[dashed,rounded corners,vertesme,line width=1.5pt] (-0.13,1.25) rectangle (14.13,2.3);
-\end{tikzpicture}\par
-}%
+%\AfterEndEnvironment{blockQues}{%
+%\begin{tikzpicture}[overlay]
+%    \draw[dashed,rounded corners,vertesme,line width=1.5pt] (-0.13,1.25) rectangle (14.13,2.3);
+%\end{tikzpicture}\par
+%}%
 \newtheorem{blockRep}[theorem]{\rule[-0.6ex]{0pt}{2.5ex}\includegraphics[height=0.75cm]{icone_reponse_vert}~Réponses :~}
 \AtBeginEnvironment{blockRep}{%
 \setbeamercolor{block title}{fg=vertesme,bg=white}
@@ -210,32 +218,38 @@
 }
 
 % Ajoute la page de titre et le sommaire lorsque l'environnement document est appelé/
+\makeatletter
 \IfLanguageName{french}{%
     \AddToHook{begindocument/end}{%
-        \begin{frame}
-            \titlepage
-        \end{frame}%
-        \ifhooksommairebegindocument
-        \begin{frame}
-            \frametitle{Sommaire}
-            \tableofcontents[hideallsubsections]
-        \end{frame}
+        \ifesme@showtitle
+            \begin{frame}
+                \titlepage
+            \end{frame}%
+            \ifhooksommairebegindocument
+            \begin{frame}
+                \frametitle{Sommaire}
+                \tableofcontents[hideallsubsections]
+            \end{frame}
+            \fi
         \fi
     }%
 }%
 {%
     \AddToHook{begindocument/end}{%
-        \begin{frame}
-            \titlepage
-        \end{frame}%
-        \ifhooksommairebegindocument
-        \begin{frame}
-            \frametitle{Outline}
-            \tableofcontents[hideallsubsections]
-        \end{frame}
+        \ifesme@showtitle
+            \begin{frame}
+                \titlepage
+            \end{frame}%
+            \ifhooksommairebegindocument
+            \begin{frame}
+                \frametitle{Outline}
+                \tableofcontents[hideallsubsections]
+            \end{frame}
+        \fi
         \fi
     }%
 }%
+\makeatother
 
 \graphicspath{{./img/}}
 
